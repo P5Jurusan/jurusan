@@ -4,6 +4,7 @@
     --secondary: #FBA504;
     --light: #F6F4F9;
     --dark: #04000B;
+    --navytransparent: #023248c3;
 }
 
 
@@ -434,7 +435,7 @@ h6,
     height: 100%;
     top: 0;
     left: 0;
-    background: rgba(98, 34, 204, .9);
+    background: var(--navytransparent);
     transition: .5s;
     opacity: 0;
 }
