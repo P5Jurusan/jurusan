@@ -5,6 +5,7 @@
     --light: #F6F4F9;
     --dark: #04000B;
     --navytransparent: #023248c3;
+    --navy: #023248;
 }
 
 
@@ -176,7 +177,7 @@ h6,
     }
 
     .sticky-top.navbar-light .navbar-brand h1 {
-        color: var(--primary);
+        color: var(--navy);
     }
 
     .navbar-light .navbar-nav .nav-item .dropdown-menu {
