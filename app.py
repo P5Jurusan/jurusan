@@ -38,6 +38,10 @@ def team():
 def testimonial():
     return render_template('testimonial.html')
 
+@app.route('/author')
+def author():
+    return render_template('authorize.html')
+
 @app.route('/404')
 def error():
     return render_template('404.html')
