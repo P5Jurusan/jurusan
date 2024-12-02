@@ -2,8 +2,6 @@ from flask import Flask, render_template, request, redirect, url_for, flash, ses
 import secrets
 from flask_sqlalchemy import SQLAlchemy
 
-
-
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
 
@@ -47,14 +45,14 @@ def login():
         if user:
             session['user'] = user.name
             flash('Login berhasil!', 'success')
-            return redirect(url_for('admin'))
+            return redirect(url_for('index'))
         else:
             flash('NIP atau password salah!', 'danger')
             return redirect(url_for('login'))
     
     return render_template('login.html')
 
-@app.route('/register', methods=['POST'])
+@app.route('/register', methods=['GET','POST'])
 def register():
     if request.method == 'POST':
         nip = request.form.get('nip')
@@ -66,21 +64,18 @@ def register():
             flash('NIP harus terdiri dari 18 angka!', 'danger')
             return redirect(url_for('register'))
         
-        if not name or len(name) < 3:
-            flash('Nama harus terdiri dari minimal 3 karakter!', 'danger')
-            return redirect(url_for('register'))
-        
         if not password or len(password) < 8:
             flash('Password harus terdiri dari minimal 8 karakter!', 'danger')
             return redirect(url_for('register'))
 
         # Simpan data ke database
-        new_user = User.query.filter_by(nip=nip, name=name, password=password)
+        new_user = User(nip=nip, name=name, password=password)
         db.session.add(new_user)
         db.session.commit()
 
         flash('Registrasi berhasil!', 'success')
         return redirect(url_for('login'))
+    
     return render_template('register.html')
 
 if __name__ == '__main__':
