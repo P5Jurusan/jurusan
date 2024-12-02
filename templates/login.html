@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+{% include 'component/head.html' %}
+<body>
+    {% with messages = get_flashed_messages(with_categories=true) %} {% if
+    messages %}
+    <ul>
+    {% for category, message in messages %}
+        <li class="{{ category }}">{{ message }}</li>
+    {% endfor %}
+    </ul>
+    {% endif %} {% endwith %}
+
+    <form method="POST" action="{{ url_for('login') }}">
+        <input type="text" id="nip" name="nip" value="{{ request.form.get('nip') }}">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% for category, message in messages %}
+            {% if category == 'danger' %}
+                <div class="alert alert-danger mt-2">{{ message }}</div>
+            {% endif %}
+        {% endfor %}
+    {% endwith %}
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% for category, message in messages %}
+        {% if category == 'danger' %}
+            <div class="alert alert-danger mt-2">{{ message }}</div>
+        {% endif %}
+    {% endfor %}
+{% endwith %}
+    </form>
+</body>
+</html>
