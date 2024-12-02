@@ -1,60 +1,116 @@
 body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
-    margin: 0;
-    padding: 0;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
 }
 
-.container {
-    max-width: 500px;
-    margin: 50px auto;
-    padding: 20px;
-    background: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-}
-
-h1 {
-    text-align: center;
-    margin-bottom: 20px;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.profile-pic {
-    display: block;
-    margin: 10px auto;
-    max-width: 100px;
-    border-radius: 50%;
-}
-
-button {
-    display: block;
-    width: 100%;
-    padding: 10px;
-    background-color: #717fe0;
-    color: #fff;
+.card {
     border: none;
-    border-radius: 5px;
-    font-size: 16px;
-    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 600px;
+    padding: 0;
+    border-radius: 7px;
+    overflow: hidden;
 }
 
-button:hover {
-    background-color: #000;
+.card img {
+    width: 100%;
+    height: auto;
+    border-radius: 0;
+    display: block;
+    border-radius: 0;
+}
+
+.card-body {
+    padding: 0;
+    border-radius: 20px;
+}
+
+.card-title {
+    color: #94A0E9;
+}
+
+input::placeholder {
+    font-size: 12px;
+    color: #CCD1F3 !important;
+    font-weight: 600 !important;
+}
+
+.form-input {
+    width: 80%;
+    margin: auto;
+}
+
+.form-control {
+    color: #495057;
+    background-color: #EBEDFA;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 0.25rem;
+}
+
+.form-label {
+    font-size: 12px;
+}
+
+.btn-lgn {
+    background-color: #5562B3;
+    border: none;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    color: #ffffff;
+}
+
+.btn-lgn:hover {
+    background-color: #364393;
+    border: none;
+    color: #ffffff;
+}
+
+.btn-dft {
+    background-color: #ffffff;
+    border-color: #5562B3;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    color: #5562B3;
+}
+
+.btn-dft:hover {
+    background-color: #5562B3;
+    border: none;
+    color: #ffffff;
+}
+
+.btn-lgn,
+.btn-dft {
+    width: 100%;
+    margin: auto;
+    display: block;
+}
+
+.text-decoration-none {
+    font-size: 11px;
+    color: #94A0E9
+}
+
+.text-decoration-none:hover {
+    color: #5562B3;
+}
+
+.form {
+    padding: 1rem 2rem;
+}
+
+.form-row {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.form-inp {
+    margin-right: 0.5rem;
+    margin-left: 0.5rem;
+    flex: 1;
+    max-width: 38%;
 }
