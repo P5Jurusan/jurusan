@@ -13,26 +13,28 @@
                             <strong>Selamat Datang Kembali!</strong>
                         </h5>
                         <form action="{{ url_for('login') }}" method="post">
+                            <!-- Input NIP -->
                             <div class="form-input mb-3">
                                 <label for="nip" class="form-label card-title"><strong>NIP :</strong></label>
                                 <input type="number" name="nip" class="form-control" id="nip" placeholder="Masukkan NIP Anda" required />
-                                
+                                <!-- Pesan Error NIP -->
                                 {% with messages = get_flashed_messages(with_categories=true) %}
                                     {% for category, message in messages %}
-                                        {% if category == 'danger' and 'nip' in message %}
-                                            <p class="text-danger mt-2">{{ message }}</p>
+                                        {% if category == 'danger' and 'NIP' in message %}
+                                            <p class="text-danger mt-2">*{{ message }}</p>
                                         {% endif %}
                                     {% endfor %}
                                 {% endwith %}
                             </div>
+                            <!-- Input Password -->
                             <div class="form-input mb-4">
                                 <label for="password" class="form-label card-title"><strong>Kata Sandi :</strong></label>
                                 <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Kata Sandi Anda" required />
-                                
+                                <!-- Pesan Error Password -->
                                 {% with messages = get_flashed_messages(with_categories=true) %}
                                     {% for category, message in messages %}
-                                        {% if category == 'danger' and 'password' in message %}
-                                            <p class="text-danger mt-2">{{ message }}</p>
+                                        {% if category == 'danger' and 'Password' in message %}
+                                            <p class="text-danger mt-2">*{{ message }}</p>
                                         {% endif %}
                                     {% endfor %}
                                 {% endwith %}
@@ -40,9 +42,11 @@
                                     <a href="#" class="text-decoration-none"><strong>Lupa Kata Sandi?</strong></a>
                                 </p>
                             </div>
+                            <!-- Tombol Submit -->
                             <div class="form-input">
                                 <button type="submit" class="btn btn-lgn mb-3">Masuk</button>
                             </div>
+                            <!-- Tombol Daftar -->
                             <div class="form-input mb-4">
                                 <a href="{{ url_for('register') }}" class="btn btn-dft" type="button">
                                     Daftar

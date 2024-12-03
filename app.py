@@ -30,27 +30,35 @@ def login():
     if request.method == 'POST':
         nip = request.form.get('nip')
         password = request.form.get('password')
-        
-        #validasi
+
+        # Validasi input
         if not nip or not nip.isdigit() or len(nip) != 18:
             flash('NIP harus terdiri dari 18 angka!', 'danger')
             return redirect(url_for('login'))
-        
+
         if not password or len(password) < 8:
             flash('Password harus terdiri dari minimal 8 karakter!', 'danger')
             return redirect(url_for('login'))
 
-        # Cek NIP dan Password
-        user = User.query.filter_by(nip=nip, password=password).first()
-        if user:
-            session['user'] = user.name
-            flash('Login berhasil!', 'success')
-            return redirect(url_for('index'))
-        else:
-            flash('NIP atau password salah!', 'danger')
+        # Cek NIP di database
+        user = User.query.filter_by(nip=nip).first()
+        if not user:
+            flash('NIP tidak ditemukan!', 'danger')
             return redirect(url_for('login'))
-    
+
+        # Cek Password
+        if user.password != password:
+            flash('Password salah!', 'danger')
+            return redirect(url_for('login'))
+
+        # Jika validasi berhasil
+        session['user'] = user.name
+        flash('Login berhasil!', 'success')
+        return redirect(url_for('index'))
+
     return render_template('login.html')
+
+
 
 @app.route('/register', methods=['GET','POST'])
 def register():
