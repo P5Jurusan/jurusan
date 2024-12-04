@@ -7,62 +7,58 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <div class="card-form">
+                <div class="card">
                     <div class="card-body">
-                        <img src="{{ url_for('static', filename='assets/img/Group 10.2.png') }}">
+                        <img src="{{ url_for('static', filename='assets/img/Group 10.2.png') }}" alt="Logo">
                         <h5 class="card-title text-center mb-3 mt-3"><strong>Selamat Datang!</strong></h5>
 
                         <form action="{{ url_for('register') }}" method="post">
                             <div class="form-row mb-4">
-                                <!-- Input Nama -->
                                 <div class="form-inp">
                                     <label for="nama" class="form-label card-title"><strong>Nama :</strong></label>
                                     <input type="text" name="name" class="form-control" id="nama" placeholder="Masukkan Nama" required>
                                     {% with messages = get_flashed_messages(with_categories=true) %}
-                                        {% for category, message in messages %}
-                                            {% if category == 'danger' %}
-                                                <div class="alert alert-danger mt-2">{{ message }}</div>
-                                            {% endif %}
-                                        {% endfor %}
+                                    {% for category, message in messages %}
+                                        {% if category == 'danger' and 'Nama' in message %}
+                                            <small class="text-danger">{{ message }}</small>
+                                        {% endif %}
+                                    {% endfor %}
                                     {% endwith %}
                                 </div>
-                                <!-- Input NIP -->
                                 <div class="form-inp">
-                                    <label for="nip" class="form-label card-title"><strong>NIP :</strong></label>
-                                    <input type="number" name="nip" class="form-control" id="nip" placeholder="Masukkan NIP" required>
+                                    <label for="nip" class="form-label card-title"><strong>Email :</strong></label>
+                                    <input type="email" name="email" class="form-control" id="email" placeholder="Masukkan Email" required>
                                     {% with messages = get_flashed_messages(with_categories=true) %}
-                                        {% for category, message in messages %}
-                                            {% if category == 'danger' %}
-                                                <div class="alert alert-danger mt-2">{{ message }}</div>
-                                            {% endif %}
-                                        {% endfor %}
+                                    {% for category, message in messages %}
+                                        {% if category == 'danger' and 'Email' in message %}
+                                            <small class="text-danger">{{ message }}</small>
+                                        {% endif %} 
+                                    {% endfor %}
                                     {% endwith %}
                                 </div>
                             </div>
 
                             <div class="form-row mb-5">
-                                <!-- Input Kata Sandi -->
                                 <div class="form-inp">
-                                    <label for="password" class="form-label card-title"><strong>Kata Sandi :</strong></label>
-                                    <input type="password" name="password" class="form-control" id="password" placeholder="Masukkan Kata Sandi" required>
+                                    <label for="nip" class="form-label card-title"><strong>NIP :</strong></label>
+                                    <input type="number" name="nip" class="form-control" id="nip" placeholder="Masukkan NIP" required>
                                     {% with messages = get_flashed_messages(with_categories=true) %}
-                                        {% for category, message in messages %}
-                                            {% if category == 'danger' %}
-                                                <div class="alert alert-danger mt-2">{{ message }}</div>
-                                            {% endif %}
-                                        {% endfor %}
+                                    {% for category, message in messages %}
+                                        {% if category == 'danger' and 'NIP' in message %}
+                                            <small class="text-danger">{{ message }}</small>
+                                        {% endif %}
+                                    {% endfor %}
                                     {% endwith %}
                                 </div>
-                                <!-- Input Konfirmasi Kata Sandi -->
                                 <div class="form-inp">
-                                    <label for="confirm_password" class="form-label card-title"><strong>Konfirmasi Kata Sandi :</strong></label>
-                                    <input type="password" name="confirm_password" class="form-control" id="confirm_password" placeholder="Konfirmasi Kata Sandi" required>
+                                    <label for="password" class="form-label card-title"><strong>Kata Sandi :</strong></label>
+                                    <input type="password" name="password" class="form-control" id="password" placeholder="Masukan Kata Sandi" required>
                                     {% with messages = get_flashed_messages(with_categories=true) %}
-                                        {% for category, message in messages %}
-                                            {% if category == 'danger' %}
-                                                <div class="alert alert-danger mt-2">{{ message }}</div>
-                                            {% endif %}
-                                        {% endfor %}
+                                    {% for category, message in messages %}
+                                        {% if category == 'danger' and 'Password' in message %}
+                                            <small class="text-danger">{{ message }}</small>
+                                        {% endif %}
+                                    {% endfor %}
                                     {% endwith %}
                                 </div>
                             </div>

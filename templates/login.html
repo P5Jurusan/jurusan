@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-5">
-                <div class="card-form">
+                <div class="card">
                     <div class="card-body">
                         <img src="{{ url_for('static', filename='assets/img/Group 10.2.png') }}" />
                         <h5 class="card-title text-center mb-3 mt-3">
@@ -21,7 +21,7 @@
                                 {% with messages = get_flashed_messages(with_categories=true) %}
                                     {% for category, message in messages %}
                                         {% if category == 'danger' and 'NIP' in message %}
-                                            <p class="text-danger mt-2">*{{ message }}</p>
+                                            <p class="text-danger mt-2">{{ message }}</p>
                                         {% endif %}
                                     {% endfor %}
                                 {% endwith %}
@@ -34,12 +34,12 @@
                                 {% with messages = get_flashed_messages(with_categories=true) %}
                                     {% for category, message in messages %}
                                         {% if category == 'danger' and 'Password' in message %}
-                                            <p class="text-danger mt-2">*{{ message }}</p>
+                                            <p class="text-danger mt-2">{{ message }}</p>
                                         {% endif %}
                                     {% endfor %}
                                 {% endwith %}
                                 <p class="text-end mt-2">
-                                    <a href="#" class="text-decoration-none"><strong>Lupa Kata Sandi?</strong></a>
+                                    <a href="{{ url_for('forgot_password') }}" class="forgot"><strong>Lupa Kata Sandi?</strong></a>
                                 </p>
                             </div>
                             <!-- Tombol Submit -->
