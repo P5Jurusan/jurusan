@@ -1,49 +1,606 @@
 <!DOCTYPE html>
 <html lang="en">
 
-{% include 'component/head.html' %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekayasa Perangkat Lunak</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f4ff;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .header {
+            justify-content: space-between;
+        }
+
+        .btn-dft {
+            background-color: #5562B3;
+            border: none;
+            box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+            color: #ffffff;
+            width: 140px;
+            padding: 5px 10px;
+            margin: auto;
+            display: block;
+            font-size: 14px;
+        }
+
+        .btn-dft:hover {
+            background-color: #404da0;
+            border: none;
+            color: #ffffff;
+        }
+
+        .d-flex {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        /* card informasi */
+        .card-info {
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 50%;
+            height: 155px;
+            margin: 0 auto;
+            border: none;
+            background-color: #ffffff;
+        }
+
+        .card-info-title {
+            font-family: 'Arial', sans-serif;
+            font-size: 1.3rem;
+            font-weight: bold;
+            color: #5562B3;
+        }
+
+        .card-info-text {
+            font-family: 'Arial', sans-serif;
+            font-size: 11px;
+            color: #94A0E9;
+        }
+
+        .card-info img {
+            border-radius: 15px;
+            max-width: 155px;
+            max-height: 120px;
+            object-fit: cover;
+        }
+
+        /* card kegiatan */
+        .card-kgt {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            height: 155px;
+            position: relative;
+        }
+
+        .card-kgt img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        .card-kgt-footer {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            text-align: center;
+            padding: 20px;
+            z-index: 2;
+            color: white;
+        }
+
+        .card-kgt-footer .shadow-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+
+        .card-kgt-footer .footer-text {
+            position: relative;
+            z-index: 2;
+            font-size: 12px;
+            color: white;
+            text-align: left;
+        }
+
+        /* calendar */
+        .calendar {
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 15px;
+            width: 20%;
+            text-align: center;
+            margin: 0 auto;
+            height: 155px;
+        }
+
+        .calendar h2 {
+            font-family: 'Arial', sans-serif;
+            font-size: 14px;
+            color: #3b3b98;
+            margin-bottom: 10px;
+        }
+
+        .calendar table {
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        .calendar th,
+        .calendar td {
+            font-family: 'Jost', sans-serif;
+            font-size: 8px;
+            padding: 3px;
+        }
+
+        .calendar .divider {
+            border-top: 1.5px solid #6c757d;
+            margin: 5px 0;
+        }
+
+        .calendar th {
+            color: #6A6A6A;
+        }
+
+        .calendar td {
+            color: #6A6A6A;
+            position: relative;
+        }
+
+        .calendar .sunday {
+            color: red;
+        }
+
+        .calendar .today {
+            background-color: #3b3b98;
+            color: white;
+            border-radius: 50%;
+            width: 15px;
+            height: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto;
+            margin-top: 2px;
+        }
+
+        /* diagram kelas */
+        .card-diagram {
+            border-radius: 20px;
+            padding: 15px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 30%;
+
+            border: none;
+            margin-left: -15px;
+        }
+
+        .title-diagram {
+            color: #4a4a8a;
+            font-size: 15px;
+        }
+
+        .subtitle-diagram {
+            color: #b0b0b0;
+            font-size: 10px;
+        }
+
+        .class-diagram {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .class-diagram div {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .color-box {
+            width: 27px;
+            height: 24px;
+            border-radius: 5px;
+        }
+
+        .class-diagram .text {
+            font-size: 10px;
+        }
+
+        .class-diagram .count {
+            font-size: 7px;
+            color: #4a4a8a;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: auto;
+            left: -20px;
+        }
+
+        .chart-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+        }
+
+        .chart-center .number {
+            color: #4a4a8a;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .chart-center .label {
+            color: #4a4a8a;
+            font-size: 12px;
+        }
+
+    </style>
+</head>
 
 <body>
-    <div class="container mt-5">
-        <header class="header_area">
-            <div class="logo">
-                Rekayasa Perangkat Lunak
-            </div>
-            <nav>
-                <a href="login" class="button-link">
-                    <button class="button">
-                        Masuk
-                    </button>
+    <div class="container ">
+        <!-- Header -->
+        <div class="header d-flex mt-3">
+            <h4 class="title" style="color: #5562B3;"><strong>REKAYASA PERANGKAT LUNAK</strong></h4>
+            <div class="form-input mb-4">
+                <a href="login.html" class="btn btn-dft" type="submit">
+                    Masuk
                 </a>
-            </nav>
-        </header>
+            </div>
+        </div>
 
-        <div class="content mt-3">
-            <div class="card-content">
-                <div class="card-information">
-                    <div class="information">
-                        <h1 class="title">
+        <!-- ISI -->
+        <div class="d-flex">
+            <div class="card-info p-3">
+                <div class="row">
+                    <div class="col-md-8">
+                        <h5 class="card-info-title">
                             Informasi Terkini
-                        </h1>
-                        <p class="information-card-text">
-                            Perayaan Hari Guru Tahun 2024, SMK Negeri 4 Malang Berikan Kejutan untuk Semua Guru.
-                            Malang – Senin, 25 November 2024 diperingati sebagai Hari Guru Nasional. SMK Negeri 4 Malang
+                        </h5>
+                        <p class="card-info-text">
+                            <strong>Perayaan Hari Guru Tahun 2024, SMK Negeri 4 Malang Berikan Kejutan untuk Semua
+                                Guru.</strong>
+                            <br />
+                            Malang — Senin, 25 November 2024 diperingati sebagai Hari Guru Nasional. SMK Negeri 4 Malang
                             berpartisipasi dalam perayaan ini. Berbagai rangkaian mulai dari Upacara
                         </p>
                     </div>
-                    <div class="information-card-image">
-                        <img src="{{ url_for('static', filename='assets/img/Group 10.2.png') }}" alt="">
+                    <div class="col-md-4">
+                        <img alt="" class="img-fluid rounded" height="200"
+                            src="{{ url_for('static', filename='assets/img2/img-info.png') }}" width="300" />
                     </div>
                 </div>
-                <div class="card-image">
+            </div>
 
+            <div class="card-kgt">
+                <img alt="Group of students posing in a classroom"
+                    src="{{ url_for('static', filename='assets/img2/img-kegiatan.png') }}" />
+                <div class="card-kgt-footer">
+                    <img class="shadow-image" src="{{ url_for('static', filename='assets/img2/shadow.png') }}"
+                        alt="Shadow Effect" />
+                    <div class="footer-text">
+                        Selamat kepada Team Cyber Security dalam ajang LKS Tingkat Provinsi Jawa Timur ke XXXII tahun
+                        2024
+                    </div>
                 </div>
-                <div class="card-weather">
+            </div>
 
+            <!-- Kalender -->
+            <div class="calendar">
+                <h2><strong>DESEMBER</strong></h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="sunday"><strong>S</strong></th>
+                            <th><strong>M</strong></th>
+                            <th><strong>T</strong></th>
+                            <th><strong>W</strong></th>
+                            <th><strong>T</strong></th>
+                            <th><strong>F</strong></th>
+                            <th><strong>S</strong></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="divider"></tr>
+                        <tr>
+                            <td class="sunday-date"><strong>1</strong></td>
+                            <td><strong>2</strong></td>
+                            <td><strong>3</strong></td>
+                            <td><strong>4</strong></td>
+                            <td><strong>5</strong></td>
+                            <td><strong>6</strong></td>
+                            <td><strong>7</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="sunday-date"><strong>8</strong></td>
+                            <td><strong>9</strong></td>
+                            <td><strong>10</strong></td>
+                            <td><strong>11</strong></td>
+                            <td><strong>12</strong></td>
+                            <td><strong>13</strong></td>
+                            <td><strong>14</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="sunday-date"><strong>15</strong></td>
+                            <td><strong>16</strong></td>
+                            <td><strong>17</strong></td>
+                            <td><strong>18</strong></td>
+                            <td><strong>19</strong></td>
+                            <td><strong>20</strong></td>
+                            <td><strong>21</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="sunday-date"><strong>22</strong></td>
+                            <td><strong>23</strong></td>
+                            <td><strong>24</strong></td>
+                            <td><strong>25</strong></td>
+                            <td><strong>26</strong></td>
+                            <td><strong>27</strong></td>
+                            <td><strong>28</strong></td>
+                        </tr>
+                        <tr>
+                            <td class="sunday-date"><strong>29</strong></td>
+                            <td><strong>30</strong></td>
+                            <td><strong>31</strong></td>
+                            <td><strong></strong></td>
+                            <td><strong></strong></td>
+                            <td><strong></strong></td>
+                            <td><strong></strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div class="d-flex mt-3">
+            <div class="container mb-3">
+                <!-- diagram kelas 1 -->
+                <div class="card-diagram mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="title-diagram">Jumlah Siswa RPL</div>
+                            <div class="subtitle-diagram">Angkatan 2022</div>
+                            <div class="mt-2">
+                                <div class="class-diagram mb-2">
+                                    <div class="color-box" style="background-color: #dfffea;"></div>
+                                    <div>
+                                        <div class="text">XII RPL A</div>
+                                        <div class="count">35 Siswa</div>
+                                    </div>
+                                </div>
+
+                                <div class="class-diagram mb-2">
+                                    <div class="color-box" style="background-color: #ffeaea;"></div>
+                                    <div>
+                                        <div class="text">XII RPL B</div>
+                                        <div class="count">36 Siswa</div>
+                                    </div>
+                                </div>
+                                <div class="class-diagram">
+                                    <div class="color-box" style="background-color: #ffffe0;"></div>
+                                    <div>
+                                        <div class="text">XII RPL C</div>
+                                        <div class="count">34 Siswa</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="chart-container mt-3">
+                                <canvas id="myPieChart"></canvas>
+                                <div class="chart-center">
+                                    <div class="number">105</div>
+                                    <div class="label">Siswa</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- diagram kelas 2 -->
+                <div class="card-diagram">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="title-diagram">Jumlah Siswa RPL</div>
+                            <div class="subtitle-diagram">Angkatan 2023</div>
+                            <div class="mt-2">
+                                <div class="class-diagram mb-2">
+                                    <div class="color-box" style="background-color: #E7E7FF;"></div>
+                                    <div>
+                                        <div class="text">XI RPL A</div>
+                                        <div class="count">35 Siswa</div>
+                                    </div>
+                                </div>
+
+                                <div class="class-diagram mb-2">
+                                    <div class="color-box" style="background-color: #D7F5FC;"></div>
+                                    <div>
+                                        <div class="text">XI RPL B</div>
+                                        <div class="count">36 Siswa</div>
+                                    </div>
+                                </div>
+
+                                <div class="class-diagram">
+                                    <div class="color-box" style="background-color: #E8FADF;"></div>
+                                    <div>
+                                        <div class="text">XI RPL C</div>
+                                        <div class="count">34 Siswa</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="chart-container mt-3">
+                                <canvas id="myPieChart-2"></canvas>
+                                <div class="chart-center">
+                                    <div class="number">105</div>
+                                    <div class="label">Siswa</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+
+        <!-- diagram kelas 3-->
+        <div class="container mb-3">
+            <div class="card-diagram">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="title-diagram">Jumlah Siswa RPL</div>
+                        <div class="subtitle-diagram">Angkatan 2024</div>
+                        <div class="mt-2">
+                            <div class="class-diagram mb-2">
+                                <div class="color-box" style="background-color: #FFE2E1;"></div>
+                                <div>
+                                    <div class="text">X RPL A</div>
+                                    <div class="count">35 Siswa</div>
+                                </div>
+                            </div>
+
+                            <div class="class-diagram mb-2">
+                                <div class="color-box" style="background-color: #D8E3FF;"></div>
+                                <div>
+                                    <div class="text">X RPL B</div>
+                                    <div class="count">36 Siswa</div>
+                                </div>
+                            </div>
+                            <div class="class-diagram">
+                                <div class="color-box" style="background-color: #FCFBD7;"></div>
+                                <div>
+                                    <div class="text">X RPL C</div>
+                                    <div class="count">34 Siswa</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <div class="chart-container mt-3">
+                            <canvas id="myPieChart-3"></canvas>
+                            <div class="chart-center">
+                                <div class="number">105</div>
+                                <div class="label">Siswa</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        /* Kalender */
+        window.onload = function () {
+            // Mendapatkan tanggal hari ini
+            const today = new Date();
+            const dayOfMonth = today.getDate();
+            const month = today.getMonth(); // bulan dimulai dari 0 (Januari = 0)
+            const year = today.getFullYear();
+
+            // Menampilkan bulatan pada tanggal hari ini
+            const cells = document.querySelectorAll('.calendar td');
+            cells.forEach(cell => {
+                // Memeriksa apakah tanggal di dalam cell sesuai dengan tanggal hari ini
+                const day = parseInt(cell.innerText, 10);
+                if (day === dayOfMonth) {
+                    cell.classList.add('today');
+                }
+            });
+        };
+
+        /* DIAGRAM */
+        var ctx = document.getElementById('myPieChart').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['XII RPL A', 'XII RPL B', 'XII RPL C'],
+                datasets: [{
+                    data: [35, 36, 34],
+                    backgroundColor: ['#dfffea', '#ffeaea', '#ffffe0'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        var ctx = document.getElementById('myPieChart-2').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['XI RPL A', 'XI RPL B', 'XI RPL C'],
+                datasets: [{
+                    data: [35, 36, 34],
+                    backgroundColor: ['#E7E7FF', '#D7F5FC', '#E8FADF'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+        var ctx = document.getElementById('myPieChart-3').getContext('2d');
+        var myPieChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['X RPL A', 'X RPL B', 'X RPL C'],
+                datasets: [{
+                    data: [35, 36, 34],
+                    backgroundColor: ['#FFE2E1', '#D8E3FF', '#FCFBD7'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                }
+            }
+        });
+
+    </script>
 </body>
 
 </html>
