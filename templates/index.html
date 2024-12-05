@@ -190,10 +190,7 @@
             padding: 15px;
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 30%;
-
             border: none;
-            margin-left: -15px;
         }
 
         .title-diagram {
@@ -264,7 +261,7 @@
 </head>
 
 <body>
-    <div class="container ">
+    <div class="container">
         <!-- Header -->
         <div class="header d-flex mt-3">
             <h4 class="title" style="color: #5562B3;"><strong>REKAYASA PERANGKAT LUNAK</strong></h4>
@@ -282,35 +279,27 @@
                     <div class="col-md-8">
                         <h5 class="card-info-title">Informasi Terkini</h5>
                         {% if information %}
-                            <p class="card-info-text">
-                                {{ information.description }}
-                            </p>
+                        <p class="card-info-text">
+                            {{ information.description }}
+                        </p>
                         {% else %}
-                            <p class="card-info-text">
-                                Tidak ada informasi tersedia saat ini.
-                            </p>
+                        <p class="card-info-text">
+                            Tidak ada informasi tersedia saat ini.
+                        </p>
                         {% endif %}
                     </div>
                     <div class="col-md-4">
                         {% if information %}
-                            <img 
-                                alt="Informasi Gambar" 
-                                class="img-fluid rounded" 
-                                height="200" 
-                                src="{{ url_for('static', filename=information.image_path) }}" 
-                                width="300" />
+                        <img alt="Informasi Gambar" class="img-fluid rounded" height="200"
+                            src="{{ url_for('static', filename=information.image_path) }}" width="300" />
                         {% else %}
-                            <img 
-                                alt="Gambar Default" 
-                                class="img-fluid rounded" 
-                                height="200" 
-                                src="{{ url_for('static', filename='assets/img/default.png') }}" 
-                                width="300" />
+                        <img alt="Gambar Default" class="img-fluid rounded" height="200"
+                            src="{{ url_for('static', filename='assets/img/default.png') }}" width="300" />
                         {% endif %}
                     </div>
                 </div>
             </div>
-            
+
 
             <div id="carouselKegiatan" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
                 style="max-width: 340px;">
@@ -386,7 +375,7 @@
         </div>
 
         <div class="d-flex mt-3">
-            <div class="container mb-3">
+            <div class="mb-3">
                 <!-- diagram kelas 1 -->
                 <div class="card-diagram mb-3">
                     <div class="row">
@@ -431,7 +420,7 @@
                 </div>
 
                 <!-- diagram kelas 2 -->
-                <div class="card-diagram">
+                <div class="card-diagram mb-3">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="title-diagram">Jumlah Siswa RPL</div>
@@ -473,47 +462,44 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
-
-        <!-- diagram kelas 3-->
-        <div class="container mb-3">
-            <div class="card-diagram">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="title-diagram">Jumlah Siswa RPL</div>
-                        <div class="subtitle-diagram">Angkatan 2024</div>
-                        <div class="mt-2">
-                            <div class="class-diagram mb-2">
-                                <div class="color-box" style="background-color: #FFE2E1;"></div>
-                                <div>
-                                    <div class="text">X RPL A</div>
-                                    <div class="count">35 Siswa</div>
+                <!-- diagram kelas 3-->
+                <div class="card-diagram">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="title-diagram">Jumlah Siswa RPL</div>
+                            <div class="subtitle-diagram">Angkatan 2024</div>
+                            <div class="mt-2">
+                                <div class="class-diagram mb-2">
+                                    <div class="color-box" style="background-color: #FFE2E1;"></div>
+                                    <div>
+                                        <div class="text">X RPL A</div>
+                                        <div class="count">35 Siswa</div>
+                                    </div>
                                 </div>
-                            </div>
-
-                            <div class="class-diagram mb-2">
-                                <div class="color-box" style="background-color: #D8E3FF;"></div>
-                                <div>
-                                    <div class="text">X RPL B</div>
-                                    <div class="count">36 Siswa</div>
+        
+                                <div class="class-diagram mb-2">
+                                    <div class="color-box" style="background-color: #D8E3FF;"></div>
+                                    <div>
+                                        <div class="text">X RPL B</div>
+                                        <div class="count">36 Siswa</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="class-diagram">
-                                <div class="color-box" style="background-color: #FCFBD7;"></div>
-                                <div>
-                                    <div class="text">X RPL C</div>
-                                    <div class="count">34 Siswa</div>
+                                <div class="class-diagram">
+                                    <div class="color-box" style="background-color: #FCFBD7;"></div>
+                                    <div>
+                                        <div class="text">X RPL C</div>
+                                        <div class="count">34 Siswa</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="chart-container mt-3">
-                            <canvas id="myPieChart-3"></canvas>
-                            <div class="chart-center">
-                                <div class="number">105</div>
-                                <div class="label">Siswa</div>
+                        <div class="col-md-2">
+                            <div class="chart-container mt-3">
+                                <canvas id="myPieChart-3"></canvas>
+                                <div class="chart-center">
+                                    <div class="number">105</div>
+                                    <div class="label">Siswa</div>
+                                </div>
                             </div>
                         </div>
                     </div>
