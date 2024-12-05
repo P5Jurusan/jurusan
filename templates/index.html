@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rekayasa Perangkat Lunak</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
@@ -78,9 +80,9 @@
         /* card kegiatan */
         .card-kgt {
             border-radius: 15px;
+            min-width: 340px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 30%;
             height: 155px;
             position: relative;
         }
@@ -258,7 +260,6 @@
             color: #4a4a8a;
             font-size: 12px;
         }
-
     </style>
 </head>
 
@@ -268,7 +269,7 @@
         <div class="header d-flex mt-3">
             <h4 class="title" style="color: #5562B3;"><strong>REKAYASA PERANGKAT LUNAK</strong></h4>
             <div class="form-input mb-4">
-                <a href="login.html" class="btn btn-dft" type="submit">
+                <a href="{{ url_for('login') }}" class="btn btn-dft" type="submit">
                     Masuk
                 </a>
             </div>
@@ -279,102 +280,109 @@
             <div class="card-info p-3">
                 <div class="row">
                     <div class="col-md-8">
-                        <h5 class="card-info-title">
-                            Informasi Terkini
-                        </h5>
-                        <p class="card-info-text">
-                            <strong>Perayaan Hari Guru Tahun 2024, SMK Negeri 4 Malang Berikan Kejutan untuk Semua
-                                Guru.</strong>
-                            <br />
-                            Malang — Senin, 25 November 2024 diperingati sebagai Hari Guru Nasional. SMK Negeri 4 Malang
-                            berpartisipasi dalam perayaan ini. Berbagai rangkaian mulai dari Upacara
-                        </p>
+                        <h5 class="card-info-title">Informasi Terkini</h5>
+                        {% if information %}
+                            <p class="card-info-text">
+                                {{ information.description }}
+                            </p>
+                        {% else %}
+                            <p class="card-info-text">
+                                Tidak ada informasi tersedia saat ini.
+                            </p>
+                        {% endif %}
                     </div>
                     <div class="col-md-4">
-                        <img alt="" class="img-fluid rounded" height="200"
-                            src="{{ url_for('static', filename='assets/img2/img-info.png') }}" width="300" />
+                        {% if information %}
+                            <img 
+                                alt="Informasi Gambar" 
+                                class="img-fluid rounded" 
+                                height="200" 
+                                src="{{ url_for('static', filename=information.image_path) }}" 
+                                width="300" />
+                        {% else %}
+                            <img 
+                                alt="Gambar Default" 
+                                class="img-fluid rounded" 
+                                height="200" 
+                                src="{{ url_for('static', filename='assets/img/default.png') }}" 
+                                width="300" />
+                        {% endif %}
                     </div>
                 </div>
             </div>
+            
 
-            <div class="card-kgt">
-                <img alt="Group of students posing in a classroom"
-                    src="{{ url_for('static', filename='assets/img2/img-kegiatan.png') }}" />
-                <div class="card-kgt-footer">
-                    <img class="shadow-image" src="{{ url_for('static', filename='assets/img2/shadow.png') }}"
-                        alt="Shadow Effect" />
-                    <div class="footer-text">
-                        Selamat kepada Team Cyber Security dalam ajang LKS Tingkat Provinsi Jawa Timur ke XXXII tahun
-                        2024
+            <div id="carouselKegiatan" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000"
+                style="max-width: 340px;">
+                <div class="carousel-inner">
+                    {% if activities|length == 0 %}
+                    <div class="carousel-item active">
+                        <div class="d-flex justify-content-center">
+                            <div class="card-kgt" style="background-color: #b0b0b0;">
+                                <!-- Error message when no activities are found -->
+                                <p class="error-message"
+                                    style="text-align: center;margin-top: 60px;margin-right: 10px; color:#ffffff">Tidak
+                                    ada aktivitas</p>
+                            </div>
+                        </div>
                     </div>
+                    {% else %}
+                    {% for activity in activities %}
+                    <div class="carousel-item {% if loop.first %}active{% endif %}">
+                        <div class="d-flex justify-content-center">
+                            <div class="card-kgt">
+                                <!-- Gambar Aktivitas -->
+                                <img alt="Activity Image"
+                                    src="{{ url_for('static', filename=activity.image_path if activity.image_path else 'assets/img/img-kegiatan.png') }}" />
+                                <div class="card-kgt-footer">
+                                    <!-- Shadow Image -->
+                                    <img class="shadow-image"
+                                        src="{{ url_for('static', filename='assets/img/shadow.png') }}"
+                                        alt="Shadow Effect" />
+                                    <div class="footer-text">
+                                        {{ activity.description }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Navigation Controls -->
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselKegiatan"
+                        data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselKegiatan"
+                        data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                    {% endfor %}
+                    {% endif %}
                 </div>
             </div>
 
             <!-- Kalender -->
             <div class="calendar">
-                <h2><strong>DESEMBER</strong></h2>
+                <h2 id="monthYear"></h2>
                 <table>
                     <thead>
                         <tr>
-                            <th class="sunday"><strong>S</strong></th>
-                            <th><strong>M</strong></th>
-                            <th><strong>T</strong></th>
-                            <th><strong>W</strong></th>
-                            <th><strong>T</strong></th>
-                            <th><strong>F</strong></th>
-                            <th><strong>S</strong></th>
+                            <th class="sunday">S</th>
+                            <th>M</th>
+                            <th>T</th>
+                            <th>W</th>
+                            <th>T</th>
+                            <th>F</th>
+                            <th>S</th>
                         </tr>
                     </thead>
-                    <tbody>
-                        <tr class="divider"></tr>
-                        <tr>
-                            <td class="sunday-date"><strong>1</strong></td>
-                            <td><strong>2</strong></td>
-                            <td><strong>3</strong></td>
-                            <td><strong>4</strong></td>
-                            <td><strong>5</strong></td>
-                            <td><strong>6</strong></td>
-                            <td><strong>7</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="sunday-date"><strong>8</strong></td>
-                            <td><strong>9</strong></td>
-                            <td><strong>10</strong></td>
-                            <td><strong>11</strong></td>
-                            <td><strong>12</strong></td>
-                            <td><strong>13</strong></td>
-                            <td><strong>14</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="sunday-date"><strong>15</strong></td>
-                            <td><strong>16</strong></td>
-                            <td><strong>17</strong></td>
-                            <td><strong>18</strong></td>
-                            <td><strong>19</strong></td>
-                            <td><strong>20</strong></td>
-                            <td><strong>21</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="sunday-date"><strong>22</strong></td>
-                            <td><strong>23</strong></td>
-                            <td><strong>24</strong></td>
-                            <td><strong>25</strong></td>
-                            <td><strong>26</strong></td>
-                            <td><strong>27</strong></td>
-                            <td><strong>28</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="sunday-date"><strong>29</strong></td>
-                            <td><strong>30</strong></td>
-                            <td><strong>31</strong></td>
-                            <td><strong></strong></td>
-                            <td><strong></strong></td>
-                            <td><strong></strong></td>
-                            <td><strong></strong></td>
-                        </tr>
+                    <tbody id="calendarBody">
+                        <!-- Tanggal akan dibuat otomatis melalui JavaScript -->
                     </tbody>
                 </table>
             </div>
+
         </div>
 
         <div class="d-flex mt-3">
@@ -517,24 +525,65 @@
 
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-        /* Kalender */
         window.onload = function () {
-            // Mendapatkan tanggal hari ini
+            const calendarBody = document.getElementById('calendarBody');
+            const monthYear = document.getElementById('monthYear');
             const today = new Date();
-            const dayOfMonth = today.getDate();
-            const month = today.getMonth(); // bulan dimulai dari 0 (Januari = 0)
-            const year = today.getFullYear();
+            const currentMonth = today.getMonth();
+            const currentYear = today.getFullYear();
+            const currentDay = today.getDate();
 
-            // Menampilkan bulatan pada tanggal hari ini
-            const cells = document.querySelectorAll('.calendar td');
-            cells.forEach(cell => {
-                // Memeriksa apakah tanggal di dalam cell sesuai dengan tanggal hari ini
-                const day = parseInt(cell.innerText, 10);
-                if (day === dayOfMonth) {
-                    cell.classList.add('today');
+            // Nama bulan
+            const months = [
+                "Januari", "Februari", "Maret", "April", "Mei", "Juni",
+                "Juli", "Agustus", "September", "Oktober", "November", "Desember"
+            ];
+
+            // Menampilkan bulan dan tahun
+            monthYear.textContent = `${months[currentMonth]} ${currentYear}`;
+
+            // Mendapatkan hari pertama bulan
+            const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+
+            // Mendapatkan jumlah hari dalam bulan
+            const daysInMonth = new Date(currentYear, currentMonth + 1, 0).getDate();
+
+            // Membersihkan tabel kalender
+            calendarBody.innerHTML = '';
+
+            // Mengisi tanggal
+            let date = 1;
+            for (let i = 0; i < 6; i++) { // Maksimal 6 baris
+                const row = document.createElement('tr');
+
+                for (let j = 0; j < 7; j++) {
+                    const cell = document.createElement('td');
+                    if (i === 0 && j < firstDay) {
+                        // Mengosongkan sel sebelum tanggal 1
+                        cell.textContent = '';
+                    } else if (date > daysInMonth) {
+                        // Mengosongkan sel setelah tanggal terakhir
+                        cell.textContent = '';
+                    } else {
+                        cell.textContent = date;
+
+                        // Menambahkan kelas "today" untuk tanggal hari ini
+                        if (date === currentDay) {
+                            cell.classList.add('today');
+                        }
+                        date++;
+                    }
+                    row.appendChild(cell);
                 }
-            });
+                calendarBody.appendChild(row);
+
+                // Berhenti jika semua tanggal telah ditambahkan
+                if (date > daysInMonth) {
+                    break;
+                }
+            }
         };
+
 
         /* DIAGRAM */
         var ctx = document.getElementById('myPieChart').getContext('2d');
