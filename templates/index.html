@@ -402,576 +402,578 @@
         <!-- Header -->
         <div class="header d-flex mt-3">
             <h4 class="title" style="color: #5562B3;"><strong>REKAYASA PERANGKAT LUNAK</strong></h4>
-            <div class="form-input mb-4">
+            <div class="form-input mb-3">
                 <a href="login.html" class="btn btn-dft" type="submit">
                     Masuk
                 </a>
             </div>
         </div>
 
-        <!-- baris 1 -->
-        <div class="d-flex mb-3">
-            <div class="card-info p-3 me-3">
-                <div class="row">
-                    <div class="col-md-8">
-                        <h5 class="card-info-title">
-                            Informasi Terkini
-                        </h5>
-                        <p class="card-info-text">
-                            <strong>Perayaan Hari Guru Tahun 2024, SMK Negeri 4 Malang Berikan Kejutan untuk Semua
-                                Guru.</strong>
-                            <br />
-                            Malang — Senin, 25 November 2024 diperingati sebagai Hari Guru Nasional. SMK Negeri 4 Malang
-                            berpartisipasi dalam perayaan ini. Berbagai rangkaian mulai dari Upacara
-                        </p>
+        <div>
+            <!-- baris 1 -->
+            <div class="d-flex mb-3">
+                <div class="card-info p-3 me-3">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h5 class="card-info-title">
+                                Informasi Terkini
+                            </h5>
+                            <p class="card-info-text">
+                                <strong>Perayaan Hari Guru Tahun 2024, SMK Negeri 4 Malang Berikan Kejutan untuk Semua
+                                    Guru.</strong>
+                                <br />
+                                Malang — Senin, 25 November 2024 diperingati sebagai Hari Guru Nasional. SMK Negeri 4
+                                Malang
+                                berpartisipasi dalam perayaan ini. Berbagai rangkaian mulai dari Upacara
+                            </p>
+                        </div>
+                        <div class="col-md-4">
+                            <img alt="" class="img-fluid rounded" height="200"
+                                src="{{ url_for('static', filename='assets/img2/img-info.png') }}" width="300" />
+                        </div>
                     </div>
-                    <div class="col-md-4">
-                        <img alt="" class="img-fluid rounded" height="200"
-                            src="{{ url_for('static', filename='assets/img2/img-info.png') }}" width="300" />
+                </div>
+
+                <div class="card-kgt me-3">
+                    <img alt="Group of students posing in a classroom"
+                        src="{{ url_for('static', filename='assets/img2/img-kegiatan.png') }}" />
+                    <div class="card-kgt-footer">
+                        <img class="shadow-image" src="{{ url_for('static', filename='assets/img2/shadow.png') }}"
+                            alt="Shadow Effect" />
+                        <div class="footer-text">
+                            Selamat kepada Team Cyber Security dalam ajang LKS Tingkat Provinsi Jawa Timur ke XXXII
+                            tahun
+                            2024
+                        </div>
                     </div>
+                </div>
+
+                <!-- Kalender -->
+                <div class="calendar">
+                    <h2><strong>DESEMBER</strong></h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th class="sunday"><strong>S</strong></th>
+                                <th><strong>M</strong></th>
+                                <th><strong>T</strong></th>
+                                <th><strong>W</strong></th>
+                                <th><strong>T</strong></th>
+                                <th><strong>F</strong></th>
+                                <th><strong>S</strong></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="divider"></tr>
+                            <tr>
+                                <td class="sunday-date"><strong>1</strong></td>
+                                <td><strong>2</strong></td>
+                                <td><strong>3</strong></td>
+                                <td><strong>4</strong></td>
+                                <td><strong>5</strong></td>
+                                <td><strong>6</strong></td>
+                                <td><strong>7</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="sunday-date"><strong>8</strong></td>
+                                <td><strong>9</strong></td>
+                                <td><strong>10</strong></td>
+                                <td><strong>11</strong></td>
+                                <td><strong>12</strong></td>
+                                <td><strong>13</strong></td>
+                                <td><strong>14</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="sunday-date"><strong>15</strong></td>
+                                <td><strong>16</strong></td>
+                                <td><strong>17</strong></td>
+                                <td><strong>18</strong></td>
+                                <td><strong>19</strong></td>
+                                <td><strong>20</strong></td>
+                                <td><strong>21</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="sunday-date"><strong>22</strong></td>
+                                <td><strong>23</strong></td>
+                                <td><strong>24</strong></td>
+                                <td><strong>25</strong></td>
+                                <td><strong>26</strong></td>
+                                <td><strong>27</strong></td>
+                                <td><strong>28</strong></td>
+                            </tr>
+                            <tr>
+                                <td class="sunday-date"><strong>29</strong></td>
+                                <td><strong>30</strong></td>
+                                <td><strong>31</strong></td>
+                                <td><strong></strong></td>
+                                <td><strong></strong></td>
+                                <td><strong></strong></td>
+                                <td><strong></strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
             </div>
 
-            <div class="card-kgt me-3">
-                <img alt="Group of students posing in a classroom"
-                    src="{{ url_for('static', filename='assets/img2/img-kegiatan.png') }}" />
-                <div class="card-kgt-footer">
-                    <img class="shadow-image" src="{{ url_for('static', filename='assets/img2/shadow.png') }}"
-                        alt="Shadow Effect" />
-                    <div class="footer-text">
-                        Selamat kepada Team Cyber Security dalam ajang LKS Tingkat Provinsi Jawa Timur ke XXXII tahun
-                        2024
+            <!-- ya ini wes emboh -->
+            <div class="d-flex mb-3">
+
+                <div class="d-flex flex-column me-3">
+                    <!-- diagram kelas 1 -->
+                    <div class="card-diagram mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="title-diagram">Jumlah Siswa RPL</div>
+                                <div class="subtitle-diagram">Angkatan 2022</div>
+                                <div class="mt-2">
+                                    <div class="class-diagram mb-2">
+                                        <div class="color-box" style="background-color: #dfffea;"></div>
+                                        <div>
+                                            <div class="text">XII RPL A</div>
+                                            <div class="count">35 Siswa</div>
+                                        </div>
+                                    </div>
+                                    <div class="class-diagram mb-2">
+                                        <div class="color-box" style="background-color: #ffeaea;"></div>
+                                        <div>
+                                            <div class="text">XII RPL B</div>
+                                            <div class="count">36 Siswa</div>
+                                        </div>
+                                    </div>
+                                    <div class="class-diagram">
+                                        <div class="color-box" style="background-color: #ffffe0;"></div>
+                                        <div>
+                                            <div class="text">XII RPL C</div>
+                                            <div class="count">34 Siswa</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="chart-container mt-3">
+                                    <canvas id="myPieChart"></canvas>
+                                    <div class="chart-center">
+                                        <div class="number">105</div>
+                                        <div class="label">Siswa</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- diagram kelas 2 -->
+                    <div class="card-diagram mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="title-diagram">Jumlah Siswa RPL</div>
+                                <div class="subtitle-diagram">Angkatan 2023</div>
+                                <div class="mt-2">
+                                    <div class="class-diagram mb-2">
+                                        <div class="color-box" style="background-color: #E7E7FF;"></div>
+                                        <div>
+                                            <div class="text">XI RPL A</div>
+                                            <div class="count">35 Siswa</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="class-diagram mb-2">
+                                        <div class="color-box" style="background-color: #D7F5FC;"></div>
+                                        <div>
+                                            <div class="text">XI RPL B</div>
+                                            <div class="count">36 Siswa</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="class-diagram">
+                                        <div class="color-box" style="background-color: #E8FADF;"></div>
+                                        <div>
+                                            <div class="text">XI RPL C</div>
+                                            <div class="count">34 Siswa</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="chart-container mt-3">
+                                    <canvas id="myPieChart-2"></canvas>
+                                    <div class="chart-center">
+                                        <div class="number">105</div>
+                                        <div class="label">Siswa</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- diagram kelas 3 -->
+                    <div class="card-diagram mb-3">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="title-diagram">Jumlah Siswa RPL</div>
+                                <div class="subtitle-diagram">Angkatan 2022</div>
+                                <div class="mt-2">
+                                    <div class="class-diagram mb-2">
+                                        <div class="color-box" style="background-color: #dfffea;"></div>
+                                        <div>
+                                            <div class="text">XII RPL A</div>
+                                            <div class="count">35 Siswa</div>
+                                        </div>
+                                    </div>
+
+                                    <div class="class-diagram mb-2">
+                                        <div class="color-box" style="background-color: #ffeaea;"></div>
+                                        <div>
+                                            <div class="text">XII RPL B</div>
+                                            <div class="count">36 Siswa</div>
+                                        </div>
+                                    </div>
+                                    <div class="class-diagram">
+                                        <div class="color-box" style="background-color: #ffffe0;"></div>
+                                        <div>
+                                            <div class="text">XII RPL C</div>
+                                            <div class="count">34 Siswa</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-2">
+                                <div class="chart-container mt-3">
+                                    <canvas id="myPieChart-3"></canvas>
+                                    <div class="chart-center">
+                                        <div class="number">105</div>
+                                        <div class="label">Siswa</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Kalender -->
-            <div class="calendar">
-                <h2><strong>DESEMBER</strong></h2>
-                <table>
-                    <thead>
-                        <tr>
-                            <th class="sunday"><strong>S</strong></th>
-                            <th><strong>M</strong></th>
-                            <th><strong>T</strong></th>
-                            <th><strong>W</strong></th>
-                            <th><strong>T</strong></th>
-                            <th><strong>F</strong></th>
-                            <th><strong>S</strong></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr class="divider"></tr>
-                        <tr>
-                            <td class="sunday-date"><strong>1</strong></td>
-                            <td><strong>2</strong></td>
-                            <td><strong>3</strong></td>
-                            <td><strong>4</strong></td>
-                            <td><strong>5</strong></td>
-                            <td><strong>6</strong></td>
-                            <td><strong>7</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="sunday-date"><strong>8</strong></td>
-                            <td><strong>9</strong></td>
-                            <td><strong>10</strong></td>
-                            <td><strong>11</strong></td>
-                            <td><strong>12</strong></td>
-                            <td><strong>13</strong></td>
-                            <td><strong>14</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="sunday-date"><strong>15</strong></td>
-                            <td><strong>16</strong></td>
-                            <td><strong>17</strong></td>
-                            <td><strong>18</strong></td>
-                            <td><strong>19</strong></td>
-                            <td><strong>20</strong></td>
-                            <td><strong>21</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="sunday-date"><strong>22</strong></td>
-                            <td><strong>23</strong></td>
-                            <td><strong>24</strong></td>
-                            <td><strong>25</strong></td>
-                            <td><strong>26</strong></td>
-                            <td><strong>27</strong></td>
-                            <td><strong>28</strong></td>
-                        </tr>
-                        <tr>
-                            <td class="sunday-date"><strong>29</strong></td>
-                            <td><strong>30</strong></td>
-                            <td><strong>31</strong></td>
-                            <td><strong></strong></td>
-                            <td><strong></strong></td>
-                            <td><strong></strong></td>
-                            <td><strong></strong></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <div class="d-flex flex-column me-3">
+                    <!-- card grafik -->
+                    <div class="card-large mb-3">
+                        <div class="card-large-content">
+                            <canvas id="barChart"></canvas>
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- card guru -->
+                    <div class="profile-card">
+                        <div class="row">
+                            <div class="col-md-3 col-sm-6 mb-4">
+                                <img class="mb-1" alt="Profile picture of Dhanang Fitra Riaji, M.T." height="100"
+                                    src="https://storage.googleapis.com/a1aa/image/fQ55HFECTLwRB6fqu3dW1DU6Vs9ENKs5SeXPoQPRyKkt51unA.jpg"
+                                    width="100" />
+                                <div class="name">
+                                    Dhanang Fitra Riaji, M.T.
+                                </div>
+                                <div class="title">
+                                    Kepala Bengkel
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-4">
+                                <img class="mb-1" alt="Profile picture of M. Mahmudi, S.Kom., M.Pd." height="100"
+                                    src="https://storage.googleapis.com/a1aa/image/6ceLQoXpvnxfNkAMCKeC9K6iJaRwhwS7f74PmFFuUOAOzrdPB.jpg"
+                                    width="100" />
+                                <div class="name">
+                                    M. Mahmudi, S.Kom., M.Pd.
+                                </div>
+                                <div class="title">
+                                    Kepala Bengkel
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-4">
+                                <img class="mb-1" alt="Profile picture of Anggreani Tyas Sari, S.Kom" height="100"
+                                    src="https://storage.googleapis.com/a1aa/image/VVLhRpeVG42fukcEbepmo6ZW7MtI3bhjZ7UUVnzxiJdk51unA.jpg"
+                                    width="100" />
+                                <div class="name">
+                                    Anggreani Tyas Sari, S.Kom
+                                </div>
+                                <div class="title">
+                                    Kepala Bengkel
+                                </div>
+                            </div>
+                            <div class="col-md-3 col-sm-6 mb-4">
+                                <img class="mb-1" alt="Profile picture of Septi Retno Desi P, S.Pd." height="100"
+                                    src="https://storage.googleapis.com/a1aa/image/1tp2cclm4upxFJ8Vpe8wzR03HfnuvSbIZoOjALjfdrpo51unA.jpg"
+                                    width="100" />
+                                <div class="name">
+                                    Septi Retno Desi P, S.Pd.
+                                </div>
+                                <div class="title">
+                                    Kepala Bengkel
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="lab-container">
+                    <!-- card lab 1 -->
+                    <div class="card-lab">
+                        <div class="title">LAB RPL 1</div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Meja kecil</span>
+                                <span>: 25</span>
+                            </span>
+                            <span class="color-box color-purple"></span>
+                        </div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Monitor</span>
+                                <span>: 16</span>
+                            </span>
+                            <span class="color-box color-blue"></span>
+                        </div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Kursi</span>
+                                <span>: 33</span>
+                            </span>
+                            <span class="color-box color-green"></span>
+                        </div>
+                    </div>
+
+                    <!-- card lab 2 -->
+                    <div class="card-lab">
+                        <div class="title">LAB RPL 2</div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Meja kecil</span>
+                                <span>: 25</span>
+                            </span>
+                            <span class="color-box color-purple"></span>
+                        </div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Monitor</span>
+                                <span>: 16</span>
+                            </span>
+                            <span class="color-box color-blue"></span>
+                        </div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Kursi</span>
+                                <span>: 33</span>
+                            </span>
+                            <span class="color-box color-green"></span>
+                        </div>
+                    </div>
+
+                    <!-- card lab 3 -->
+                    <div class="card-lab">
+                        <div class="title">LAB RPL 3</div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Meja kecil</span>
+                                <span>: 25</span>
+                            </span>
+                            <span class="color-box color-purple"></span>
+                        </div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Monitor</span>
+                                <span>: 16</span>
+                            </span>
+                            <span class="color-box color-blue"></span>
+                        </div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Kursi</span>
+                                <span>: 33</span>
+                            </span>
+                            <span class="color-box color-green"></span>
+                        </div>
+                    </div>
+
+                    <!-- card lab 4 -->
+                    <div class="card-lab">
+                        <div class="title">LAB RPL 4</div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Meja kecil</span>
+                                <span>: 25</span>
+                            </span>
+                            <span class="color-box color-purple"></span>
+                        </div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Monitor</span>
+                                <span>: 16</span>
+                            </span>
+                            <span class="color-box color-blue"></span>
+                        </div>
+                        <div class="item">
+                            <span class="label">
+                                <span>Kursi</span>
+                                <span>: 33</span>
+                            </span>
+                            <span class="color-box color-green"></span>
+                        </div>
+                    </div>
+                </div>
+
             </div>
         </div>
 
-        <!-- ya ini wes emboh -->
-        <div class="d-flex mb-3">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script>
+            /* Kalender */
+            window.onload = function () {
+                // Mendapatkan tanggal hari ini
+                const today = new Date();
+                const dayOfMonth = today.getDate();
+                const month = today.getMonth(); // bulan dimulai dari 0 (Januari = 0)
+                const year = today.getFullYear();
 
-            <div class="d-flex flex-column me-3">
-                <!-- diagram kelas 1 -->
-                <div class="card-diagram mb-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2022</div>
-                            <div class="mt-2">
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #dfffea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL A</div>
-                                        <div class="count">35 Siswa</div>
-                                    </div>
-                                </div>
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #ffeaea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #ffffe0;"></div>
-                                    <div>
-                                        <div class="text">XII RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="chart-container mt-3">
-                                <canvas id="myPieChart"></canvas>
-                                <div class="chart-center">
-                                    <div class="number">105</div>
-                                    <div class="label">Siswa</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- diagram kelas 2 -->
-                <div class="card-diagram mb-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2023</div>
-                            <div class="mt-2">
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #E7E7FF;"></div>
-                                    <div>
-                                        <div class="text">XI RPL A</div>
-                                        <div class="count">35 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #D7F5FC;"></div>
-                                    <div>
-                                        <div class="text">XI RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #E8FADF;"></div>
-                                    <div>
-                                        <div class="text">XI RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="chart-container mt-3">
-                                <canvas id="myPieChart-2"></canvas>
-                                <div class="chart-center">
-                                    <div class="number">105</div>
-                                    <div class="label">Siswa</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- diagram kelas 3 -->
-                <div class="card-diagram mb-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2022</div>
-                            <div class="mt-2">
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #dfffea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL A</div>
-                                        <div class="count">35 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #ffeaea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #ffffe0;"></div>
-                                    <div>
-                                        <div class="text">XII RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="chart-container mt-3">
-                                <canvas id="myPieChart-3"></canvas>
-                                <div class="chart-center">
-                                    <div class="number">105</div>
-                                    <div class="label">Siswa</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="d-flex flex-column me-3">
-                <!-- card grafik -->
-                <div class="card-large mb-3">
-                    <div class="card-large-content">
-                        <canvas id="barChart"></canvas>
-                        </p>
-                    </div>
-                </div>
-
-                <!-- card guru -->
-                <div class="profile-card">
-                    <div class="row">
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Dhanang Fitra Riaji, M.T." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/fQ55HFECTLwRB6fqu3dW1DU6Vs9ENKs5SeXPoQPRyKkt51unA.jpg"
-                                width="100" />
-                            <div class="name">
-                                Dhanang Fitra Riaji, M.T.
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of M. Mahmudi, S.Kom., M.Pd." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/6ceLQoXpvnxfNkAMCKeC9K6iJaRwhwS7f74PmFFuUOAOzrdPB.jpg"
-                                width="100" />
-                            <div class="name">
-                                M. Mahmudi, S.Kom., M.Pd.
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Anggreani Tyas Sari, S.Kom" height="100"
-                                src="https://storage.googleapis.com/a1aa/image/VVLhRpeVG42fukcEbepmo6ZW7MtI3bhjZ7UUVnzxiJdk51unA.jpg"
-                                width="100" />
-                            <div class="name">
-                                Anggreani Tyas Sari, S.Kom
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Septi Retno Desi P, S.Pd." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/1tp2cclm4upxFJ8Vpe8wzR03HfnuvSbIZoOjALjfdrpo51unA.jpg"
-                                width="100" />
-                            <div class="name">
-                                Septi Retno Desi P, S.Pd.
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="lab-container">
-                <!-- card lab 1 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 1</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
-
-                <!-- card lab 2 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 2</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
-
-                <!-- card lab 3 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 3</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
-
-                <!-- card lab 4 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 4</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
-            </div>
-
-        </div>
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <script>
-        /* Kalender */
-        window.onload = function () {
-            // Mendapatkan tanggal hari ini
-            const today = new Date();
-            const dayOfMonth = today.getDate();
-            const month = today.getMonth(); // bulan dimulai dari 0 (Januari = 0)
-            const year = today.getFullYear();
-
-            // Menampilkan bulatan pada tanggal hari ini
-            const cells = document.querySelectorAll('.calendar td');
-            cells.forEach(cell => {
-                // Memeriksa apakah tanggal di dalam cell sesuai dengan tanggal hari ini
-                const day = parseInt(cell.innerText, 10);
-                if (day === dayOfMonth) {
-                    cell.classList.add('today');
-                }
-            });
-        };
-
-        /* DIAGRAM */
-        var ctx = document.getElementById('myPieChart').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['XII RPL A', 'XII RPL B', 'XII RPL C'],
-                datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#dfffea', '#ffeaea', '#ffffe0'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        display: false
+                // Menampilkan bulatan pada tanggal hari ini
+                const cells = document.querySelectorAll('.calendar td');
+                cells.forEach(cell => {
+                    // Memeriksa apakah tanggal di dalam cell sesuai dengan tanggal hari ini
+                    const day = parseInt(cell.innerText, 10);
+                    if (day === dayOfMonth) {
+                        cell.classList.add('today');
                     }
-                }
-            }
-        });
+                });
+            };
 
-        var ctx = document.getElementById('myPieChart-2').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['XI RPL A', 'XI RPL B', 'XI RPL C'],
-                datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#E7E7FF', '#D7F5FC', '#E8FADF'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-
-        var ctx = document.getElementById('myPieChart-3').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['X RPL A', 'X RPL B', 'X RPL C'],
-                datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#FFE2E1', '#D8E3FF', '#FCFBD7'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-    </script>
-
-    <!-- grafik gede -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var ctx = document.getElementById('barChart').getContext('2d');
-            var barChart = new Chart(ctx, {
-                type: 'bar',
+            /* DIAGRAM */
+            var ctx = document.getElementById('myPieChart').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type: 'doughnut',
                 data: {
-                    labels: ['LAB 1', 'LAB 2', 'LAB 3', 'LAB 4'],
-                    datasets: [
-                        {
-                            label: 'Meja kecil',
-                            data: [20, 10, 15, 30],
-                            backgroundColor: '#696CFF',
-                            borderColor: '#696CFF',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        },
-                        {
-                            label: 'Monitor',
-                            data: [10, 5, 10, 20],
-                            backgroundColor: '#03C3EC',
-                            borderColor: '#03C3EC',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        },
-                        {
-                            label: 'Kursi',
-                            data: [30, 35, 25, 35],
-                            backgroundColor: '#71DD37',
-                            borderColor: '#71DD37',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        }
-                    ]
+                    labels: ['XII RPL A', 'XII RPL B', 'XII RPL C'],
+                    datasets: [{
+                        data: [35, 36, 34],
+                        backgroundColor: ['#dfffea', '#ffeaea', '#ffffe0'],
+                        borderWidth: 1
+                    }]
                 },
                 options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 5,
-                                color: '#ccc'
-                            },
-                            grid: {
-                                color: '#f0f0f0'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#aaa'
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
-                    },
+                    cutout: '70%',
                     plugins: {
                         legend: {
-                            display: true
+                            display: false
                         }
                     }
                 }
             });
-        });
-    </script>
+
+            var ctx = document.getElementById('myPieChart-2').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['XI RPL A', 'XI RPL B', 'XI RPL C'],
+                    datasets: [{
+                        data: [35, 36, 34],
+                        backgroundColor: ['#E7E7FF', '#D7F5FC', '#E8FADF'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+
+            var ctx = document.getElementById('myPieChart-3').getContext('2d');
+            var myPieChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['X RPL A', 'X RPL B', 'X RPL C'],
+                    datasets: [{
+                        data: [35, 36, 34],
+                        backgroundColor: ['#FFE2E1', '#D8E3FF', '#FCFBD7'],
+                        borderWidth: 1
+                    }]
+                },
+                options: {
+                    cutout: '70%',
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        </script>
+
+        <!-- grafik gede -->
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var ctx = document.getElementById('barChart').getContext('2d');
+                var barChart = new Chart(ctx, {
+                    type: 'bar',
+                    data: {
+                        labels: ['LAB 1', 'LAB 2', 'LAB 3', 'LAB 4'],
+                        datasets: [
+                            {
+                                label: 'Meja kecil',
+                                data: [20, 10, 15, 30],
+                                backgroundColor: '#696CFF',
+                                borderColor: '#696CFF',
+                                borderWidth: 1,
+                                borderRadius: 10,
+                                barThickness: 15, // Ukuran batang lebih kecil
+                            },
+                            {
+                                label: 'Monitor',
+                                data: [10, 5, 10, 20],
+                                backgroundColor: '#03C3EC',
+                                borderColor: '#03C3EC',
+                                borderWidth: 1,
+                                borderRadius: 10,
+                                barThickness: 15, // Ukuran batang lebih kecil
+                            },
+                            {
+                                label: 'Kursi',
+                                data: [30, 35, 25, 35],
+                                backgroundColor: '#71DD37',
+                                borderColor: '#71DD37',
+                                borderWidth: 1,
+                                borderRadius: 10,
+                                barThickness: 15, // Ukuran batang lebih kecil
+                            }
+                        ]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: {
+                                    stepSize: 5,
+                                    color: '#ccc'
+                                },
+                                grid: {
+                                    color: '#f0f0f0'
+                                }
+                            },
+                            x: {
+                                ticks: {
+                                    color: '#aaa'
+                                },
+                                grid: {
+                                    display: false
+                                }
+                            }
+                        },
+                        plugins: {
+                            legend: {
+                                display: true
+                            }
+                        }
+                    }
+                });
+            });
+        </script>
 </body>
 
 </html>
