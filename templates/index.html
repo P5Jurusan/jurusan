@@ -12,8 +12,13 @@
         rel="stylesheet">
     <style>
         body {
-            background-color: #f3f4ff;
+            background-color: #ffffff;
             font-family: 'Jost', sans-serif;
+        }
+
+        .container {
+            max-width: 100%;
+            overflow-x: hidden;
         }
 
         .header {
@@ -38,18 +43,14 @@
             color: #ffffff;
         }
 
-        .d-flex {
-            display: flex;
-            justify-content: space-between;
-            gap: 10px;
-        }
+        .d-flex {}
 
         /* card informasi */
         .card-info {
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 50%;
-            height: 155px;
+            height: 165px;
             margin: 0 auto;
             border: none;
             background-color: #ffffff;
@@ -64,14 +65,14 @@
 
         .card-info-text {
             font-family: 'Arial', sans-serif;
-            font-size: 11px;
+            font-size: 12px;
             color: #94A0E9;
         }
 
         .card-info img {
             border-radius: 15px;
-            max-width: 155px;
-            max-height: 120px;
+            max-width: 170px;
+            max-height: 130px;
             object-fit: cover;
         }
 
@@ -81,7 +82,7 @@
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 30%;
-            height: 155px;
+            height: 165px;
             position: relative;
         }
 
@@ -122,14 +123,14 @@
 
         /* calendar */
         .calendar {
-            background-color: #ffffff;
-            border-radius: 10px;
+            background-color: #FCFCFC;
+            border-radius: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             padding: 15px;
             width: 20%;
             text-align: center;
             margin: 0 auto;
-            height: 155px;
+            height: 165px;
         }
 
         .calendar h2 {
@@ -147,7 +148,7 @@
         .calendar th,
         .calendar td {
             font-family: 'Jost', sans-serif;
-            font-size: 8px;
+            font-size: 9px;
             padding: 3px;
         }
 
@@ -188,10 +189,8 @@
             padding: 15px;
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 30%;
-
+            width: 285px;
             border: none;
-            margin-left: -15px;
         }
 
         .title-diagram {
@@ -259,6 +258,142 @@
             font-size: 12px;
         }
 
+        /* Card Besar */
+        .card-large {
+            border-radius: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex: 1;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            max-height: 365px;
+        }
+
+        .card-large-content {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .large-card-title {
+            font-size: 18px;
+            color: #4a4a8a;
+            font-weight: bold;
+        }
+
+        .large-card-text {
+            font-size: 14px;
+            color: #6a6a6a;
+            margin-top: 10px;
+        }
+
+        #barChart {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* card lab */
+        .card-lab {
+            border-radius: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding-right: 15px;
+            padding-left: 15px;
+            padding-top: 8px;
+            text-align: left;
+            background-color: #fff;
+            width: 240px;
+            height: 128px;
+        }
+
+        .lab-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .card-lab .title {
+            color: #3F51B5;
+            text-align: center;
+            font-size: 12px;
+            margin-bottom: 10px;
+        }
+
+        .item {
+            color: #9E9E9E;
+            font-size: 12px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .item .label {
+            display: flex;
+
+        }
+
+        .item .color-box {
+            margin-left: 10px;
+        }
+
+        .color-box {
+            width: 30px;
+            height: 15px;
+            border-radius: 7.5px;
+        }
+
+        .color-purple {
+            background-color: #7C4DFF;
+        }
+
+        .color-blue {
+            background-color: #00BCD4;
+        }
+
+        .color-green {
+            background-color: #8BC34A;
+        }
+
+        /* card profile guru */
+        .profile-card {
+            border-radius: 20px;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 100%;
+            height: 177px;
+        }
+
+        .profile-card img {
+            border-radius: 50%;
+            width: 80px;
+            height: 80px;
+        }
+
+        .profile-card .name {
+            font-size: 14px;
+            font-weight: bold;
+            color: #3b3b3b;
+        }
+
+        .profile-card .title {
+            font-size: 12px;
+            color: #6c757d;
+        }
+
+        @media (max-width: 768px) {
+            .card-lab {
+                width: 100%;
+            }
+        }
     </style>
 </head>
 
@@ -274,9 +409,9 @@
             </div>
         </div>
 
-        <!-- ISI -->
-        <div class="d-flex">
-            <div class="card-info p-3">
+        <!-- baris 1 -->
+        <div class="d-flex mb-3">
+            <div class="card-info p-3 me-3">
                 <div class="row">
                     <div class="col-md-8">
                         <h5 class="card-info-title">
@@ -297,7 +432,7 @@
                 </div>
             </div>
 
-            <div class="card-kgt">
+            <div class="card-kgt me-3">
                 <img alt="Group of students posing in a classroom"
                     src="{{ url_for('static', filename='assets/img2/img-kegiatan.png') }}" />
                 <div class="card-kgt-footer">
@@ -377,8 +512,10 @@
             </div>
         </div>
 
-        <div class="d-flex mt-3">
-            <div class="container mb-3">
+        <!-- ya ini wes emboh -->
+        <div class="d-flex mb-3">
+
+            <div class="d-flex flex-column me-3">
                 <!-- diagram kelas 1 -->
                 <div class="card-diagram mb-3">
                     <div class="row">
@@ -393,7 +530,6 @@
                                         <div class="count">35 Siswa</div>
                                     </div>
                                 </div>
-
                                 <div class="class-diagram mb-2">
                                     <div class="color-box" style="background-color: #ffeaea;"></div>
                                     <div>
@@ -423,7 +559,7 @@
                 </div>
 
                 <!-- diagram kelas 2 -->
-                <div class="card-diagram">
+                <div class="card-diagram mb-3">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="title-diagram">Jumlah Siswa RPL</div>
@@ -465,52 +601,217 @@
                         </div>
                     </div>
                 </div>
-            </div>
-        </div>
 
-        <!-- diagram kelas 3-->
-        <div class="container mb-3">
-            <div class="card-diagram">
-                <div class="row">
-                    <div class="col-md-6">
-                        <div class="title-diagram">Jumlah Siswa RPL</div>
-                        <div class="subtitle-diagram">Angkatan 2024</div>
-                        <div class="mt-2">
-                            <div class="class-diagram mb-2">
-                                <div class="color-box" style="background-color: #FFE2E1;"></div>
-                                <div>
-                                    <div class="text">X RPL A</div>
-                                    <div class="count">35 Siswa</div>
+                <!-- diagram kelas 3 -->
+                <div class="card-diagram mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="title-diagram">Jumlah Siswa RPL</div>
+                            <div class="subtitle-diagram">Angkatan 2022</div>
+                            <div class="mt-2">
+                                <div class="class-diagram mb-2">
+                                    <div class="color-box" style="background-color: #dfffea;"></div>
+                                    <div>
+                                        <div class="text">XII RPL A</div>
+                                        <div class="count">35 Siswa</div>
+                                    </div>
                                 </div>
-                            </div>
 
-                            <div class="class-diagram mb-2">
-                                <div class="color-box" style="background-color: #D8E3FF;"></div>
-                                <div>
-                                    <div class="text">X RPL B</div>
-                                    <div class="count">36 Siswa</div>
+                                <div class="class-diagram mb-2">
+                                    <div class="color-box" style="background-color: #ffeaea;"></div>
+                                    <div>
+                                        <div class="text">XII RPL B</div>
+                                        <div class="count">36 Siswa</div>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="class-diagram">
-                                <div class="color-box" style="background-color: #FCFBD7;"></div>
-                                <div>
-                                    <div class="text">X RPL C</div>
-                                    <div class="count">34 Siswa</div>
+                                <div class="class-diagram">
+                                    <div class="color-box" style="background-color: #ffffe0;"></div>
+                                    <div>
+                                        <div class="text">XII RPL C</div>
+                                        <div class="count">34 Siswa</div>
+                                    </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="col-md-2">
-                        <div class="chart-container mt-3">
-                            <canvas id="myPieChart-3"></canvas>
-                            <div class="chart-center">
-                                <div class="number">105</div>
-                                <div class="label">Siswa</div>
+                        <div class="col-md-2">
+                            <div class="chart-container mt-3">
+                                <canvas id="myPieChart-3"></canvas>
+                                <div class="chart-center">
+                                    <div class="number">105</div>
+                                    <div class="label">Siswa</div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
+            <div class="d-flex flex-column me-3">
+                <!-- card grafik -->
+                <div class="card-large mb-3">
+                    <div class="card-large-content">
+                        <canvas id="barChart"></canvas>
+                        </p>
+                    </div>
+                </div>
+
+                <!-- card guru -->
+                <div class="profile-card">
+                    <div class="row">
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <img class="mb-1" alt="Profile picture of Dhanang Fitra Riaji, M.T." height="100"
+                                src="https://storage.googleapis.com/a1aa/image/fQ55HFECTLwRB6fqu3dW1DU6Vs9ENKs5SeXPoQPRyKkt51unA.jpg"
+                                width="100" />
+                            <div class="name">
+                                Dhanang Fitra Riaji, M.T.
+                            </div>
+                            <div class="title">
+                                Kepala Bengkel
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <img class="mb-1" alt="Profile picture of M. Mahmudi, S.Kom., M.Pd." height="100"
+                                src="https://storage.googleapis.com/a1aa/image/6ceLQoXpvnxfNkAMCKeC9K6iJaRwhwS7f74PmFFuUOAOzrdPB.jpg"
+                                width="100" />
+                            <div class="name">
+                                M. Mahmudi, S.Kom., M.Pd.
+                            </div>
+                            <div class="title">
+                                Kepala Bengkel
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <img class="mb-1" alt="Profile picture of Anggreani Tyas Sari, S.Kom" height="100"
+                                src="https://storage.googleapis.com/a1aa/image/VVLhRpeVG42fukcEbepmo6ZW7MtI3bhjZ7UUVnzxiJdk51unA.jpg"
+                                width="100" />
+                            <div class="name">
+                                Anggreani Tyas Sari, S.Kom
+                            </div>
+                            <div class="title">
+                                Kepala Bengkel
+                            </div>
+                        </div>
+                        <div class="col-md-3 col-sm-6 mb-4">
+                            <img class="mb-1" alt="Profile picture of Septi Retno Desi P, S.Pd." height="100"
+                                src="https://storage.googleapis.com/a1aa/image/1tp2cclm4upxFJ8Vpe8wzR03HfnuvSbIZoOjALjfdrpo51unA.jpg"
+                                width="100" />
+                            <div class="name">
+                                Septi Retno Desi P, S.Pd.
+                            </div>
+                            <div class="title">
+                                Kepala Bengkel
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="lab-container">
+                <!-- card lab 1 -->
+                <div class="card-lab">
+                    <div class="title">LAB RPL 1</div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Meja kecil</span>
+                            <span>: 25</span>
+                        </span>
+                        <span class="color-box color-purple"></span>
+                    </div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Monitor</span>
+                            <span>: 16</span>
+                        </span>
+                        <span class="color-box color-blue"></span>
+                    </div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Kursi</span>
+                            <span>: 33</span>
+                        </span>
+                        <span class="color-box color-green"></span>
+                    </div>
+                </div>
+
+                <!-- card lab 2 -->
+                <div class="card-lab">
+                    <div class="title">LAB RPL 2</div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Meja kecil</span>
+                            <span>: 25</span>
+                        </span>
+                        <span class="color-box color-purple"></span>
+                    </div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Monitor</span>
+                            <span>: 16</span>
+                        </span>
+                        <span class="color-box color-blue"></span>
+                    </div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Kursi</span>
+                            <span>: 33</span>
+                        </span>
+                        <span class="color-box color-green"></span>
+                    </div>
+                </div>
+
+                <!-- card lab 3 -->
+                <div class="card-lab">
+                    <div class="title">LAB RPL 3</div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Meja kecil</span>
+                            <span>: 25</span>
+                        </span>
+                        <span class="color-box color-purple"></span>
+                    </div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Monitor</span>
+                            <span>: 16</span>
+                        </span>
+                        <span class="color-box color-blue"></span>
+                    </div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Kursi</span>
+                            <span>: 33</span>
+                        </span>
+                        <span class="color-box color-green"></span>
+                    </div>
+                </div>
+
+                <!-- card lab 4 -->
+                <div class="card-lab">
+                    <div class="title">LAB RPL 4</div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Meja kecil</span>
+                            <span>: 25</span>
+                        </span>
+                        <span class="color-box color-purple"></span>
+                    </div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Monitor</span>
+                            <span>: 16</span>
+                        </span>
+                        <span class="color-box color-blue"></span>
+                    </div>
+                    <div class="item">
+                        <span class="label">
+                            <span>Kursi</span>
+                            <span>: 33</span>
+                        </span>
+                        <span class="color-box color-green"></span>
+                    </div>
+                </div>
+            </div>
+
         </div>
 
     </div>
@@ -599,7 +900,77 @@
                 }
             }
         });
+    </script>
 
+    <!-- grafik gede -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var ctx = document.getElementById('barChart').getContext('2d');
+            var barChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['LAB 1', 'LAB 2', 'LAB 3', 'LAB 4'],
+                    datasets: [
+                        {
+                            label: 'Meja kecil',
+                            data: [20, 10, 15, 30],
+                            backgroundColor: '#696CFF',
+                            borderColor: '#696CFF',
+                            borderWidth: 1,
+                            borderRadius: 10,
+                            barThickness: 15, // Ukuran batang lebih kecil
+                        },
+                        {
+                            label: 'Monitor',
+                            data: [10, 5, 10, 20],
+                            backgroundColor: '#03C3EC',
+                            borderColor: '#03C3EC',
+                            borderWidth: 1,
+                            borderRadius: 10,
+                            barThickness: 15, // Ukuran batang lebih kecil
+                        },
+                        {
+                            label: 'Kursi',
+                            data: [30, 35, 25, 35],
+                            backgroundColor: '#71DD37',
+                            borderColor: '#71DD37',
+                            borderWidth: 1,
+                            borderRadius: 10,
+                            barThickness: 15, // Ukuran batang lebih kecil
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 5,
+                                color: '#ccc'
+                            },
+                            grid: {
+                                color: '#f0f0f0'
+                            }
+                        },
+                        x: {
+                            ticks: {
+                                color: '#aaa'
+                            },
+                            grid: {
+                                display: false
+                            }
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true
+                        }
+                    }
+                }
+            });
+        });
     </script>
 </body>
 
