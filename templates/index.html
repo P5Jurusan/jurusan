@@ -18,7 +18,7 @@
             font-family: 'Jost', sans-serif;
         }
 
-        .container{
+        .container {
             max-width: 100%;
             overflow-x: hidden;
         }
@@ -51,7 +51,7 @@
             border-radius: 15px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             width: 50%;
-            height: 155px;
+            height: 165px;
             margin: 0 auto;
             border: none;
             background-color: #ffffff;
@@ -80,10 +80,10 @@
         /* card kegiatan */
         .card-kgt {
             border-radius: 15px;
-            min-width: 340px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            height: 155px;
+            width: 30%;
+            height: 165px;
             position: relative;
         }
 
@@ -92,8 +92,49 @@
             height: 100%;
             object-fit: cover;
             display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transition: opacity 1s ease-in-out, filter 1s ease-in-out;
         }
 
+        .card-kgt .image-1.blur,
+        .card-kgt .image-2.blur {
+            filter: blur(5px);
+        }
+
+        /* Hide image 2 initially and make sure image 1 is visible first */
+        .card-kgt .image-2 {
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .card-kgt .image-1 {
+            opacity: 1;
+            z-index: 2;
+        }
+
+        .card-kgt .description-1,
+        .card-kgt .description-2 {
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            text-align: left;
+            padding: 0 10px;
+            font-size: 12px;
+            color: white;
+            transition: opacity 1s ease-in-out;
+            z-index: 3;
+            /* Ensure descriptions are above shadow and images */
+        }
+
+        /* Hide description 2 initially */
+        .card-kgt .description-2 {
+            opacity: 0;
+        }
+
+        /* Footer styles */
         .card-kgt-footer {
             position: absolute;
             bottom: 0;
@@ -107,20 +148,15 @@
 
         .card-kgt-footer .shadow-image {
             position: absolute;
-            top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            z-index: 1;
+            z-index: 0;
+            object-fit: cover;
+            transform: scaleY(1.5);
+            opacity: 3;
         }
 
-        .card-kgt-footer .footer-text {
-            position: relative;
-            z-index: 2;
-            font-size: 12px;
-            color: white;
-            text-align: left;
-        }
 
         /* calendar */
         .calendar {
@@ -131,7 +167,7 @@
             width: 20%;
             text-align: center;
             margin: 0 auto;
-            height: 155px;
+            height: 165px;
         }
 
         .calendar h2 {
@@ -190,6 +226,7 @@
             padding: 15px;
             background-color: #ffffff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 285px;
             border: none;
         }
 
@@ -258,8 +295,8 @@
             font-size: 12px;
         }
 
-         /* Card Besar */
-         .card-large {
+        /* Card Besar */
+        .card-large {
             border-radius: 20px;
             padding: 20px;
             background-color: #ffffff;
@@ -411,7 +448,7 @@
 
         <!-- ISI -->
         <div class="d-flex mb-3">
-            <div class="card-info p-3">
+            <div class="card-info p-3 me-3">
                 <div class="row">
                     <div class="col-md-8">
                         <h5 class="card-info-title">Informasi Terkini</h5>
@@ -437,53 +474,29 @@
                 </div>
             </div>
 
+            <div class="card-kgt me-3">
+                <div class="image-container">
+                    <img class="image-1" src="{{ url_for('static', filename='assets/img/img-kegiatan.png') }}"
+                        alt="Image 1" />
+                    <img class="image-2" src="{{ url_for('static', filename='assets/img/img-info.png') }}"
+                        alt="Image 2" />
+                </div>
+                <div class="card-kgt-footer">
+                    <img class="shadow-image" src="{{ url_for('static', filename='assets/img/shadow.png') }}"
+                        alt="Shadow Effect" />
 
-            <div id="carouselKegiatan" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000" style="max-width: 400px;">
-                <div class="carousel-inner">
-                    {% if activities|length == 0 %}
-                    <div class="carousel-item active">
-                        <div class="d-flex justify-content-center">
-                            <div class="card-kgt" style="background-color: #b0b0b0;">
-                                <!-- Error message when no activities are found -->
-                                <p class="error-message"
-                                    style="text-align: center;margin-top: 60px;margin-right: 10px; color:#ffffff">Tidak
-                                    ada aktivitas</p>
-                            </div>
-                        </div>
+                    <!-- Deskripsi untuk gambar pertama -->
+                    <div class="footer-text description-1">
+                        Selamat kepada Team Cyber Security dalam ajang LKS Tingkat Provinsi Jawa Timur ke XXXII tahun
+                        2024
                     </div>
-                    {% else %}
-                    {% for activity in activities %}
-                    <div class="carousel-item {% if loop.first %}active{% endif %}">
-                        <div class="d-flex justify-content-center">
-                            <div class="card-kgt">
-                                <!-- Gambar Aktivitas -->
-                                <img alt="Activity Image"
-                                    src="{{ url_for('static', filename=activity.image_path if activity.image_path else 'assets/img/img-kegiatan.png') }}" />
-                                <div class="card-kgt-footer">
-                                    <!-- Shadow Image -->
-                                    <img class="shadow-image"
-                                        src="{{ url_for('static', filename='assets/img/shadow.png') }}"
-                                        alt="Shadow Effect" />
-                                    <div class="footer-text">
-                                        {{ activity.description }}
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+
+                    <!-- Deskripsi untuk gambar kedua -->
+                    <div class="footer-text description-2">
+                        Team Web Design meraih juara pertama pada ajang LKS Tingkat Provinsi Jawa Timur ke XXXII
+                        tahun 2024
                     </div>
-                    <!-- Navigation Controls -->
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselKegiatan"
-                        data-bs-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselKegiatan"
-                        data-bs-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                    {% endfor %}
-                    {% endif %}
+
                 </div>
             </div>
 
@@ -874,6 +887,47 @@
             }
         };
 
+        /* blur */
+        let currentImage = 1; // Start with the first image
+        const image1 = document.querySelector('.image-1');
+        const image2 = document.querySelector('.image-2');
+        const description1 = document.querySelector('.description-1');
+        const description2 = document.querySelector('.description-2');
+
+        function switchImageAndDescription() {
+            if (currentImage === 1) {
+                // Apply blur to image 1
+                image1.classList.add('blur');
+
+                // Show image 2, then remove blur and transition it in
+                setTimeout(() => {
+                    image2.style.opacity = 1; // Show image 2
+                    image2.classList.remove('blur'); // Remove blur from image 2
+                    image1.style.opacity = 0; // Hide image 1
+                    description1.style.opacity = 0; // Hide description 1
+                    description2.style.opacity = 1; // Show description 2
+                }, 1000); // Delay before showing image 2, to let blur effect finish
+
+                currentImage = 2;
+            } else {
+                // Apply blur to image 2
+                image2.classList.add('blur');
+
+                // Show image 1, then remove blur and transition it in
+                setTimeout(() => {
+                    image1.style.opacity = 1; // Show image 1
+                    image1.classList.remove('blur'); // Remove blur from image 1
+                    image2.style.opacity = 0; // Hide image 2
+                    description2.style.opacity = 0; // Hide description 2
+                    description1.style.opacity = 1; // Show description 1
+                }, 1000); // Delay before showing image 1, to let blur effect finish
+
+                currentImage = 1;
+            }
+        }
+
+        // Change image and description every 5 seconds
+        setInterval(switchImageAndDescription, 5000);
 
         /* DIAGRAM */
         var ctx = document.getElementById('myPieChart').getContext('2d');
@@ -940,72 +994,72 @@
         });
 
         document.addEventListener('DOMContentLoaded', function () {
-                var ctx = document.getElementById('barChart').getContext('2d');
-                var barChart = new Chart(ctx, {
-                    type: 'bar',
-                    data: {
-                        labels: ['LAB 1', 'LAB 2', 'LAB 3', 'LAB 4'],
-                        datasets: [
-                            {
-                                label: 'Meja kecil',
-                                data: [20, 10, 15, 30],
-                                backgroundColor: '#696CFF',
-                                borderColor: '#696CFF',
-                                borderWidth: 1,
-                                borderRadius: 10,
-                                barThickness: 15, // Ukuran batang lebih kecil
+            var ctx = document.getElementById('barChart').getContext('2d');
+            var barChart = new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: ['LAB 1', 'LAB 2', 'LAB 3', 'LAB 4'],
+                    datasets: [
+                        {
+                            label: 'Meja kecil',
+                            data: [20, 10, 15, 30],
+                            backgroundColor: '#696CFF',
+                            borderColor: '#696CFF',
+                            borderWidth: 1,
+                            borderRadius: 10,
+                            barThickness: 15, // Ukuran batang lebih kecil
+                        },
+                        {
+                            label: 'Monitor',
+                            data: [10, 5, 10, 20],
+                            backgroundColor: '#03C3EC',
+                            borderColor: '#03C3EC',
+                            borderWidth: 1,
+                            borderRadius: 10,
+                            barThickness: 15, // Ukuran batang lebih kecil
+                        },
+                        {
+                            label: 'Kursi',
+                            data: [30, 35, 25, 35],
+                            backgroundColor: '#71DD37',
+                            borderColor: '#71DD37',
+                            borderWidth: 1,
+                            borderRadius: 10,
+                            barThickness: 15, // Ukuran batang lebih kecil
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 5,
+                                color: '#ccc'
                             },
-                            {
-                                label: 'Monitor',
-                                data: [10, 5, 10, 20],
-                                backgroundColor: '#03C3EC',
-                                borderColor: '#03C3EC',
-                                borderWidth: 1,
-                                borderRadius: 10,
-                                barThickness: 15, // Ukuran batang lebih kecil
-                            },
-                            {
-                                label: 'Kursi',
-                                data: [30, 35, 25, 35],
-                                backgroundColor: '#71DD37',
-                                borderColor: '#71DD37',
-                                borderWidth: 1,
-                                borderRadius: 10,
-                                barThickness: 15, // Ukuran batang lebih kecil
-                            }
-                        ]
-                    },
-                    options: {
-                        responsive: true,
-                        maintainAspectRatio: false,
-                        scales: {
-                            y: {
-                                beginAtZero: true,
-                                ticks: {
-                                    stepSize: 5,
-                                    color: '#ccc'
-                                },
-                                grid: {
-                                    color: '#f0f0f0'
-                                }
-                            },
-                            x: {
-                                ticks: {
-                                    color: '#aaa'
-                                },
-                                grid: {
-                                    display: false
-                                }
+                            grid: {
+                                color: '#f0f0f0'
                             }
                         },
-                        plugins: {
-                            legend: {
-                                display: true
+                        x: {
+                            ticks: {
+                                color: '#aaa'
+                            },
+                            grid: {
+                                display: false
                             }
                         }
+                    },
+                    plugins: {
+                        legend: {
+                            display: true
+                        }
                     }
-                });
+                }
             });
+        });
 
     </script>
 </body>
