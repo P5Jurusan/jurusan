@@ -879,54 +879,9 @@
             }
         };
 
-<<<<<<< HEAD
         let currentImage = 1; // Mulai dengan gambar pertama
         const images = document.querySelectorAll('.image-container img'); // Ambil semua gambar
         const descriptions = document.querySelectorAll('.footer-text'); // Ambil semua deskripsi
-=======
-        /* blur */
-        let currentImage = 1; // Start with the first image
-        const image1 = document.querySelector('.image-1');
-        const image2 = document.querySelector('.image-2');
-        const description1 = document.querySelector('.description-1');
-        const description2 = document.querySelector('.description-2');
-
-        function switchImageAndDescription() {
-            if (currentImage === 1) {
-                // Apply blur to image 1
-                image1.classList.add('blur');
-
-                // Show image 2, then remove blur and transition it in
-                setTimeout(() => {
-                    image2.style.opacity = 1; // Show image 2
-                    image2.classList.remove('blur'); // Remove blur from image 2
-                    image1.style.opacity = 0; // Hide image 1
-                    description1.style.opacity = 0; // Hide description 1
-                    description2.style.opacity = 1; // Show description 2
-                }, 1000); // Delay before showing image 2, to let blur effect finish
-
-                currentImage = 2;
-            } else {
-                // Apply blur to image 2
-                image2.classList.add('blur');
-
-                // Show image 1, then remove blur and transition it in
-                setTimeout(() => {
-                    image1.style.opacity = 1; // Show image 1
-                    image1.classList.remove('blur'); // Remove blur from image 1
-                    image2.style.opacity = 0; // Hide image 2
-                    description2.style.opacity = 0; // Hide description 2
-                    description1.style.opacity = 1; // Show description 1
-                }, 1000); // Delay before showing image 1, to let blur effect finish
-
-                currentImage = 1;
-            }
-        }
-
-        // Change image and description every 5 seconds
-        setInterval(switchImageAndDescription, 5000);
->>>>>>> 3da90f9c4cfdd9f4bb26ba772bd6c729794a3f71
-
         function switchImageAndDescription() {
             // Menambahkan blur pada gambar yang aktif
             images[currentImage - 1].classList.add('blur');
