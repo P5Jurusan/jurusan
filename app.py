@@ -40,14 +40,6 @@ class Information(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(255), nullable=False)
     image_path = db.Column(db.String(255), nullable=False)
-
-class Student(db.Model):
-    __tablename__ = 'students'
-    
-    id = db.Column(db.Integer, primary_key=True)
-    name_class = db.Column(db.String(100), nullable=False)
-    amount = db.Column(db.Integer, nullable=False)
-    force = db.Column(db.Integer, nullable=False)
     
 class labRoom(db.Model):
     __tablename__ = 'lab_rooms'
@@ -70,22 +62,11 @@ def init_db():
 
 @app.route('/')
 def index():
-    # Fetch the latest information (descending order by ID)
     informations = Information.query.order_by(Information.id.desc()).limit(1).all()
-    
-    # Fallback jika tidak ada data informasi
-    if not informations:
-        informations = [{
-            "description": "Tidak ada informasi tersedia saat ini.",
-            "image_path": "assets/img/default.png"  # Default image
-        }]
-
-    # Fetch the latest activities
     activities = Activity.query.order_by(Activity.id.desc()).limit(3).all()
+    teachers = Teacher.query.all()
 
-    # Render template with fetched data
-    return render_template('index.html', activities=activities, informations=informations)
-
+    return render_template('index.html', activities=activities, informations=informations,teachers=teachers)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

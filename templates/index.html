@@ -82,11 +82,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
-            width: 30%;
-=======
-            width: 31%;
->>>>>>> 3da90f9c4cfdd9f4bb26ba772bd6c729794a3f71
+            width: 38%;
             height: 165px;
             position: relative;
         }
@@ -264,11 +260,11 @@
         }
 
         .class-diagram .text {
-            font-size: 10px;
+            font-size: 13px;
         }
 
         .class-diagram .count {
-            font-size: 7px;
+            font-size: 10px;
             color: #4a4a8a;
         }
 
@@ -311,7 +307,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            max-height: 365px;
+            max-height: 445px;
         }
 
         .card-large-content {
@@ -356,7 +352,7 @@
         .lab-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 42px;
         }
 
         .card-lab .title {
@@ -409,7 +405,7 @@
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 100%;
+            width: 768px;
             height: 177px;
         }
 
@@ -456,9 +452,9 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h5 class="card-info-title">Informasi Terkini</h5>
-                        {% if information %}
+                        {% if informations %}
                         <p class="card-info-text">
-                            {{ information.description }}
+                            {{ informations[0].description }}
                         </p>
                         {% else %}
                         <p class="card-info-text">
@@ -467,9 +463,9 @@
                         {% endif %}
                     </div>
                     <div class="col-md-4">
-                        {% if information %}
+                        {% if informations %}
                         <img alt="Informasi Gambar" class="img-fluid rounded" height="200"
-                            src="{{ url_for('static', filename=information.image_path) }}" width="300" />
+                        src="{{ url_for('static', filename='assets/img/' + informations[0].image_path) }}" width="300" />
                         {% else %}
                         <img alt="Gambar Default" class="img-fluid rounded" height="200"
                             src="{{ url_for('static', filename='assets/img/default.png') }}" width="300" />
@@ -477,30 +473,25 @@
                     </div>
                 </div>
             </div>
-
+            
             <div class="card-kgt me-3">
                 <div class="image-container">
-                    <img class="image-1" src="{{ url_for('static', filename='assets/img/img-kegiatan.png') }}"
-                        alt="Image 1" />
-                    <img class="image-2" src="{{ url_for('static', filename='assets/img/img-info.png') }}"
-                        alt="Image 2" />
+                    {% for activity in activities %}
+                    <img class="image-{{ loop.index }}"
+                        src="{{ url_for('static', filename='assets/img/' + activity.image_path) }}"
+                        alt="Image {{ loop.index }}" />
+                    {% endfor %}
                 </div>
                 <div class="card-kgt-footer">
                     <img class="shadow-image" src="{{ url_for('static', filename='assets/img/shadow.png') }}"
                         alt="Shadow Effect" />
 
-                    <!-- Deskripsi untuk gambar pertama -->
-                    <div class="footer-text description-1">
-                        Selamat kepada Team Cyber Security dalam ajang LKS Tingkat Provinsi Jawa Timur ke XXXII tahun
-                        2024
+                    <!-- Deskripsi untuk gambar -->
+                    {% for activity in activities %}
+                    <div class="footer-text description-{{ loop.index }}">
+                        {{ activity.description }}
                     </div>
-
-                    <!-- Deskripsi untuk gambar kedua -->
-                    <div class="footer-text description-2">
-                        Team Web Design meraih juara pertama pada ajang LKS Tingkat Provinsi Jawa Timur ke XXXII
-                        tahun 2024
-                    </div>
-
+                    {% endfor %}
                 </div>
             </div>
 
@@ -529,7 +520,7 @@
 
         <div class="d-flex mb-3">
 
-            <div class="d-flex flex-column me-3">
+           <div class="d-flex flex-column me-3">
                 <!-- diagram kelas 1 -->
                 <div class="card-diagram mb-3">
                     <div class="row">
@@ -672,50 +663,18 @@
                 <!-- card guru -->
                 <div class="profile-card">
                     <div class="row">
+                        {% for teacher in teachers %}
                         <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Dhanang Fitra Riaji, M.T." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/fQ55HFECTLwRB6fqu3dW1DU6Vs9ENKs5SeXPoQPRyKkt51unA.jpg"
-                                width="100" />
+                            <img class="mb-1" alt="Profile picture of {{ teacher.name }}" height="100"
+                                src="{{url_for('static', filename='assets/img/' + teacher.profile)  }}" width="100" style="object-fit: cover;"/>
                             <div class="name">
-                                Dhanang Fitra Riaji, M.T.
+                                {{ teacher.name }}
                             </div>
                             <div class="title">
-                                Kepala Bengkel
+                                {{ teacher.title }}
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of M. Mahmudi, S.Kom., M.Pd." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/6ceLQoXpvnxfNkAMCKeC9K6iJaRwhwS7f74PmFFuUOAOzrdPB.jpg"
-                                width="100" />
-                            <div class="name">
-                                M. Mahmudi, S.Kom., M.Pd.
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Anggreani Tyas Sari, S.Kom" height="100"
-                                src="https://storage.googleapis.com/a1aa/image/VVLhRpeVG42fukcEbepmo6ZW7MtI3bhjZ7UUVnzxiJdk51unA.jpg"
-                                width="100" />
-                            <div class="name">
-                                Anggreani Tyas Sari, S.Kom
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Septi Retno Desi P, S.Pd." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/1tp2cclm4upxFJ8Vpe8wzR03HfnuvSbIZoOjALjfdrpo51unA.jpg"
-                                width="100" />
-                            <div class="name">
-                                Septi Retno Desi P, S.Pd.
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
+                    {% endfor %}
                     </div>
                 </div>
             </div>
@@ -891,50 +850,35 @@
             }
         };
 
-        /* blur */
-        let currentImage = 1; // Start with the first image
-        const image1 = document.querySelector('.image-1');
-        const image2 = document.querySelector('.image-2');
-        const description1 = document.querySelector('.description-1');
-        const description2 = document.querySelector('.description-2');
+        let currentImage = 1; // Mulai dengan gambar pertama
+        const images = document.querySelectorAll('.image-container img'); // Ambil semua gambar
+        const descriptions = document.querySelectorAll('.footer-text'); // Ambil semua deskripsi
 
         function switchImageAndDescription() {
-            if (currentImage === 1) {
-                // Apply blur to image 1
-                image1.classList.add('blur');
+            // Menambahkan blur pada gambar yang aktif
+            images[currentImage - 1].classList.add('blur');
+            descriptions[currentImage - 1].style.opacity = 0; // Menyembunyikan deskripsi yang aktif
 
-                // Show image 2, then remove blur and transition it in
-                setTimeout(() => {
-                    image2.style.opacity = 1; // Show image 2
-                    image2.classList.remove('blur'); // Remove blur from image 2
-                    image1.style.opacity = 0; // Hide image 1
-                    description1.style.opacity = 0; // Hide description 1
-                    description2.style.opacity = 1; // Show description 2
-                }, 1000); // Delay before showing image 2, to let blur effect finish
+            // Delay untuk transisi gambar dan deskripsi
+            setTimeout(() => {
+                // Menyembunyikan gambar yang aktif
+                images[currentImage - 1].style.opacity = 0;
 
-                currentImage = 2;
-            } else {
-                // Apply blur to image 2
-                image2.classList.add('blur');
+                // Menampilkan gambar dan deskripsi selanjutnya
+                currentImage = currentImage === images.length ? 1 : currentImage + 1;
+                images[currentImage - 1].style.opacity = 1; // Menampilkan gambar baru
+                descriptions[currentImage - 1].style.opacity = 1; // Menampilkan deskripsi baru
 
-                // Show image 1, then remove blur and transition it in
-                setTimeout(() => {
-                    image1.style.opacity = 1; // Show image 1
-                    image1.classList.remove('blur'); // Remove blur from image 1
-                    image2.style.opacity = 0; // Hide image 2
-                    description2.style.opacity = 0; // Hide description 2
-                    description1.style.opacity = 1; // Show description 1
-                }, 1000); // Delay before showing image 1, to let blur effect finish
-
-                currentImage = 1;
-            }
+                // Menghapus blur dari gambar baru
+                images[currentImage - 1].classList.remove('blur');
+            }, 1000); // Durasi delay sebelum gambar selanjutnya muncul
         }
 
-        // Change image and description every 5 seconds
-        setInterval(switchImageAndDescription, 5000);
+        // Panggil fungsi untuk mulai berganti gambar setiap beberapa detik
+        setInterval(switchImageAndDescription, 5000); // Ubah gambar setiap 5 detik
 
-        /* DIAGRAM */
-        var ctx = document.getElementById('myPieChart').getContext('2d');
+/* DIAGRAM */
+var ctx = document.getElementById('myPieChart').getContext('2d');
         var myPieChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
