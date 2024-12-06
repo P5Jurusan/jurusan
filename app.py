@@ -41,6 +41,30 @@ class Information(db.Model):
     description = db.Column(db.String(255), nullable=False)
     image_path = db.Column(db.String(255), nullable=False)
 
+class Student(db.Model):
+    __tablename__ = 'students'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    name_class = db.Column(db.String(100), nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+    force = db.Column(db.Integer, nullable=False)
+    
+class labRoom(db.Model):
+    __tablename__ = 'lab_rooms'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    goods = db.Column(db.String(100), nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+
+class Teacher(db.Model):
+    __tablename__ = 'teachers'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    profile = db.Column(db.String(100), nullable=False)
+    name = db.Column(db.String(100), nullable=False)
+    title = db.Column(db.String(100), nullable=False)
+
 def init_db():
     db.create_all()
 
