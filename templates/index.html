@@ -82,11 +82,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-<<<<<<< HEAD
             width: 38%;
-=======
-            width: 31%;
->>>>>>> 3da90f9c4cfdd9f4bb26ba772bd6c729794a3f71
             height: 165px;
             position: relative;
         }
@@ -476,9 +472,7 @@
                         {% endif %}
                     </div>
                 </div>
-            </div>
-<<<<<<< HEAD
-            
+            </div>            
             <div class="card-kgt me-3">
                 <div class="image-container">
                     {% for activity in activities %}
@@ -486,41 +480,16 @@
                         src="{{ url_for('static', filename='assets/img/' + activity.image_path) }}"
                         alt="Image {{ loop.index }}" />
                     {% endfor %}
-=======
-
-            <div class="card-kgt me-3">
-                <div class="image-container">
-                    <img class="image-1" src="{{ url_for('static', filename='assets/img/img-kegiatan.png') }}"
-                        alt="Image 1" />
-                    <img class="image-2" src="{{ url_for('static', filename='assets/img/img-info.png') }}"
-                        alt="Image 2" />
->>>>>>> 3da90f9c4cfdd9f4bb26ba772bd6c729794a3f71
                 </div>
                 <div class="card-kgt-footer">
                     <img class="shadow-image" src="{{ url_for('static', filename='assets/img/shadow.png') }}"
                         alt="Shadow Effect" />
-
-<<<<<<< HEAD
                     <!-- Deskripsi untuk gambar -->
                     {% for activity in activities %}
                     <div class="footer-text description-{{ loop.index }}">
                         {{ activity.description }}
                     </div>
                     {% endfor %}
-=======
-                    <!-- Deskripsi untuk gambar pertama -->
-                    <div class="footer-text description-1">
-                        Selamat kepada Team Cyber Security dalam ajang LKS Tingkat Provinsi Jawa Timur ke XXXII tahun
-                        2024
-                    </div>
-
-                    <!-- Deskripsi untuk gambar kedua -->
-                    <div class="footer-text description-2">
-                        Team Web Design meraih juara pertama pada ajang LKS Tingkat Provinsi Jawa Timur ke XXXII
-                        tahun 2024
-                    </div>
-
->>>>>>> 3da90f9c4cfdd9f4bb26ba772bd6c729794a3f71
                 </div>
             </div>
 
@@ -882,6 +851,7 @@
         let currentImage = 1; // Mulai dengan gambar pertama
         const images = document.querySelectorAll('.image-container img'); // Ambil semua gambar
         const descriptions = document.querySelectorAll('.footer-text'); // Ambil semua deskripsi
+
         function switchImageAndDescription() {
             // Menambahkan blur pada gambar yang aktif
             images[currentImage - 1].classList.add('blur');
