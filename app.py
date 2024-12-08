@@ -41,6 +41,21 @@ class Information(db.Model):
     description = db.Column(db.String(255), nullable=False)
     image_path = db.Column(db.String(255), nullable=False)
     
+class Class(db.Model):
+    __tablename__ = 'classes'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    class_name = db.Column(db.String(100), nullable=False)
+    total_student = db.Column(db.Integer, nullable=False, default=0)
+    id_batch = db.Column(db.Integer, db.ForeignKey('batch.id'))
+    batch = db.relationship('Batch', backref='classes')
+
+class Batch(db.Model):
+    __tablename__ = 'batch'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    batch_year = db.Column(db.Integer, nullable=False) 
+    
 class labRoom(db.Model):
     __tablename__ = 'lab_rooms'
     
@@ -65,8 +80,8 @@ def index():
     informations = Information.query.order_by(Information.id.desc()).limit(1).all()
     activities = Activity.query.order_by(Activity.id.desc()).limit(3).all()
     teachers = Teacher.query.all()
-
-    return render_template('index.html', activities=activities, informations=informations,teachers=teachers)
+    batches = Batch.query.order_by(Batch.id.desc()).limit(3).all()
+    return render_template('index.html', activities=activities, informations=informations,teachers=teachers,batches=batches)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

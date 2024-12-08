@@ -465,14 +465,15 @@
                     <div class="col-md-4">
                         {% if informations %}
                         <img alt="Informasi Gambar" class="img-fluid rounded" height="200"
-                        src="{{ url_for('static', filename='assets/img/' + informations[0].image_path) }}" width="300" />
+                            src="{{ url_for('static', filename='assets/img/' + informations[0].image_path) }}"
+                            width="300" />
                         {% else %}
                         <img alt="Gambar Default" class="img-fluid rounded" height="200"
                             src="{{ url_for('static', filename='assets/img/default.png') }}" width="300" />
                         {% endif %}
                     </div>
                 </div>
-            </div>            
+            </div>
             <div class="card-kgt me-3">
                 <div class="image-container">
                     {% for activity in activities %}
@@ -518,135 +519,41 @@
 
         <div class="d-flex mb-3">
 
-           <div class="d-flex flex-column me-3">
+            <div class="d-flex flex-column me-3">
                 <!-- diagram kelas 1 -->
+                <!-- diagram kelas -->
+                {% for batch in batches %}
                 <div class="card-diagram mb-3">
                     <div class="row">
                         <div class="col-md-6">
                             <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2022</div>
+                            <div class="subtitle-diagram">Angkatan {{ batch.batch_year }}</div>
                             <div class="mt-2">
+                                {% for class_ in batch.classes %}
                                 <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #dfffea;"></div>
+                                    <div class="color-box"
+                                        style="background-color: #{{ loop.index0 % 10 }}{{ loop.index0 % 10 }}{{ loop.index0 % 10 }};">
+                                    </div>
                                     <div>
-                                        <div class="text">XII RPL A</div>
-                                        <div class="count">35 Siswa</div>
+                                        <div class="text">{{ class_.class_name }}</div>
+                                        <div class="count">{{ class_.total_student }} Siswa</div>
                                     </div>
                                 </div>
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #ffeaea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #ffffe0;"></div>
-                                    <div>
-                                        <div class="text">XII RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
-                                </div>
+                                {% endfor %}
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="chart-container mt-3">
-                                <canvas id="myPieChart"></canvas>
+                                <canvas id="myPieChart-{{ batch.id }}"></canvas>
                                 <div class="chart-center">
-                                    <div class="number">105</div>
+                                    <div class="number">{{ batch.classes | sum('total_student') }}</div>
                                     <div class="label">Siswa</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- diagram kelas 2 -->
-                <div class="card-diagram mb-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2023</div>
-                            <div class="mt-2">
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #E7E7FF;"></div>
-                                    <div>
-                                        <div class="text">XI RPL A</div>
-                                        <div class="count">35 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #D7F5FC;"></div>
-                                    <div>
-                                        <div class="text">XI RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #E8FADF;"></div>
-                                    <div>
-                                        <div class="text">XI RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="chart-container mt-3">
-                                <canvas id="myPieChart-2"></canvas>
-                                <div class="chart-center">
-                                    <div class="number">105</div>
-                                    <div class="label">Siswa</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- diagram kelas 3 -->
-                <div class="card-diagram mb-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2022</div>
-                            <div class="mt-2">
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #dfffea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL A</div>
-                                        <div class="count">35 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #ffeaea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #ffffe0;"></div>
-                                    <div>
-                                        <div class="text">XII RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="chart-container mt-3">
-                                <canvas id="myPieChart-3"></canvas>
-                                <div class="chart-center">
-                                    <div class="number">105</div>
-                                    <div class="label">Siswa</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
 
             <div class="d-flex flex-column me-3">
@@ -664,7 +571,8 @@
                         {% for teacher in teachers %}
                         <div class="col-md-3 col-sm-6 mb-4">
                             <img class="mb-1" alt="Profile picture of {{ teacher.name }}" height="100"
-                                src="{{url_for('static', filename='assets/img/' + teacher.profile)  }}" width="100" style="object-fit: cover;"/>
+                                src="{{url_for('static', filename='assets/img/' + teacher.profile)  }}" width="100"
+                                style="object-fit: cover;" />
                             <div class="name">
                                 {{ teacher.name }}
                             </div>
@@ -672,7 +580,7 @@
                                 {{ teacher.title }}
                             </div>
                         </div>
-                    {% endfor %}
+                        {% endfor %}
                     </div>
                 </div>
             </div>
@@ -875,15 +783,27 @@
         // Panggil fungsi untuk mulai berganti gambar setiap beberapa detik
         setInterval(switchImageAndDescription, 5000); // Ubah gambar setiap 5 detik
 
-/* DIAGRAM */
-var ctx = document.getElementById('myPieChart').getContext('2d');
+        {% for batch in batches %}
+        var ctx = document.getElementById('myPieChart-{{ batch.id }}').getContext('2d');
         var myPieChart = new Chart(ctx, {
             type: 'doughnut',
             data: {
-                labels: ['XII RPL A', 'XII RPL B', 'XII RPL C'],
+                labels: [
+                    {% for class_ in batch.classes %}
+                        '{{ class_.class_name }}',
+                    {% endfor %}
+                ],
                 datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#dfffea', '#ffeaea', '#ffffe0'],
+                    data: [
+                        {% for class_ in batch.classes %}
+                            {{ class_.total_student }},
+                        {% endfor %}
+                    ],
+                    backgroundColor: [
+                        {% for class_ in batch.classes %}
+                            '#{{ loop.index0 % 10 }}{{ loop.index0 % 10 }}{{ loop.index0 % 10 }}',
+                        {% endfor %}
+                    ],
                     borderWidth: 1
                 }]
             },
@@ -896,48 +816,7 @@ var ctx = document.getElementById('myPieChart').getContext('2d');
                 }
             }
         });
-
-        var ctx = document.getElementById('myPieChart-2').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['XI RPL A', 'XI RPL B', 'XI RPL C'],
-                datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#E7E7FF', '#D7F5FC', '#E8FADF'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-
-        var ctx = document.getElementById('myPieChart-3').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['X RPL A', 'X RPL B', 'X RPL C'],
-                datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#FFE2E1', '#D8E3FF', '#FCFBD7'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
+        {% endfor %}
 
         document.addEventListener('DOMContentLoaded', function () {
             var ctx = document.getElementById('barChart').getContext('2d');
