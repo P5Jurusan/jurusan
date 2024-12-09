@@ -1,12 +1,16 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 from flask_migrate import Migrate
 import secrets
+import random
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import URLSafeTimedSerializer
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib
 from itsdangerous import URLSafeTimedSerializer
+from itertools import chain
+
+
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
@@ -40,23 +44,37 @@ class Information(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     description = db.Column(db.String(255), nullable=False)
     image_path = db.Column(db.String(255), nullable=False)
-
-class Student(db.Model):
-    __tablename__ = 'students'
+    
+class Class(db.Model):
+    __tablename__ = 'classes'
     
     id = db.Column(db.Integer, primary_key=True)
-    name_class = db.Column(db.String(100), nullable=False)
-    amount = db.Column(db.Integer, nullable=False)
-    force = db.Column(db.Integer, nullable=False)
+    class_name = db.Column(db.String(100), nullable=False)
+    total_student = db.Column(db.Integer, nullable=False, default=0)
+    id_batch = db.Column(db.Integer, db.ForeignKey('batch.id'))
+    batch = db.relationship('Batch', backref='classes')
+
+class Batch(db.Model):
+    __tablename__ = 'batch'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    batch_year = db.Column(db.Integer, nullable=False) 
     
 class labRoom(db.Model):
     __tablename__ = 'lab_rooms'
     
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
-    goods = db.Column(db.String(100), nullable=False)
-    amount = db.Column(db.Integer, nullable=False)
 
+class Goods(db.Model):
+    __tablename__ = 'goods'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(100), nullable=False)
+    amount = db.Column(db.Integer, nullable=False)
+    id_lab_rooms = db.Column(db.Integer, db.ForeignKey('lab_rooms.id'))
+    lab_rooms = db.relationship('labRoom', backref='goods')
+    
 class Teacher(db.Model):
     __tablename__ = 'teachers'
     
@@ -67,25 +85,23 @@ class Teacher(db.Model):
 
 def init_db():
     db.create_all()
+    
+@app.context_processor
+def utility_processor():
+    return dict(chain=chain)
+
+@app.template_global()
+def random_color():
+    return "#{:06x}".format(random.randint(0, 0xFFFFFF))
 
 @app.route('/')
 def index():
-    # Fetch the latest information (descending order by ID)
     informations = Information.query.order_by(Information.id.desc()).limit(1).all()
-    
-    # Fallback jika tidak ada data informasi
-    if not informations:
-        informations = [{
-            "description": "Tidak ada informasi tersedia saat ini.",
-            "image_path": "assets/img/default.png"  # Default image
-        }]
-
-    # Fetch the latest activities
     activities = Activity.query.order_by(Activity.id.desc()).limit(3).all()
-
-    # Render template with fetched data
-    return render_template('index.html', activities=activities, informations=informations)
-
+    teachers = Teacher.query.all()
+    batches = Batch.query.order_by(Batch.id.desc()).limit(3).all()
+    labrooms = labRoom.query.order_by(labRoom.id.desc()).limit(3).all()
+    return render_template('index.html', activities=activities, informations=informations,teachers=teachers,batches=batches,labrooms=labrooms)
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():

@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         body {
             background-color: #f3f4ff;
@@ -82,7 +84,7 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            width: 31%;
+            width: 38%;
             height: 165px;
             position: relative;
         }
@@ -260,11 +262,11 @@
         }
 
         .class-diagram .text {
-            font-size: 10px;
+            font-size: 13px;
         }
 
         .class-diagram .count {
-            font-size: 7px;
+            font-size: 10px;
             color: #4a4a8a;
         }
 
@@ -307,7 +309,7 @@
             align-items: center;
             justify-content: center;
             text-align: center;
-            max-height: 365px;
+            max-height: 445px;
         }
 
         .card-large-content {
@@ -352,7 +354,7 @@
         .lab-container {
             display: flex;
             flex-direction: column;
-            gap: 15px;
+            gap: 42px;
         }
 
         .card-lab .title {
@@ -405,7 +407,7 @@
             background-color: #ffffff;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             text-align: center;
-            width: 100%;
+            width: 768px;
             height: 177px;
         }
 
@@ -452,9 +454,9 @@
                 <div class="row">
                     <div class="col-md-8">
                         <h5 class="card-info-title">Informasi Terkini</h5>
-                        {% if information %}
+                        {% if informations %}
                         <p class="card-info-text">
-                            {{ information.description }}
+                            {{ informations[0].description }}
                         </p>
                         {% else %}
                         <p class="card-info-text">
@@ -463,9 +465,10 @@
                         {% endif %}
                     </div>
                     <div class="col-md-4">
-                        {% if information %}
+                        {% if informations %}
                         <img alt="Informasi Gambar" class="img-fluid rounded" height="200"
-                            src="{{ url_for('static', filename=information.image_path) }}" width="300" />
+                            src="{{ url_for('static', filename='assets/img/' + informations[0].image_path) }}"
+                            width="300" />
                         {% else %}
                         <img alt="Gambar Default" class="img-fluid rounded" height="200"
                             src="{{ url_for('static', filename='assets/img/default.png') }}" width="300" />
@@ -473,30 +476,23 @@
                     </div>
                 </div>
             </div>
-
             <div class="card-kgt me-3">
                 <div class="image-container">
-                    <img class="image-1" src="{{ url_for('static', filename='assets/img/img-kegiatan.png') }}"
-                        alt="Image 1" />
-                    <img class="image-2" src="{{ url_for('static', filename='assets/img/img-info.png') }}"
-                        alt="Image 2" />
+                    {% for activity in activities %}
+                    <img class="image-{{ loop.index }}"
+                        src="{{ url_for('static', filename='assets/img/' + activity.image_path) }}"
+                        alt="Image {{ loop.index }}" />
+                    {% endfor %}
                 </div>
                 <div class="card-kgt-footer">
                     <img class="shadow-image" src="{{ url_for('static', filename='assets/img/shadow.png') }}"
                         alt="Shadow Effect" />
-
-                    <!-- Deskripsi untuk gambar pertama -->
-                    <div class="footer-text description-1">
-                        Selamat kepada Team Cyber Security dalam ajang LKS Tingkat Provinsi Jawa Timur ke XXXII tahun
-                        2024
+                    <!-- Deskripsi untuk gambar -->
+                    {% for activity in activities %}
+                    <div class="footer-text description-{{ loop.index }}">
+                        {{ activity.description }}
                     </div>
-
-                    <!-- Deskripsi untuk gambar kedua -->
-                    <div class="footer-text description-2">
-                        Team Web Design meraih juara pertama pada ajang LKS Tingkat Provinsi Jawa Timur ke XXXII
-                        tahun 2024
-                    </div>
-
+                    {% endfor %}
                 </div>
             </div>
 
@@ -526,41 +522,34 @@
         <div class="d-flex mb-3">
 
             <div class="d-flex flex-column me-3">
-                <!-- diagram kelas 1 -->
+                <!-- diagram kelas -->
+                {% for batch in batches %}
                 <div class="card-diagram mb-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2022</div>
+                            <div class="title-diagram">Jumlah Siswa</div>
+                            <div class="subtitle-diagram">Angkatan {{ batch.batch_year }}</div>
                             <div class="mt-2">
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #dfffea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL A</div>
-                                        <div class="count">35 Siswa</div>
+                                <div class="class-diagram"
+                                    style="display: flex; flex-direction: column; align-items: start;">
+                                    {% set classColors = [] %}
+                                    {% for class_ in batch.classes %}
+                                    {% set randomColor = "#{:06x}".format(range(0, 16777215) | random) %}
+                                    {% set _ = classColors.append(randomColor) %}
+                                    <div class="class-diagram-item" style="display: flex;flex-direction: row;">
+                                        <div class="color-box" style="background-color: {{ randomColor }};"></div>
+                                        <div class="text">{{ class_.class_name }}</div>
                                     </div>
-                                </div>
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #ffeaea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #ffffe0;"></div>
-                                    <div>
-                                        <div class="text">XII RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
+                                    <div class="count">{{ class_.total_student }} Siswa</div>
+                                    {% endfor %}
                                 </div>
                             </div>
                         </div>
                         <div class="col-md-2">
                             <div class="chart-container mt-3">
-                                <canvas id="myPieChart"></canvas>
+                                <canvas id="myPieChart-{{ batch.id }}"></canvas>
                                 <div class="chart-center">
-                                    <div class="number">105</div>
+                                    <div class="number">{{ batch.classes | sum('total_student') }}</div>
                                     <div class="label">Siswa</div>
                                 </div>
                             </div>
@@ -568,265 +557,120 @@
                     </div>
                 </div>
 
-                <!-- diagram kelas 2 -->
+                <script>
+                    var classColors = {{ classColors | tojson }};
+                    var classLabels = [
+                        {% for class_ in batch.classes %}
+                    '{{ class_.class_name }}',
+                        {% endfor %}
+                    ];
+                    var classData = [
+                        {% for class_ in batch.classes %}
+                    { { class_.total_student } },
+                    {% endfor %}
+                    ];
+
+                    console.log("Class colors for batch {{ batch.batch_year }}:", classColors);
+
+                    if (classColors.length > 0) {
+                        var ctx = document.getElementById('myPieChart-{{ batch.id }}').getContext('2d');
+                        var myPieChart = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: classLabels,
+                                datasets: [{
+                                    data: classData,
+                                    backgroundColor: classColors,
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                cutout: '70%',
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        console.log('No classes found for batch {{ batch.batch_year }}');
+                    }
+                </script>
+                {% else %}
+                {% for i in range(3) %}
                 <div class="card-diagram mb-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2023</div>
-                            <div class="mt-2">
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #E7E7FF;"></div>
-                                    <div>
-                                        <div class="text">XI RPL A</div>
-                                        <div class="count">35 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #D7F5FC;"></div>
-                                    <div>
-                                        <div class="text">XI RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #E8FADF;"></div>
-                                    <div>
-                                        <div class="text">XI RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
-                                </div>
-                            </div>
+                            <div class="title-diagram">Jumlah Siswa</div>
+                            <div class="subtitle-diagram">Data tidak ada</div>
                         </div>
                         <div class="col-md-2">
                             <div class="chart-container mt-3">
-                                <canvas id="myPieChart-2"></canvas>
+                                <canvas id="myPieChart-{{ i }}"></canvas>
                                 <div class="chart-center">
-                                    <div class="number">105</div>
+                                    <div class="number">0</div>
                                     <div class="label">Siswa</div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-                <!-- diagram kelas 3 -->
-                <div class="card-diagram mb-3">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
-                            <div class="subtitle-diagram">Angkatan 2022</div>
-                            <div class="mt-2">
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #dfffea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL A</div>
-                                        <div class="count">35 Siswa</div>
-                                    </div>
-                                </div>
-
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box" style="background-color: #ffeaea;"></div>
-                                    <div>
-                                        <div class="text">XII RPL B</div>
-                                        <div class="count">36 Siswa</div>
-                                    </div>
-                                </div>
-                                <div class="class-diagram">
-                                    <div class="color-box" style="background-color: #ffffe0;"></div>
-                                    <div>
-                                        <div class="text">XII RPL C</div>
-                                        <div class="count">34 Siswa</div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-2">
-                            <div class="chart-container mt-3">
-                                <canvas id="myPieChart-3"></canvas>
-                                <div class="chart-center">
-                                    <div class="number">105</div>
-                                    <div class="label">Siswa</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {% endfor %}
+                {% endfor %}
             </div>
 
             <div class="d-flex flex-column me-3">
                 <!-- card grafik -->
                 <div class="card-large mb-3">
                     <div class="card-large-content">
-                        <canvas id="barChart"></canvas>
-                        </p>
+                        <canvas id="barChart" width="400" height="200"></canvas>
                     </div>
                 </div>
 
                 <!-- card guru -->
                 <div class="profile-card">
                     <div class="row">
+                        {% for teacher in teachers %}
                         <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Dhanang Fitra Riaji, M.T." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/fQ55HFECTLwRB6fqu3dW1DU6Vs9ENKs5SeXPoQPRyKkt51unA.jpg"
-                                width="100" />
+                            <img class="mb-1" alt="Profile picture of {{ teacher.name }}" height="100"
+                                src="{{url_for('static', filename='assets/img/' + teacher.profile)  }}" width="100"
+                                style="object-fit: cover;" />
                             <div class="name">
-                                Dhanang Fitra Riaji, M.T.
+                                {{ teacher.name }}
                             </div>
                             <div class="title">
-                                Kepala Bengkel
+                                {{ teacher.title }}
                             </div>
                         </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of M. Mahmudi, S.Kom., M.Pd." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/6ceLQoXpvnxfNkAMCKeC9K6iJaRwhwS7f74PmFFuUOAOzrdPB.jpg"
-                                width="100" />
-                            <div class="name">
-                                M. Mahmudi, S.Kom., M.Pd.
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Anggreani Tyas Sari, S.Kom" height="100"
-                                src="https://storage.googleapis.com/a1aa/image/VVLhRpeVG42fukcEbepmo6ZW7MtI3bhjZ7UUVnzxiJdk51unA.jpg"
-                                width="100" />
-                            <div class="name">
-                                Anggreani Tyas Sari, S.Kom
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
-                        <div class="col-md-3 col-sm-6 mb-4">
-                            <img class="mb-1" alt="Profile picture of Septi Retno Desi P, S.Pd." height="100"
-                                src="https://storage.googleapis.com/a1aa/image/1tp2cclm4upxFJ8Vpe8wzR03HfnuvSbIZoOjALjfdrpo51unA.jpg"
-                                width="100" />
-                            <div class="name">
-                                Septi Retno Desi P, S.Pd.
-                            </div>
-                            <div class="title">
-                                Kepala Bengkel
-                            </div>
-                        </div>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
 
             <div class="lab-container">
-                <!-- card lab 1 -->
+                {% set colors = ['color-purple', 'color-blue', 'color-green'] %}
+                {% for labroom in labrooms %}
                 <div class="card-lab">
-                    <div class="title">LAB RPL 1</div>
+                    <div class="title">{{ labroom.name }}</div>
+                    {% for good in labroom.goods %}
+                    {% if good.id_lab_rooms == labroom.id %}
                     <div class="item">
                         <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
+                            <span>{{ good.name }}</span>
+                            <span>: {{ good.amount }}</span>
                         </span>
-                        <span class="color-box color-purple"></span>
+                        <span class="color-box {{ colors[loop.index0 % colors|length] }}"></span>
                     </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
-
-                <!-- card lab 2 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 2</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
-
-                <!-- card lab 3 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 3</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
-
-                <!-- card lab 4 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 4</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-
         </div>
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         window.onload = function () {
             const calendarBody = document.getElementById('calendarBody');
@@ -887,180 +731,112 @@
             }
         };
 
-        /* blur */
-        let currentImage = 1; // Start with the first image
-        const image1 = document.querySelector('.image-1');
-        const image2 = document.querySelector('.image-2');
-        const description1 = document.querySelector('.description-1');
-        const description2 = document.querySelector('.description-2');
+        let currentImage = 1; // Mulai dengan gambar pertama
+        const images = document.querySelectorAll('.image-container img'); // Ambil semua gambar
+        const descriptions = document.querySelectorAll('.footer-text'); // Ambil semua deskripsi
 
         function switchImageAndDescription() {
-            if (currentImage === 1) {
-                // Apply blur to image 1
-                image1.classList.add('blur');
+            // Menambahkan blur pada gambar yang aktif
+            images[currentImage - 1].classList.add('blur');
+            descriptions[currentImage - 1].style.opacity = 0; // Menyembunyikan deskripsi yang aktif
 
-                // Show image 2, then remove blur and transition it in
-                setTimeout(() => {
-                    image2.style.opacity = 1; // Show image 2
-                    image2.classList.remove('blur'); // Remove blur from image 2
-                    image1.style.opacity = 0; // Hide image 1
-                    description1.style.opacity = 0; // Hide description 1
-                    description2.style.opacity = 1; // Show description 2
-                }, 1000); // Delay before showing image 2, to let blur effect finish
+            // Delay untuk transisi gambar dan deskripsi
+            setTimeout(() => {
+                // Menyembunyikan gambar yang aktif
+                images[currentImage - 1].style.opacity = 0;
 
-                currentImage = 2;
-            } else {
-                // Apply blur to image 2
-                image2.classList.add('blur');
+                // Menampilkan gambar dan deskripsi selanjutnya
+                currentImage = currentImage === images.length ? 1 : currentImage + 1;
+                images[currentImage - 1].style.opacity = 1; // Menampilkan gambar baru
+                descriptions[currentImage - 1].style.opacity = 1; // Menampilkan deskripsi baru
 
-                // Show image 1, then remove blur and transition it in
-                setTimeout(() => {
-                    image1.style.opacity = 1; // Show image 1
-                    image1.classList.remove('blur'); // Remove blur from image 1
-                    image2.style.opacity = 0; // Hide image 2
-                    description2.style.opacity = 0; // Hide description 2
-                    description1.style.opacity = 1; // Show description 1
-                }, 1000); // Delay before showing image 1, to let blur effect finish
-
-                currentImage = 1;
-            }
+                // Menghapus blur dari gambar baru
+                images[currentImage - 1].classList.remove('blur');
+            }, 1000); // Durasi delay sebelum gambar selanjutnya muncul
         }
 
-        // Change image and description every 5 seconds
-        setInterval(switchImageAndDescription, 5000);
-
-        /* DIAGRAM */
-        var ctx = document.getElementById('myPieChart').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['XII RPL A', 'XII RPL B', 'XII RPL C'],
-                datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#dfffea', '#ffeaea', '#ffffe0'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-
-        var ctx = document.getElementById('myPieChart-2').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['XI RPL A', 'XI RPL B', 'XI RPL C'],
-                datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#E7E7FF', '#D7F5FC', '#E8FADF'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
-
-        var ctx = document.getElementById('myPieChart-3').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: ['X RPL A', 'X RPL B', 'X RPL C'],
-                datasets: [{
-                    data: [35, 36, 34],
-                    backgroundColor: ['#FFE2E1', '#D8E3FF', '#FCFBD7'],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
-                        display: false
-                    }
-                }
-            }
-        });
+        // Panggil fungsi untuk mulai berganti gambar setiap beberapa detik
+        setInterval(switchImageAndDescription, 5000); // Ubah gambar setiap 5 detik
 
         document.addEventListener('DOMContentLoaded', function () {
-            var ctx = document.getElementById('barChart').getContext('2d');
-            var barChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['LAB 1', 'LAB 2', 'LAB 3', 'LAB 4'],
-                    datasets: [
-                        {
-                            label: 'Meja kecil',
-                            data: [20, 10, 15, 30],
-                            backgroundColor: '#696CFF',
-                            borderColor: '#696CFF',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        },
-                        {
-                            label: 'Monitor',
-                            data: [10, 5, 10, 20],
-                            backgroundColor: '#03C3EC',
-                            borderColor: '#03C3EC',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        },
-                        {
-                            label: 'Kursi',
-                            data: [30, 35, 25, 35],
-                            backgroundColor: '#71DD37',
-                            borderColor: '#71DD37',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        }
-                    ]
+    var colors = ['#7C4DFF', '#00BCD4', '#8BC34A'];
+    var ctx = document.getElementById('barChart').getContext('2d');
+
+    var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                {% for labroom in labrooms %}
+                '{{ labroom.name }}',
+                {% endfor %}
+            ],
+            datasets: [
+                {% set all_goods = [] %}
+                {% for labroom in labrooms %}
+                    {% for good in labroom.goods %}
+                        {% if good.name not in all_goods %}
+                            {% set _ = all_goods.append(good.name) %}
+                        {% endif %}
+                    {% endfor %}
+                {% endfor %}
+
+                {% for good_name in all_goods %}
+                {
+                    label: '{{ good_name }}',
+                    data: [
+                        {% for labroom in labrooms %}
+                            {{ labroom.goods | selectattr("name", "equalto", good_name) | map(attribute="amount") | list | first | default(0) }},
+                        {% endfor %}
+                    ],
+                    backgroundColor: colors[{{ loop.index0 }} % colors.length],
+                    borderColor: colors[{{ loop.index0 }} % colors.length],
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    barThickness: 15,
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 5,
-                                color: '#ccc'
-                            },
-                            grid: {
-                                color: '#f0f0f0'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#aaa'
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
+                {% endfor %}
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 5,
+                        color: '#ccc'
                     },
-                    plugins: {
-                        legend: {
-                            display: true
-                        }
+                    grid: {
+                        color: '#f0f0f0'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#aaa'
+                    },
+                    grid: {
+                        display: false
                     }
                 }
-            });
-        });
+            },
+            plugins: {
+                legend: {
+                    display: true
+                }
+            }
+        }
+    });
 
+    // Debugging di frontend
+    console.log("Chart Labels:", barChart.data.labels);
+    barChart.data.datasets.forEach(function (dataset, index) {
+        console.log(`Dataset ${index + 1}:`);
+        console.log(`- Label: ${dataset.label}`);
+        console.log(`- Data: ${dataset.data}`);
+        console.log(`- BackgroundColor: ${dataset.backgroundColor}`);
+    });
+});
     </script>
 </body>
 
