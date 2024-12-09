@@ -12,6 +12,8 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <style>
         body {
             background-color: #f3f4ff;
@@ -520,26 +522,27 @@
         <div class="d-flex mb-3">
 
             <div class="d-flex flex-column me-3">
-                <!-- diagram kelas 1 -->
                 <!-- diagram kelas -->
                 {% for batch in batches %}
                 <div class="card-diagram mb-3">
                     <div class="row">
                         <div class="col-md-6">
-                            <div class="title-diagram">Jumlah Siswa RPL</div>
+                            <div class="title-diagram">Jumlah Siswa</div>
                             <div class="subtitle-diagram">Angkatan {{ batch.batch_year }}</div>
                             <div class="mt-2">
-                                {% for class_ in batch.classes %}
-                                <div class="class-diagram mb-2">
-                                    <div class="color-box"
-                                        style="background-color: #{{ loop.index0 % 10 }}{{ loop.index0 % 10 }}{{ loop.index0 % 10 }};">
-                                    </div>
-                                    <div>
+                                <div class="class-diagram"
+                                    style="display: flex; flex-direction: column; align-items: start;">
+                                    {% set classColors = [] %}
+                                    {% for class_ in batch.classes %}
+                                    {% set randomColor = "#{:06x}".format(range(0, 16777215) | random) %}
+                                    {% set _ = classColors.append(randomColor) %}
+                                    <div class="class-diagram-item" style="display: flex;flex-direction: row;">
+                                        <div class="color-box" style="background-color: {{ randomColor }};"></div>
                                         <div class="text">{{ class_.class_name }}</div>
-                                        <div class="count">{{ class_.total_student }} Siswa</div>
                                     </div>
+                                    <div class="count">{{ class_.total_student }} Siswa</div>
+                                    {% endfor %}
                                 </div>
-                                {% endfor %}
                             </div>
                         </div>
                         <div class="col-md-2">
@@ -553,6 +556,67 @@
                         </div>
                     </div>
                 </div>
+
+                <script>
+                    var classColors = {{ classColors | tojson }};
+                    var classLabels = [
+                        {% for class_ in batch.classes %}
+                    '{{ class_.class_name }}',
+                        {% endfor %}
+                    ];
+                    var classData = [
+                        {% for class_ in batch.classes %}
+                    { { class_.total_student } },
+                    {% endfor %}
+                    ];
+
+                    console.log("Class colors for batch {{ batch.batch_year }}:", classColors);
+
+                    if (classColors.length > 0) {
+                        var ctx = document.getElementById('myPieChart-{{ batch.id }}').getContext('2d');
+                        var myPieChart = new Chart(ctx, {
+                            type: 'doughnut',
+                            data: {
+                                labels: classLabels,
+                                datasets: [{
+                                    data: classData,
+                                    backgroundColor: classColors,
+                                    borderWidth: 1
+                                }]
+                            },
+                            options: {
+                                cutout: '70%',
+                                plugins: {
+                                    legend: {
+                                        display: false
+                                    }
+                                }
+                            }
+                        });
+                    } else {
+                        console.log('No classes found for batch {{ batch.batch_year }}');
+                    }
+                </script>
+                {% else %}
+                {% for i in range(3) %}
+                <div class="card-diagram mb-3">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="title-diagram">Jumlah Siswa</div>
+                            <div class="subtitle-diagram">Data tidak ada</div>
+                        </div>
+                        <div class="col-md-2">
+                            <div class="chart-container mt-3">
+                                <canvas id="myPieChart-{{ i }}"></canvas>
+                                <div class="chart-center">
+                                    <div class="number">0</div>
+                                    <div class="label">Siswa</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
                 {% endfor %}
             </div>
 
@@ -560,8 +624,7 @@
                 <!-- card grafik -->
                 <div class="card-large mb-3">
                     <div class="card-large-content">
-                        <canvas id="barChart"></canvas>
-                        </p>
+                        <canvas id="barChart" width="400" height="200"></canvas>
                     </div>
                 </div>
 
@@ -586,116 +649,28 @@
             </div>
 
             <div class="lab-container">
-                <!-- card lab 1 -->
+                {% set colors = ['color-purple', 'color-blue', 'color-green'] %}
+                {% for labroom in labrooms %}
                 <div class="card-lab">
-                    <div class="title">LAB RPL 1</div>
+                    <div class="title">{{ labroom.name }}</div>
+                    {% for good in labroom.goods %}
+                    {% if good.id_lab_rooms == labroom.id %}
                     <div class="item">
                         <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
+                            <span>{{ good.name }}</span>
+                            <span>: {{ good.amount }}</span>
                         </span>
-                        <span class="color-box color-purple"></span>
+                        <span class="color-box {{ colors[loop.index0 % colors|length] }}"></span>
                     </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
+                    {% endif %}
+                    {% endfor %}
                 </div>
-
-                <!-- card lab 2 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 2</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
-
-                <!-- card lab 3 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 3</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
-
-                <!-- card lab 4 -->
-                <div class="card-lab">
-                    <div class="title">LAB RPL 4</div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Meja kecil</span>
-                            <span>: 25</span>
-                        </span>
-                        <span class="color-box color-purple"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Monitor</span>
-                            <span>: 16</span>
-                        </span>
-                        <span class="color-box color-blue"></span>
-                    </div>
-                    <div class="item">
-                        <span class="label">
-                            <span>Kursi</span>
-                            <span>: 33</span>
-                        </span>
-                        <span class="color-box color-green"></span>
-                    </div>
-                </div>
+                {% endfor %}
             </div>
-
         </div>
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
         window.onload = function () {
             const calendarBody = document.getElementById('calendarBody');
@@ -783,109 +758,85 @@
         // Panggil fungsi untuk mulai berganti gambar setiap beberapa detik
         setInterval(switchImageAndDescription, 5000); // Ubah gambar setiap 5 detik
 
-        {% for batch in batches %}
-        var ctx = document.getElementById('myPieChart-{{ batch.id }}').getContext('2d');
-        var myPieChart = new Chart(ctx, {
-            type: 'doughnut',
-            data: {
-                labels: [
-                    {% for class_ in batch.classes %}
-                        '{{ class_.class_name }}',
+        document.addEventListener('DOMContentLoaded', function () {
+    var colors = ['#7C4DFF', '#00BCD4', '#8BC34A'];
+    var ctx = document.getElementById('barChart').getContext('2d');
+
+    var barChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: [
+                {% for labroom in labrooms %}
+                '{{ labroom.name }}',
+                {% endfor %}
+            ],
+            datasets: [
+                {% set all_goods = [] %}
+                {% for labroom in labrooms %}
+                    {% for good in labroom.goods %}
+                        {% if good.name not in all_goods %}
+                            {% set _ = all_goods.append(good.name) %}
+                        {% endif %}
                     {% endfor %}
-                ],
-                datasets: [{
+                {% endfor %}
+
+                {% for good_name in all_goods %}
+                {
+                    label: '{{ good_name }}',
                     data: [
-                        {% for class_ in batch.classes %}
-                            {{ class_.total_student }},
+                        {% for labroom in labrooms %}
+                            {{ labroom.goods | selectattr("name", "equalto", good_name) | map(attribute="amount") | list | first | default(0) }},
                         {% endfor %}
                     ],
-                    backgroundColor: [
-                        {% for class_ in batch.classes %}
-                            '#{{ loop.index0 % 10 }}{{ loop.index0 % 10 }}{{ loop.index0 % 10 }}',
-                        {% endfor %}
-                    ],
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                cutout: '70%',
-                plugins: {
-                    legend: {
+                    backgroundColor: colors[{{ loop.index0 }} % colors.length],
+                    borderColor: colors[{{ loop.index0 }} % colors.length],
+                    borderWidth: 1,
+                    borderRadius: 10,
+                    barThickness: 15,
+                },
+                {% endfor %}
+            ]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: {
+                        stepSize: 5,
+                        color: '#ccc'
+                    },
+                    grid: {
+                        color: '#f0f0f0'
+                    }
+                },
+                x: {
+                    ticks: {
+                        color: '#aaa'
+                    },
+                    grid: {
                         display: false
                     }
                 }
-            }
-        });
-        {% endfor %}
-
-        document.addEventListener('DOMContentLoaded', function () {
-            var ctx = document.getElementById('barChart').getContext('2d');
-            var barChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: ['LAB 1', 'LAB 2', 'LAB 3', 'LAB 4'],
-                    datasets: [
-                        {
-                            label: 'Meja kecil',
-                            data: [20, 10, 15, 30],
-                            backgroundColor: '#696CFF',
-                            borderColor: '#696CFF',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        },
-                        {
-                            label: 'Monitor',
-                            data: [10, 5, 10, 20],
-                            backgroundColor: '#03C3EC',
-                            borderColor: '#03C3EC',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        },
-                        {
-                            label: 'Kursi',
-                            data: [30, 35, 25, 35],
-                            backgroundColor: '#71DD37',
-                            borderColor: '#71DD37',
-                            borderWidth: 1,
-                            borderRadius: 10,
-                            barThickness: 15, // Ukuran batang lebih kecil
-                        }
-                    ]
-                },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    scales: {
-                        y: {
-                            beginAtZero: true,
-                            ticks: {
-                                stepSize: 5,
-                                color: '#ccc'
-                            },
-                            grid: {
-                                color: '#f0f0f0'
-                            }
-                        },
-                        x: {
-                            ticks: {
-                                color: '#aaa'
-                            },
-                            grid: {
-                                display: false
-                            }
-                        }
-                    },
-                    plugins: {
-                        legend: {
-                            display: true
-                        }
-                    }
+            },
+            plugins: {
+                legend: {
+                    display: true
                 }
-            });
-        });
+            }
+        }
+    });
 
+    // Debugging di frontend
+    console.log("Chart Labels:", barChart.data.labels);
+    barChart.data.datasets.forEach(function (dataset, index) {
+        console.log(`Dataset ${index + 1}:`);
+        console.log(`- Label: ${dataset.label}`);
+        console.log(`- Data: ${dataset.data}`);
+        console.log(`- BackgroundColor: ${dataset.backgroundColor}`);
+    });
+});
     </script>
 </body>
 
