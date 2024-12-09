@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            background-color: #f3f4ff;
+            font-family: 'Jost', sans-serif;
+        }
+
+        .container {
+            max-width: 100%;
+            overflow-x: hidden;
+        }
+
+        .header {
+            justify-content: space-between;
+        }
+
+        .card {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border: none;
+        }
+
+        .full-card-input {
+            border-radius: 15px;
+            border: none;
+            outline: none;
+            padding: 10px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        textarea::placeholder {
+            color: #CED3F5;
+        }
+
+        /* guru */
+        .profile-img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #d3d3d3;
+            margin: 0 auto 20px;
+        }
+
+        .btn-custom {
+            border-radius: 20px;
+            padding: 10px 20px;
+            margin-bottom: 10px;
+            width: 100%;
+        }
+
+        .btn-name {
+            color: #5a5a5a;
+            background-color: #f0f0f0;
+        }
+
+        .btn-description {
+            color: #d3d3d3;
+            background-color: #f9f9f9;
+        }
+
+        .check-icon {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: white;
+            border-radius: 50%;
+            padding: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        /* jurusan */
+        .class-box {
+            width: 40px;
+            height: 40px;
+            border-radius: 7px;
+            display: inline-block;
+            margin-right: 10px;
+            flex-shrink: 0;
+        }
+
+        .class-info {
+            color: #E0E0E0;
+            font-size: 1rem;
+        }
+
+        .checkmark {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background-color: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .checkmark i {
+            color: #3F51B5;
+            font-size: 1.5rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <!-- HEADER -->
+        <div class="header d-flex mt-3 mb-2">
+            <h4 class="title" style="color: #5562B3;"><strong>HALAMAN ADMIN</strong></h4>
+            <div class="d-flex">
+                <img src="{{ url_for('static', filename='assets/img/bulat.png') }}">
+                <h5 style="color: #5562B3;">Muhammad</h5>
+                <i class="bi bi-box-arrow-right"></i>
+            </div>
+        </div>
+
+        <!-- baris 1 -->
+        <div class="d-flex mb-3">
+            <div class="row">
+            
+                <!-- input text -->
+                <div class="col-3">
+                    <div class="card" style="height: 160px; position: relative;">
+                        <div class="card-body"
+                            style="display: flex; align-items: center; justify-content: center; height: 100%;">
+                            <textarea placeholder="ketik Informasi Terkini ..." style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 50px; 
+                                       max-height: calc(100% - 50px); width: calc(100% - 20px); 
+                                       border: none; outline: none; font-size: 18px; 
+                                       resize: none; overflow-y: auto; padding: 5px;">
+                            </textarea>
+                            <button
+                                style="position: absolute; bottom: 10px; right: 10px; font-size: 13px; padding: 5px 10px; border: none; color: #ffffff; background-color: #5562B3; border-radius: 7px;">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="card" style="height: 160px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!--   card input 2 -->
+                <div class="col-3">
+                    <div class="card" style="height: 160px; position: relative;">
+                        <div class="card-body" style="padding: 0; position: relative;">
+                            <textarea placeholder="Deskripsi Informasi Kegiatan ..." style="position: absolute; top: 10px; left: 10px; right: 10px; bottom: 50px; 
+                                       max-height: calc(100% - 50px); width: calc(100% - 20px); 
+                                       border: none; outline: none; font-size: 18px; 
+                                       resize: none; overflow-y: auto; padding: 5px;">
+                            </textarea>
+                            <button
+                                style="position: absolute; bottom: 10px; right: 10px; font-size: 13px; padding: 5px 10px; border: none; color: #ffffff; background-color: #5562B3; border-radius: 7px;">Simpan</button>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-3">
+                    <div class="card" style="height: 160px;">
+                        <div class="card-body">
+                            <h5 class="card-title">Special title treatment</h5>
+                            <p class="card-text">With supporting text below as a natural lead-in to additional content.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- baris 2 -->
+        <div class="row mb-3">
+            <!-- logo huruf & guru pemb -->
+            <div class="col" style="max-width: 255px;">
+                <!-- logo text -->
+                <div class="card mb-3" style="height: 160px; position: relative;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #5562B3; font-size: 18px;">Logo Text</h5>
+                        <textarea placeholder="Tambah Nama Logo" style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); 
+                                   text-align: center; width: 80%; height: 50px; border: none; 
+                                   outline: none; font-size: 18px; resize: none; overflow-y: auto;">
+                        </textarea>
+                        <button
+                            style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 13px; padding: 5px 10px; border: none; color: #ffffff; background-color: #5562B3; border-radius: 7px;">
+                            Simpan
+                        </button>
+                    </div>
+                </div>
+                <!-- guru pembimbing -->
+                <div class="card" style="height: 55px;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center" style="color: #5562B3; font-size: 19px;">Guru Pembimbing +
+                        </h5>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- data grafik -->
+            <div class="col">
+                <div class="card mb-3" style="height: 55px;">
+                    <div class="card-body">
+                        <h5 class="card-title " style="color: #5562B3; font-size: 19px;">Data Grafik Diagram</h5>
+                    </div>
+                </div>
+
+                <!-- card add lab -->
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card" style="height: 160px;">
+                            <div class="card-body">
+                                <!-- Nama LAB 1-->
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span style="font-size: 18px;">Nama LAB:</span>
+                                    <input type="text" placeholder="..."
+                                        style="font-size: 18px; width: 40%; border: none; outline: none; padding: 2px; margin-right: 26px; ">
+                                </div>
+
+                                <!-- Nama Objek dan Jumlah -->
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="height: 160px;">
+                            <div class="card-body">
+                                <!-- Nama LAB 2-->
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span style="font-size: 18px;">Nama LAB:</span>
+                                    <input type="text" placeholder="..."
+                                        style="font-size: 18px; width: 40%; border: none; outline: none; padding: 2px; margin-right: 26px;">
+                                </div>
+
+                                <!-- Nama Objek dan Jumlah -->
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="height: 160px;">
+                            <div class="card-body">
+                                <!-- Nama LAB 3-->
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span style="font-size: 18px;">Nama LAB:</span>
+                                    <input type="text" placeholder="..."
+                                        style="font-size: 18px; width: 40%; border: none; outline: none; padding: 2px; margin-right: 26px;">
+                                </div>
+
+                                <!-- Nama Objek dan Jumlah -->
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-3">
+                        <div class="card" style="height: 160px;">
+                            <div class="card-body">
+                                <!-- Nama LAB 4-->
+                                <div class="d-flex justify-content-between align-items-center mb-1">
+                                    <span style="font-size: 18px;">Nama LAB:</span>
+                                    <input type="text" placeholder="..."
+                                        style="font-size: 18px; width: 40%; border: none; outline: none; padding: 2px; margin-right: 26px;">
+                                </div>
+
+                                <!-- Nama Objek dan Jumlah -->
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                                <div class="d-flex align-items-center mb-1" style="font-size: 19px;">
+                                    <input type="text" placeholder="Nama Objek"
+                                        style="font-size: 17px; width: 49%; border: none; outline: none; padding: 2px; margin-right: 5px;">
+                                    <span style="margin-right: 5px;">:</span>
+                                    <input type="text" placeholder="Jumlah"
+                                        style="font-size: 17px; width: 40%; border: none; outline: none; padding: 2px;">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- baris 3 -->
+        <div class="row mb-3">
+            <div class="col" style="max-width: 255px;">
+                <!-- Guru -->
+                <div class="card mb-3" style="height: 260px;">
+                    <div class="card-body">
+                        <div class="check-icon">
+                            <i class="bi bi-check"></i>
+                        </div>
+                        <img src="assets/img/bulat.png" alt="Gambar Guru"
+                            style="display: block; margin: 0 auto; width: 80px; height: auto;">
+
+                        <!-- Input Nama Guru -->
+                        <input type="text" placeholder="Nama Guru"
+                            style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 50px; font-size: 16px; outline: none; border: none; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; text-align: center;">
+
+                        <!-- Textarea Keterangan -->
+                        <input type="text" placeholder="Keterangan"
+                            style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 50px; font-size: 16px; outline: none; border: none; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; text-align: center;">
+                    </div>
+                </div>
+            </div>
+
+            <!-- data grafik -->
+            <div class="col">
+                <div class="card mb-3" style="height: 55px;">
+                    <div class="card-body">
+                        <h5 class="card-title" style="color: #5562B3; font-size: 19px;">Jumlah Siswa</h5>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <!-- card kelas #1-->
+                    <div class="col-4">
+                        <div class="card" style="height: 190px;">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <!-- Input Nama Jurusan -->
+                                        <input type="text" placeholder="Nama Jurusan"
+                                            style="font-size: 18px; border: none; outline: none; width: 100%; background: transparent;">
+                                        <!-- Input Angkatan -->
+                                        <div class="d-flex align-items-center">
+                                            <span style="font-size: 16px;">Angkatan</span>
+                                            <input type="text" placeholder="..."
+                                                style="font-size: 16px; border: none; outline: none; margin-left: 2px; width: 50%; background: transparent;">
+                                        </div>
+                                    </div>
+                                    <!-- Ikon Checkmark -->
+                                    <div class="checkmark">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="d-flex">
+                                        <!-- kelas 1 -->
+                                        <div class="d-flex align-items-center mb-1 me-2">
+                                            <div class="class-box"
+                                                style="background-color: #B3E5FC; position: relative;">
+                                                <input type="color" class="colorPicker"
+                                                    style="opacity: 0; position: absolute; cursor: pointer;">
+                                            </div>
+                                            <div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Kelas"
+                                                        style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Jumlah Siswa"
+                                                        style="font-size: 12px; width: 85%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- kelas 2 -->
+                                        <div class="d-flex align-items-center mb-1">
+                                            <div class="class-box"
+                                                style="background-color: #B3E5FC; position: relative;">
+                                                <input type="color" class="colorPicker"
+                                                    style="opacity: 0; position: absolute; cursor: pointer;">
+                                            </div>
+                                            <div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Kelas"
+                                                        style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Jumlah Siswa"
+                                                        style="font-size: 12px; width: 85%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- kelas 3 -->
+                                    <div class="d-flex align-items-center mb-1">
+                                        <div class="class-box" style="background-color: #B3E5FC; position: relative;">
+                                            <input type="color" class="colorPicker"
+                                                style="opacity: 0; position: absolute; cursor: pointer;">
+                                        </div>
+                                        <div>
+                                            <div class="class-info">
+                                                <input type="text" placeholder="Kelas"
+                                                    style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                            </div>
+                                            <div class="class-info">
+                                                <input type="text" placeholder="Jumlah Siswa"
+                                                    style="font-size: 12px; width: 55%; border: none; outline: none; background: transparent;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- card kelas #2 -->
+                    <div class="col-4">
+                        <div class="card" style="height: 180px;">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <!-- Input Nama Jurusan -->
+                                        <input type="text" placeholder="Nama Jurusan"
+                                            style="font-size: 18px; border: none; outline: none; width: 100%; background: transparent;">
+                                        <!-- Input Angkatan -->
+                                        <div class="d-flex align-items-center">
+                                            <span style="font-size: 16px;">Angkatan</span>
+                                            <input type="text" placeholder="..."
+                                                style="font-size: 16px; border: none; outline: none; margin-left: 2px; width: 50%; background: transparent;">
+                                        </div>
+                                    </div>
+                                    <!-- Ikon Checkmark -->
+                                    <div class="checkmark">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="d-flex">
+                                        <!-- kelas 1 -->
+                                        <div class="d-flex align-items-center mb-1 me-2">
+                                            <div class="class-box"
+                                                style="background-color: #B3E5FC; position: relative;">
+                                                <input type="color" class="colorPicker"
+                                                    style="opacity: 0; position: absolute; cursor: pointer;">
+                                            </div>
+                                            <div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Kelas"
+                                                        style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Jumlah Siswa"
+                                                        style="font-size: 12px; width: 85%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- kelas 2 -->
+                                        <div class="d-flex align-items-center mb-1">
+                                            <div class="class-box"
+                                                style="background-color: #B3E5FC; position: relative;">
+                                                <input type="color" class="colorPicker"
+                                                    style="opacity: 0; position: absolute; cursor: pointer;">
+                                            </div>
+                                            <div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Kelas"
+                                                        style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Jumlah Siswa"
+                                                        style="font-size: 12px; width: 85%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- kelas 3 -->
+                                    <div class="d-flex align-items-center mb-1">
+                                        <div class="class-box" style="background-color: #B3E5FC; position: relative;">
+                                            <input type="color" class="colorPicker"
+                                                style="opacity: 0; position: absolute; cursor: pointer;">
+                                        </div>
+                                        <div>
+                                            <div class="class-info">
+                                                <input type="text" placeholder="Kelas"
+                                                    style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                            </div>
+                                            <div class="class-info">
+                                                <input type="text" placeholder="Jumlah Siswa"
+                                                    style="font-size: 12px; width: 55%; border: none; outline: none; background: transparent;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- card kelas #3 -->
+                    <div class="col-4">
+                        <div class="card" style="height: 180px;">
+                            <div class="card-body">
+                                <div class="d-flex justify-content-between align-items-center">
+                                    <div>
+                                        <!-- Input Nama Jurusan -->
+                                        <input type="text" placeholder="Nama Jurusan"
+                                            style="font-size: 18px; border: none; outline: none; width: 100%; background: transparent;">
+                                        <!-- Input Angkatan -->
+                                        <div class="d-flex align-items-center">
+                                            <span style="font-size: 16px;">Angkatan</span>
+                                            <input type="text" placeholder="..."
+                                                style="font-size: 16px; border: none; outline: none; margin-left: 2px; width: 50%; background: transparent;">
+                                        </div>
+                                    </div>
+                                    <!-- Ikon Checkmark -->
+                                    <div class="checkmark">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+
+                                <div>
+                                    <div class="d-flex">
+                                        <!-- kelas 1 -->
+                                        <div class="d-flex align-items-center mb-1 me-2">
+                                            <div class="class-box"
+                                                style="background-color: #B3E5FC; position: relative;">
+                                                <input type="color" class="colorPicker"
+                                                    style="opacity: 0; position: absolute; cursor: pointer;">
+                                            </div>
+                                            <div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Kelas"
+                                                        style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Jumlah Siswa"
+                                                        style="font-size: 12px; width: 85%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- kelas 2 -->
+                                        <div class="d-flex align-items-center mb-1">
+                                            <div class="class-box"
+                                                style="background-color: #B3E5FC; position: relative;">
+                                                <input type="color" class="colorPicker"
+                                                    style="opacity: 0; position: absolute; cursor: pointer;">
+                                            </div>
+                                            <div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Kelas"
+                                                        style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                                <div class="class-info">
+                                                    <input type="text" placeholder="Jumlah Siswa"
+                                                        style="font-size: 12px; width: 85%; border: none; outline: none; background: transparent;">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- kelas 3 -->
+                                    <div class="d-flex align-items-center mb-1">
+                                        <div class="class-box" style="background-color: #B3E5FC; position: relative;">
+                                            <input type="color" class="colorPicker"
+                                                style="opacity: 0; position: absolute; cursor: pointer;">
+                                        </div>
+                                        <div>
+                                            <div class="class-info">
+                                                <input type="text" placeholder="Kelas"
+                                                    style="font-size: 12px; width: 50%; border: none; outline: none; background: transparent;">
+                                            </div>
+                                            <div class="class-info">
+                                                <input type="text" placeholder="Jumlah Siswa"
+                                                    style="font-size: 12px; width: 55%; border: none; outline: none; background: transparent;">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('textarea').forEach(textarea => {
+            if (textarea.value.trim() === "") {
+                textarea.value = "";
+            }
+        });
+
+        /* color box */
+        const colorPickers = document.querySelectorAll('.colorPicker');
+
+        // Loop melalui setiap color picker
+        colorPickers.forEach((picker) => {
+            picker.addEventListener('input', (event) => {
+                // Dapatkan elemen parent dari picker
+                const classBox = picker.parentElement;
+
+                // Ubah warna background berdasarkan pilihan pengguna
+                classBox.style.backgroundColor = event.target.value;
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>
