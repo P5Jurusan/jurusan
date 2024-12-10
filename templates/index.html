@@ -470,8 +470,7 @@
                             src="{{ url_for('static', filename='assets/img/' + informations[0].image_path) }}"
                             width="300" />
                         {% else %}
-                        <img alt="Gambar Default" class="img-fluid rounded" height="200"
-                            src="{{ url_for('static', filename='assets/img/default.png') }}" width="300" />
+                        <img src="{{ url_for('static', filename='assets/img/default.png') }}" alt="Gambar Default" class="img-fluid rounded" height="200" width="300" />
                         {% endif %}
                     </div>
                 </div>
