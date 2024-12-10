@@ -100,7 +100,7 @@ def index():
     activities = Activity.query.order_by(Activity.id.desc()).limit(3).all()
     teachers = Teacher.query.all()
     batches = Batch.query.order_by(Batch.id.desc()).limit(3).all()
-    labrooms = labRoom.query.order_by(labRoom.id.desc()).limit(3).all()
+    labrooms = labRoom.query.order_by(labRoom.id.desc()).limit(4).all()
     return render_template('index.html', activities=activities, informations=informations,teachers=teachers,batches=batches,labrooms=labrooms)
 
 @app.route('/login', methods=['GET', 'POST'])
