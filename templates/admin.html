@@ -279,12 +279,11 @@
                             <div class="card-body">
                                 <!-- Gambar Guru -->
                                 <img src="{{ url_for('static', filename='assets/img/bulat.png') }}" alt="Gambar Guru"
-                                    class="guruImage"
+                                    class="guruImage" id="${imageId}"
                                     style="display: block; margin: 0 auto; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; cursor: pointer;"
-                                    onclick="document.getElementById('imageUpload1').click();">
+                                    onclick="document.getElementById('${uniqueId}').click();">
 
-                                <input type="file" id="imageUpload1" style="display: none;" accept="image/*"
-                                    onchange="previewImage(event)">
+                                <input type="file" id="${uniqueId}" style="display: none;" accept="image/*" onchange="previewImage(event, '${imageId}')">
 
                                 <input type="text" placeholder="Nama Guru"
                                     style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 50px; font-size: 16px; outline: none; border: none; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; text-align: center;">
@@ -393,8 +392,8 @@
         setupImageUpload('imageInput2', 'previewImage2');
 
         /* upload guru */
-        function previewImage(event) {
-            const image = document.getElementById('guruImage');
+        function previewImage(event, imageId) {
+            const image = document.getElementById(imageId);
             const file = event.target.files[0];
             const reader = new FileReader();
 
@@ -526,20 +525,20 @@
         }
 
         function addGuruPembimbing() {
-            // ID unik untuk input file pada setiap card baru
             const uniqueId = `imageUpload${Date.now()}`;
+            const imageId = `guruImage${Date.now()}`;
 
-            // Struktur HTML untuk card baru
             const newCard = `
         <div class="card mb-3" style="height: 260px;">
             <div class="card-body">
                 <!-- Gambar Guru -->
                 <img src="{{ url_for('static', filename='assets/img/bulat.png') }}" alt="Gambar Guru"
                     class="guruImage"
+                    id="${imageId}"
                     style="display: block; margin: 0 auto; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; cursor: pointer;"
                     onclick="document.getElementById('${uniqueId}').click();">
 
-                <input type="file" id="${uniqueId}" style="display: none;" accept="image/*" onchange="previewImage(event)">
+                <input type="file" id="${uniqueId}" style="display: none;" accept="image/*" onchange="previewImage(event, '${imageId}')">
 
                 <input type="text" placeholder="Nama Guru"
                     style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 50px; font-size: 16px; outline: none; border: none; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; text-align: center;">
@@ -550,7 +549,6 @@
         </div>
     `;
 
-            // Tambahkan card baru ke dalam kontainer
             const container = document.getElementById('guru-container');
             container.insertAdjacentHTML('beforeend', newCard);
         }
