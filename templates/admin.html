@@ -253,16 +253,19 @@
             <div class="row mb-3">
                 <!-- logo huruf & guru pemb -->
                 <div class="col" style="max-width: 255px;">
-                    <div class="card mb-3" style="height: 160px; position: relative; width:230px;">
-                        <div class="card-body">
-                            <h5 class="card-title" style="color: #5562B3; font-size: 18px;">Logo Text</h5>
+                    <div class="card mb-3" style="height: 160px; position: relative; width: 230px; overflow: hidden;">
+                        <div class="card-body" style="position: relative; padding: 10px; overflow: hidden;">
+                            <h5 class="card-title" style="color: #5562B3; font-size: 18px; margin-bottom: 10px;">Logo
+                                Text</h5>
                             <form action="/admin/major" method="POST" style="width: 100%; height: 100%;">
-                                <textarea placeholder="Tambah Nama Logo" name="name"
-                                    style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); text-align: center; width: 80%; height: 50px; border: none; outline: none; font-size: 18px; resize: none; overflow-y: auto;">
+                                <textarea placeholder="Tambah Nama Logo" name="name" style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); 
+                                    text-align: center; width: 80%; height: 50px; border: none; outline: none; 
+                                    font-size: 18px; resize: none; overflow: hidden;">
                                     {{ major.name if major else '' }}
-                            </textarea>
-                                <button
-                                    style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); font-size: 13px; padding: 5px 10px; border: none; color: #ffffff; background-color: #5562B3; border-radius: 7px;">
+                                </textarea>
+                                <button style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); 
+                                    font-size: 13px; padding: 5px 10px; border: none; color: #ffffff; 
+                                    background-color: #5562B3; border-radius: 7px;">
                                     Simpan
                                 </button>
                             </form>
@@ -293,20 +296,22 @@
 
             <!-- data grafik -->
             <div class="col ms-3" style="flex-grow: 1;">
-                <div class="card" style="height: 55px;">
-                    <div class="card-body">
-                        <div class="d-flex" style="justify-content: space-between;">
-                            <h5 class="card-title " style="color: #5562B3; font-size: 19px;">Data Grafik Diagram</h5>
+                <div class="card" style="height: 55px; overflow: hidden;">
+                    <div class="card-body" style="padding: 10px; overflow: hidden;">
+                        <div class="d-flex" style="justify-content: space-between; align-items: center;">
+                            <h5 class="card-title" style="color: #5562B3; font-size: 19px; margin: 0;">Data Grafik
+                                Diagram</h5>
                             <!-- plus -->
                             <button class="mb-2"
                                 style="background: none; border: none; color: #5562B3; font-size: 19px; cursor: pointer; padding: 0;"
                                 onmouseover="this.style.color='#334599'" onmouseout="this.style.color='#5562B3'"
                                 onclick="addCardLab()">
-                                <i class="fa fa-plus" aria-hidden="true"></i>
+                                <i class="fa fa-plus mt-2  me-2" aria-hidden="true"></i>
                             </button>
                         </div>
                     </div>
                 </div>
+
 
                 <!-- card add lab -->
                 <form action="/admin/lab" method="POST" encytype="multipart/form-data">
@@ -319,16 +324,17 @@
 
                 <!-- jumlah siswa -->
                 <div class="mt-3">
-                    <div class="card" style="height: 55px;">
-                        <div class="card-body">
-                            <div class="d-flex" style="justify-content: space-between;">
-                                <h5 class="card-title" style="color: #5562B3; font-size: 19px;">Jumlah Siswa</h5>
+                    <div class="card" style="height: 55px; overflow: hidden;">
+                        <div class="card-body" style="padding: 10px; overflow: hidden;">
+                            <div class="d-flex" style="justify-content: space-between; align-items: center;">
+                                <h5 class="card-title" style="color: #5562B3; font-size: 19px; margin: 0;">Jumlah Siswa
+                                </h5>
                                 <!-- plus -->
                                 <button class="mb-2"
                                     style="background: none; border: none; color: #5562B3; font-size: 19px; cursor: pointer; padding: 0;"
                                     onmouseover="this.style.color='#334599'" onmouseout="this.style.color='#5562B3'"
                                     onclick="addCardKelas()">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                    <i class="fa fa-plus mt-2 me-2" aria-hidden="true"></i>
                                 </button>
                             </div>
                         </div>
@@ -412,12 +418,12 @@
     </script>
 
     <script>
- let goodsCount = 0;  // Counter untuk batch
+        let goodsCount = 0;  // Counter untuk batch
 
-function addCardLab() {
-    goodsCount++;  // Increment untuk setiap batch baru
+        function addCardLab() {
+            goodsCount++;  // Increment untuk setiap batch baru
 
-    const newCard = `
+            const newCard = `
         <div class="col-sm-3 mt-3" id="lab-${goodsCount}">
             <div class="card" style="height: 160px;">
                 <div class="card-body">
@@ -438,12 +444,12 @@ function addCardLab() {
         </div>
     `;
 
-    document.getElementById("card-lab").insertAdjacentHTML("beforeend", newCard);
-}
+            document.getElementById("card-lab").insertAdjacentHTML("beforeend", newCard);
+        }
 
-function addGoodsInput(goodsCount) {
-    // Tambahkan input barang dan jumlah untuk lab tertentu
-    const goodsDiv = `
+        function addGoodsInput(goodsCount) {
+            // Tambahkan input barang dan jumlah untuk lab tertentu
+            const goodsDiv = `
         <div class="d-flex flex-column align-items-start mb-1 me-5">
             <span class="dot me-2"></span>
             <div class="mt-2">
@@ -455,8 +461,8 @@ function addGoodsInput(goodsCount) {
         </div>
     `;
 
-    document.getElementById(`goods-${goodsCount}`).insertAdjacentHTML("beforeend", goodsDiv);
-}
+            document.getElementById(`goods-${goodsCount}`).insertAdjacentHTML("beforeend", goodsDiv);
+        }
 
 
         // Function to add a new card below when the plus button is clicked
@@ -466,7 +472,7 @@ function addGoodsInput(goodsCount) {
             batchCount++;  // Increment untuk setiap batch baru
 
             const newCardHTML = `
-                < div class="col-sm-4 mt-3" id = "batch-${batchCount}" >
+                <div class="col-sm-4 mt-3" id = "batch-${batchCount}">
                     <div class="card" style="height: 190px;">
                         <div class="card-body">
                             <div class="d-flex justify-content-between align-items-center">
@@ -484,7 +490,6 @@ function addGoodsInput(goodsCount) {
                             <button type="button" class="btn btn-secondary mt-2" onclick="addClassInput(${batchCount})">Tambah Kelas</button>
                         </div>
                     </div>
-    </ >
                 `;
 
             document.getElementById('card-kelas').insertAdjacentHTML('beforeend', newCardHTML);
@@ -493,27 +498,26 @@ function addGoodsInput(goodsCount) {
         function addClassInput(batchCount) {
             // Tambahkan input kelas dan total siswa untuk batch tertentu
             const classDiv = `
-                < div class="d-flex flex-column align-items-start mb-1 me-5" >
+                <div class="d-flex flex-column align-items-start mb-1 me-5">
         <span class="dot me-2"></span>
         <div class="mt-2">
             <input type="text" name="class_name_${batchCount}[]" placeholder="Kelas"
                    style="font-size: 12px; width: 100%; border: none; outline: none; background: transparent;">
             <input type="number" name="total_student_${batchCount}[]" placeholder="Jumlah Siswa"
                    style="font-size: 12px; width: 100%; border: none; outline: none; background: transparent;">
-        </div>
-    </>
-            `;
+        </div>       
+        </div>     `;
 
-            document.getElementById(`kelas - ${ batchCount } `).insertAdjacentHTML('beforeend', classDiv);
+            document.getElementById(`kelas-${batchCount}`).insertAdjacentHTML('beforeend', classDiv);
         }
 
 
         function addGuruPembimbing() {
-            const uniqueId = `imageUpload${ Date.now() } `;
-            const imageId = `guruImage${ Date.now() } `;
+            const uniqueId = `imageUpload${Date.now()} `;
+            const imageId = `guruImage${Date.now()} `;
 
             const newCard = `
-                < div class="card mb-3" style = "height: 260px;" >
+                <div class="card mb-3" style = "height: 260px;">
                     <div class="card-body">
                         <!-- Gambar Guru -->
                         <img src="{{ url_for('static', filename='assets/img/bulat.png') }}" alt="Gambar Guru"
