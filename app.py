@@ -3,7 +3,7 @@ from flask_migrate import Migrate
 import secrets
 import random
 import os
-import json
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_sqlalchemy import SQLAlchemy
 from itsdangerous import URLSafeTimedSerializer
 from email.mime.text import MIMEText
@@ -139,23 +139,29 @@ def login():
                 flash(message, 'danger')
             return redirect(url_for('login'))
 
-        # Cek NIP
+        # Cek NIP di database
         user = User.query.filter_by(nip=nip).first()
         if not user:
             flash('NIP tidak ditemukan!', 'danger')
             return redirect(url_for('login'))
 
-        # Cek Password
-        if user.password != password:
+        # Validasi password
+        if not check_password_hash(user.password, password):
             flash('Password salah!', 'danger')
             return redirect(url_for('login'))
 
-        # Jika validasi berhasil
-        session['user'] = user.name
-        flash('Login berhasil!', 'success')
-        return redirect(url_for('index'))
+        # Login berhasil
+        session['user'] = user.name  # Simpan data pengguna di session
+        flash(f'Selamat datang, {user.name}!', 'success')
+        return redirect(url_for('admin'))  # Ganti dengan halaman utama Anda
 
     return render_template('login.html')
+
+@app.route('/logout')
+def logout():
+    session.pop('user', None)  # Hapus data session
+    flash('Anda telah logout!', 'info')
+    return redirect(url_for('login'))
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -199,7 +205,8 @@ def register():
             return redirect(url_for('register'))
 
         # Simpan data ke database jika validasi lolos
-        new_user = User(nip=nip, name=name, email=email, password=password)
+        hashed_password = generate_password_hash(password)
+        new_user = User(nip=nip, name=name, email=email, password=hashed_password)
         db.session.add(new_user)
         db.session.commit()
 
@@ -301,8 +308,13 @@ def reset_password(token):
 
 @app.route('/admin', methods=['GET'])
 def admin():
+    if 'user' not in session:
+        flash('Silakan login terlebih dahulu!', 'warning')
+        return redirect(url_for('login'))
+        
     major = Major.query.order_by(Major.id.desc()).first()
-    return render_template('admin.html', major=major)
+    return render_template('admin.html', major=major, user=session['user'])
+
 
 @app.route('/admin/informations', methods=['POST'])
 def create_information():
@@ -313,7 +325,7 @@ def create_information():
     information = Information(description=data['description'], image_path=image_filename)
     db.session.add(information)
     db.session.commit()
-    return redirect(url_for('admin_page'))
+    return redirect(url_for('admin'))
 
 @app.route('/admin/activities', methods=['POST'])
 def create_activity():
@@ -324,7 +336,7 @@ def create_activity():
     activity = Activity(description=data['description'], image_path=image_filename)
     db.session.add(activity)
     db.session.commit()
-    return redirect(url_for('admin_page'))
+    return redirect(url_for('admin'))
 
 UPLOAD_FOLDER = 'static/assets/img/'  # Tentukan lokasi upload
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}  # Format file yang diperbolehkan
@@ -342,7 +354,7 @@ def create_teacher():
     # Validasi jumlah input
     if not (len(names) == len(titles) == len(profiles)):
         flash('Jumlah data tidak konsisten. Pastikan semua data diisi.', 'danger')
-        return redirect(url_for('admin_page'))
+        return redirect(url_for('admin'))
 
     for name, title, profile in zip(names, titles, profiles):
         if not name or not title:
@@ -362,7 +374,7 @@ def create_teacher():
 
     db.session.commit()
     flash('Data guru pembimbing berhasil ditambahkan!', 'success')
-    return redirect(url_for('admin_page'))
+    return redirect(url_for('admin'))
 @app.route('/admin/major', methods=['POST'])
 def major_proses():
     name = request.form['name']
