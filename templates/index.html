@@ -240,21 +240,6 @@
             font-size: 10px;
         }
 
-        .class-diagram {
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    max-height: 110px;
-    overflow-y: auto; /* Tetap memungkinkan scroll */
-    scrollbar-width: none; /* Menyembunyikan scrollbar di Firefox */
-}
-
-/* Untuk browser berbasis Webkit (Chrome, Edge, dll.) */
-.class-diagram::-webkit-scrollbar {
-    display: none; /* Menyembunyikan scrollbar */
-}
-
-
         .class-diagram div {
             display: flex;
             flex-direction: column;
@@ -369,19 +354,6 @@
             font-size: 12px;
             margin-bottom: 10px;
         }
-
-        .card-lab .item-container {
-    flex-grow: 1; /* Memastikan bagian ini dapat menyesuaikan tinggi yang tersisa */
-    max-height: 75px; /* Batasi tinggi maksimal untuk daftar item */
-    overflow-y: auto; /* Tambahkan scroll jika tinggi konten melebihi 75px */
-    padding-right: 5px; /* Opsional: Tambahkan ruang untuk scroll bar */
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-
-.card-lab .item-container::-webkit-scrollbar {
-    display: none; /* Sembunyikan scrollbar di Chrome, Safari, dan Edge */
-}
 
         .item {
             color: #9E9E9E;
@@ -556,20 +528,19 @@
                             <div class="title-diagram">Jumlah Siswa</div>
                             <div class="subtitle-diagram">Angkatan {{ batch.batch_year }}</div>
                             <div class="mt-2">
-                                <div class="class-diagram" style="display: flex; flex-direction: column; align-items: start; max-height: 110px; overflow-y: auto; scrollbar-width: none; padding-right: 10px;">
+                                <div class="class-diagram" style="display: flex; flex-direction: column; align-items: start; max-height: 95px; overflow-y: auto;">
                                     {% set classColors = [] %}
                                     {% for class_ in batch.classes %}
                                     {% set randomColor = "#{:06x}".format(range(0, 16777215) | random) %}
                                     {% set _ = classColors.append(randomColor) %}
-                                    <div class="class-diagram-item" style="display: flex; flex-direction: row; margin-bottom: 5px;">
+                                    <div class="class-diagram-item" style="display: flex;flex-direction: row;">
                                         <div class="color-box" style="background-color: {{ randomColor }};"></div>
                                         <div class="text">{{ class_.class_name }}</div>
                                     </div>
-                                    <div class="count" style="font-size: 10px; color: #4a4a8a;">{{ class_.total_student }} Siswa</div>
+                                    <div class="count">{{ class_.total_student }} Siswa</div>
                                     {% endfor %}
                                 </div>
                             </div>
-                            
                         </div>
                         <div class="col-md-2">
                             <div class="chart-container mt-3">
@@ -650,7 +621,7 @@
                 
             </div>
 
-            <div class="d-flex flex-column me-3">
+            <div class="d-flex flex-column me-3" style="max-width: 800px;">
                 <!-- card grafik -->
                 <div class="card-large mb-3">
                     <div class="card-large-content">
@@ -683,7 +654,8 @@
                 {% for labroom in labrooms %}
                 <div class="card-lab">
                     <div class="title">{{ labroom.name }}</div>
-                    <div class="item-container">
+                    <div class="" style="max-height: 85px; overflow-y: auto;">
+
                         {% for good in labroom.goods %}
                         {% if good.id_lab_rooms == labroom.id %}
                         <div class="item">
@@ -691,15 +663,14 @@
                                 <span>{{ good.name }}</span>
                                 <span>: {{ good.amount }}</span>
                             </span>
-                            <span class="color-box {{ colors[loop.index0 % colors|length] }}"></span>
-                        </div>
-                        {% endif %}
-                        {% endfor %}
+                        <span class="color-box {{ colors[loop.index0 % colors|length] }}"></span>
                     </div>
+                    {% endif %}
+                    {% endfor %}
+                </div>
                 </div>
                 {% endfor %}
             </div>
-            
         </div>
 
     </div>
