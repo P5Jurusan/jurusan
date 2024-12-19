@@ -528,7 +528,7 @@
                             <div class="title-diagram">Jumlah Siswa</div>
                             <div class="subtitle-diagram">Angkatan {{ batch.batch_year }}</div>
                             <div class="mt-2">
-                                <div class="class-diagram" style="display: flex; flex-direction: column; align-items: start;">
+                                <div class="class-diagram" style="display: flex; flex-direction: column; align-items: start; max-height: 95px; overflow-y: auto;">
                                     {% set classColors = [] %}
                                     {% for class_ in batch.classes %}
                                     {% set randomColor = "#{:06x}".format(range(0, 16777215) | random) %}
@@ -654,17 +654,20 @@
                 {% for labroom in labrooms %}
                 <div class="card-lab">
                     <div class="title">{{ labroom.name }}</div>
-                    {% for good in labroom.goods %}
-                    {% if good.id_lab_rooms == labroom.id %}
-                    <div class="item">
-                        <span class="label">
-                            <span>{{ good.name }}</span>
-                            <span>: {{ good.amount }}</span>
-                        </span>
+                    <div class="" style="max-height: 85px; overflow-y: auto;">
+
+                        {% for good in labroom.goods %}
+                        {% if good.id_lab_rooms == labroom.id %}
+                        <div class="item">
+                            <span class="label">
+                                <span>{{ good.name }}</span>
+                                <span>: {{ good.amount }}</span>
+                            </span>
                         <span class="color-box {{ colors[loop.index0 % colors|length] }}"></span>
                     </div>
                     {% endif %}
                     {% endfor %}
+                </div>
                 </div>
                 {% endfor %}
             </div>
