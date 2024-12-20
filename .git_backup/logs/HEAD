@@ -1,0 +1,94 @@
+0000000000000000000000000000000000000000 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732769032 +0700	clone: from https://github.com/P5Jurusan/jurusan.git
+43b4067a400de38849a7ddf566e9dec0ef229371 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732770504 +0700	checkout: moving from main to nizar
+43b4067a400de38849a7ddf566e9dec0ef229371 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732771574 +0700	checkout: moving from nizar to main
+43b4067a400de38849a7ddf566e9dec0ef229371 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732771756 +0700	checkout: moving from main to nasya
+43b4067a400de38849a7ddf566e9dec0ef229371 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1732771906 +0700	commit: first commit
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732772097 +0700	checkout: moving from nasya to nizar
+43b4067a400de38849a7ddf566e9dec0ef229371 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1732772633 +0700	checkout: moving from nizar to radit
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732772763 +0700	checkout: moving from radit to nizar
+43b4067a400de38849a7ddf566e9dec0ef229371 94e1e57845908b3b55f88016cd7396e1d14e55ec abizar0016 <muhammadabizar0016@gmail.com> 1732780564 +0700	commit: add
+94e1e57845908b3b55f88016cd7396e1d14e55ec 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1732796453 +0700	checkout: moving from nizar to radit
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732796708 +0700	checkout: moving from radit to main
+43b4067a400de38849a7ddf566e9dec0ef229371 94e1e57845908b3b55f88016cd7396e1d14e55ec abizar0016 <muhammadabizar0016@gmail.com> 1732796720 +0700	checkout: moving from main to nizar
+94e1e57845908b3b55f88016cd7396e1d14e55ec 785ce2b42cbf961380bd8181c5cdde2826f67ed5 abizar0016 <muhammadabizar0016@gmail.com> 1732796759 +0700	commit: add
+785ce2b42cbf961380bd8181c5cdde2826f67ed5 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732796841 +0700	checkout: moving from nizar to main
+43b4067a400de38849a7ddf566e9dec0ef229371 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1732796854 +0700	pull origin radit: Fast-forward
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1732796898 +0700	reset: moving to HEAD
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732797024 +0700	reset: moving to 43b4067
+43b4067a400de38849a7ddf566e9dec0ef229371 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1732797066 +0700	checkout: moving from main to radit
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732797237 +0700	checkout: moving from radit to main
+43b4067a400de38849a7ddf566e9dec0ef229371 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1732797295 +0700	checkout: moving from main to nasya
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c 785ce2b42cbf961380bd8181c5cdde2826f67ed5 abizar0016 <muhammadabizar0016@gmail.com> 1732797517 +0700	checkout: moving from nasya to nizar
+785ce2b42cbf961380bd8181c5cdde2826f67ed5 524d34e0dbb66534a35691914a7ac854cc0d7d11 abizar0016 <muhammadabizar0016@gmail.com> 1732800992 +0700	commit: add
+524d34e0dbb66534a35691914a7ac854cc0d7d11 43b4067a400de38849a7ddf566e9dec0ef229371 abizar0016 <muhammadabizar0016@gmail.com> 1732801049 +0700	checkout: moving from nizar to main
+43b4067a400de38849a7ddf566e9dec0ef229371 524d34e0dbb66534a35691914a7ac854cc0d7d11 abizar0016 <muhammadabizar0016@gmail.com> 1732801072 +0700	checkout: moving from main to nizar
+524d34e0dbb66534a35691914a7ac854cc0d7d11 d36c88ffbd1aded748cacec5b3de7b2c707ecc6b abizar0016 <muhammadabizar0016@gmail.com> 1732804254 +0700	commit: add
+d36c88ffbd1aded748cacec5b3de7b2c707ecc6b c2f0be96c054ad08e82cc6a86e4d087bce311a9d abizar0016 <muhammadabizar0016@gmail.com> 1732847036 +0700	commit: add
+c2f0be96c054ad08e82cc6a86e4d087bce311a9d a199361420766d389699ebb48114ca201ce3738f abizar0016 <muhammadabizar0016@gmail.com> 1732854695 +0700	commit: add
+a199361420766d389699ebb48114ca201ce3738f a199361420766d389699ebb48114ca201ce3738f abizar0016 <muhammadabizar0016@gmail.com> 1733055577 +0700	checkout: moving from nizar to nizar
+a199361420766d389699ebb48114ca201ce3738f a85c4fbb84893c1cf0cb401ff47b715d909ae942 abizar0016 <muhammadabizar0016@gmail.com> 1733055592 +0700	commit: add
+a85c4fbb84893c1cf0cb401ff47b715d909ae942 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1733055658 +0700	checkout: moving from nizar to radit
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c a85c4fbb84893c1cf0cb401ff47b715d909ae942 abizar0016 <muhammadabizar0016@gmail.com> 1733056159 +0700	checkout: moving from radit to nizar
+a85c4fbb84893c1cf0cb401ff47b715d909ae942 5639c2ec239cb7e2fc1273488a104e9aa8ef071f abizar0016 <muhammadabizar0016@gmail.com> 1733110381 +0700	commit: add
+5639c2ec239cb7e2fc1273488a104e9aa8ef071f 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1733111186 +0700	checkout: moving from nizar to radit
+5639c2ec239cb7e2fc1273488a104e9aa8ef071f 5639c2ec239cb7e2fc1273488a104e9aa8ef071f abizar0016 <muhammadabizar0016@gmail.com> 1733111321 +0700	checkout: moving from nizar to nizar
+5639c2ec239cb7e2fc1273488a104e9aa8ef071f eba86b10855690657481ce4d0672ac8752304ff5 abizar0016 <muhammadabizar0016@gmail.com> 1733111395 +0700	commit: Menambahkan file jurusan.db ke dalam Git
+eba86b10855690657481ce4d0672ac8752304ff5 3c2345311e09e5eed3a2adc788d1334a76c4cf2c abizar0016 <muhammadabizar0016@gmail.com> 1733111403 +0700	checkout: moving from nizar to radit
+3c2345311e09e5eed3a2adc788d1334a76c4cf2c f47761cb89fbf06278a0a71cbdc42eb076917c46 abizar0016 <muhammadabizar0016@gmail.com> 1733111427 +0700	pull origin radit: Fast-forward
+f47761cb89fbf06278a0a71cbdc42eb076917c46 eba86b10855690657481ce4d0672ac8752304ff5 abizar0016 <muhammadabizar0016@gmail.com> 1733111447 +0700	checkout: moving from radit to nizar
+eba86b10855690657481ce4d0672ac8752304ff5 ef92998ca4a60b3019d6453821910123f287f58a abizar0016 <muhammadabizar0016@gmail.com> 1733111613 +0700	commit: add
+ef92998ca4a60b3019d6453821910123f287f58a e459a2304c7bcbd14ca088e978b329deb775b8d4 abizar0016 <muhammadabizar0016@gmail.com> 1733112989 +0700	commit (merge): add
+e459a2304c7bcbd14ca088e978b329deb775b8d4 f47761cb89fbf06278a0a71cbdc42eb076917c46 abizar0016 <muhammadabizar0016@gmail.com> 1733113207 +0700	checkout: moving from nizar to radit
+f47761cb89fbf06278a0a71cbdc42eb076917c46 e459a2304c7bcbd14ca088e978b329deb775b8d4 abizar0016 <muhammadabizar0016@gmail.com> 1733113358 +0700	checkout: moving from radit to nizar
+e459a2304c7bcbd14ca088e978b329deb775b8d4 195973aad0688296e7ea17774502153efd686bdd abizar0016 <muhammadabizar0016@gmail.com> 1733114358 +0700	commit: add
+195973aad0688296e7ea17774502153efd686bdd 0f7728555fd34801f3eb3f0b32dc4df36d34be1d abizar0016 <muhammadabizar0016@gmail.com> 1733115336 +0700	commit: add
+0f7728555fd34801f3eb3f0b32dc4df36d34be1d be404f718581eea91a87acc04f7f8240b7852071 abizar0016 <muhammadabizar0016@gmail.com> 1733126798 +0700	commit: add
+be404f718581eea91a87acc04f7f8240b7852071 11088fb611835e0e46aedd98f8e32f2c60dcb26d abizar0016 <muhammadabizar0016@gmail.com> 1733201707 +0700	commit: add
+11088fb611835e0e46aedd98f8e32f2c60dcb26d f47761cb89fbf06278a0a71cbdc42eb076917c46 abizar0016 <muhammadabizar0016@gmail.com> 1733201743 +0700	checkout: moving from nizar to radit
+f47761cb89fbf06278a0a71cbdc42eb076917c46 11088fb611835e0e46aedd98f8e32f2c60dcb26d abizar0016 <muhammadabizar0016@gmail.com> 1733201882 +0700	checkout: moving from radit to nizar
+f47761cb89fbf06278a0a71cbdc42eb076917c46 11088fb611835e0e46aedd98f8e32f2c60dcb26d abizar0016 <muhammadabizar0016@gmail.com> 1733201910 +0700	checkout: moving from radit to nizar
+11088fb611835e0e46aedd98f8e32f2c60dcb26d 85cdac7fdd443824c893dd4fae86a26ff4f8ff14 abizar0016 <muhammadabizar0016@gmail.com> 1733289020 +0700	commit: add
+85cdac7fdd443824c893dd4fae86a26ff4f8ff14 f47761cb89fbf06278a0a71cbdc42eb076917c46 abizar0016 <muhammadabizar0016@gmail.com> 1733289120 +0700	checkout: moving from nizar to radit
+f47761cb89fbf06278a0a71cbdc42eb076917c46 32251b9ad3edcc77bfbc82cfb4013b8dd4544505 abizar0016 <muhammadabizar0016@gmail.com> 1733289153 +0700	pull origin radit: Fast-forward
+32251b9ad3edcc77bfbc82cfb4013b8dd4544505 85cdac7fdd443824c893dd4fae86a26ff4f8ff14 abizar0016 <muhammadabizar0016@gmail.com> 1733289171 +0700	checkout: moving from radit to nizar
+85cdac7fdd443824c893dd4fae86a26ff4f8ff14 50e999f49ad79a5fe39e01318251001a44e8ea04 abizar0016 <muhammadabizar0016@gmail.com> 1733293208 +0700	commit: add
+50e999f49ad79a5fe39e01318251001a44e8ea04 32251b9ad3edcc77bfbc82cfb4013b8dd4544505 abizar0016 <muhammadabizar0016@gmail.com> 1733293256 +0700	checkout: moving from nizar to radit
+32251b9ad3edcc77bfbc82cfb4013b8dd4544505 50e999f49ad79a5fe39e01318251001a44e8ea04 abizar0016 <muhammadabizar0016@gmail.com> 1733293273 +0700	checkout: moving from radit to nizar
+50e999f49ad79a5fe39e01318251001a44e8ea04 50e999f49ad79a5fe39e01318251001a44e8ea04 abizar0016 <muhammadabizar0016@gmail.com> 1733293439 +0700	reset: moving to HEAD
+50e999f49ad79a5fe39e01318251001a44e8ea04 50e999f49ad79a5fe39e01318251001a44e8ea04 abizar0016 <muhammadabizar0016@gmail.com> 1733293519 +0700	reset: moving to 50e999f
+50e999f49ad79a5fe39e01318251001a44e8ea04 32251b9ad3edcc77bfbc82cfb4013b8dd4544505 abizar0016 <muhammadabizar0016@gmail.com> 1733293594 +0700	checkout: moving from nizar to radit
+32251b9ad3edcc77bfbc82cfb4013b8dd4544505 b60b3a13fc4958f18509bdf35f146c983b0cc80a abizar0016 <muhammadabizar0016@gmail.com> 1733293611 +0700	pull: Fast-forward
+b60b3a13fc4958f18509bdf35f146c983b0cc80a 50e999f49ad79a5fe39e01318251001a44e8ea04 abizar0016 <muhammadabizar0016@gmail.com> 1733293626 +0700	checkout: moving from radit to nizar
+50e999f49ad79a5fe39e01318251001a44e8ea04 f7da6ba61738b1b6807bdde5637c9ec0e3280558 abizar0016 <muhammadabizar0016@gmail.com> 1733294605 +0700	commit: add index radit
+f7da6ba61738b1b6807bdde5637c9ec0e3280558 eb3634414bb7517205d25dcdc487782cd089868f abizar0016 <muhammadabizar0016@gmail.com> 1733294792 +0700	commit (merge): add
+eb3634414bb7517205d25dcdc487782cd089868f b6bb1fca05bf8d7e3aaaa658b6c7b5c6deecf3cc abizar0016 <muhammadabizar0016@gmail.com> 1733373211 +0700	commit: pipiw
+b6bb1fca05bf8d7e3aaaa658b6c7b5c6deecf3cc cbeb6f963bfbe012e661b44eaccd8c13c3945f39 abizar0016 <muhammadabizar0016@gmail.com> 1733405168 +0700	commit: rubah dikit di index
+cbeb6f963bfbe012e661b44eaccd8c13c3945f39 b60b3a13fc4958f18509bdf35f146c983b0cc80a abizar0016 <muhammadabizar0016@gmail.com> 1733405683 +0700	checkout: moving from nizar to radit
+b60b3a13fc4958f18509bdf35f146c983b0cc80a 47ea9f0aee2f20447aef229aa4f936c04c8f7269 abizar0016 <muhammadabizar0016@gmail.com> 1733405745 +0700	pull origin radit: Fast-forward
+47ea9f0aee2f20447aef229aa4f936c04c8f7269 db0355fad6ed10fddb5725f781bf8dc0153a9cc2 abizar0016 <muhammadabizar0016@gmail.com> 1733405970 +0700	commit: add database jurusan di instance
+db0355fad6ed10fddb5725f781bf8dc0153a9cc2 cbeb6f963bfbe012e661b44eaccd8c13c3945f39 abizar0016 <muhammadabizar0016@gmail.com> 1733406360 +0700	checkout: moving from radit to nizar
+cbeb6f963bfbe012e661b44eaccd8c13c3945f39 cbeb6f963bfbe012e661b44eaccd8c13c3945f39 abizar0016 <muhammadabizar0016@gmail.com> 1733406513 +0700	reset: moving to HEAD
+cbeb6f963bfbe012e661b44eaccd8c13c3945f39 cbeb6f963bfbe012e661b44eaccd8c13c3945f39 abizar0016 <muhammadabizar0016@gmail.com> 1733406845 +0700	reset: moving to HEAD
+cbeb6f963bfbe012e661b44eaccd8c13c3945f39 cbeb6f963bfbe012e661b44eaccd8c13c3945f39 abizar0016 <muhammadabizar0016@gmail.com> 1733407032 +0700	checkout: moving from nizar to develop
+cbeb6f963bfbe012e661b44eaccd8c13c3945f39 743442046b7814ce198e39f2b240d3da47c3ae67 abizar0016 <muhammadabizar0016@gmail.com> 1733407247 +0700	commit: add new branch
+743442046b7814ce198e39f2b240d3da47c3ae67 db0355fad6ed10fddb5725f781bf8dc0153a9cc2 abizar0016 <muhammadabizar0016@gmail.com> 1733407376 +0700	checkout: moving from develop to radit
+db0355fad6ed10fddb5725f781bf8dc0153a9cc2 743442046b7814ce198e39f2b240d3da47c3ae67 abizar0016 <muhammadabizar0016@gmail.com> 1733407535 +0700	checkout: moving from radit to develop
+743442046b7814ce198e39f2b240d3da47c3ae67 55ce68248c152928eb96200d57804b829dfff7df abizar0016 <muhammadabizar0016@gmail.com> 1733451242 +0700	commit: add new branch
+55ce68248c152928eb96200d57804b829dfff7df e0bd4b57d6683551c06147db3a526f4c687ddd3b abizar0016 <muhammadabizar0016@gmail.com> 1733455837 +0700	commit: add table database
+e0bd4b57d6683551c06147db3a526f4c687ddd3b 4a6f53d609ab4c0f2c234b178a30fff579ee0b5a abizar0016 <muhammadabizar0016@gmail.com> 1733457438 +0700	commit: pull radit index
+4a6f53d609ab4c0f2c234b178a30fff579ee0b5a 55ed56c68f100be954758057ef88db62e51f7b6d abizar0016 <muhammadabizar0016@gmail.com> 1733457475 +0700	commit: update ulang
+55ed56c68f100be954758057ef88db62e51f7b6d d8cf608e66e9dea1865d2f43118adfae6c0f4ed3 abizar0016 <muhammadabizar0016@gmail.com> 1733471050 +0700	commit: add backend index and update database table
+d8cf608e66e9dea1865d2f43118adfae6c0f4ed3 d8cf608e66e9dea1865d2f43118adfae6c0f4ed3 abizar0016 <muhammadabizar0016@gmail.com> 1733471128 +0700	reset: moving to HEAD
+d8cf608e66e9dea1865d2f43118adfae6c0f4ed3 f6ec6be3382bfb485d43a1b215bae4af31d89b67 abizar0016 <muhammadabizar0016@gmail.com> 1733471272 +0700	commit: add backend in index and update table database
+f6ec6be3382bfb485d43a1b215bae4af31d89b67 ea0c7ff724abd8c364b28a710acad096f8981723 abizar0016 <muhammadabizar0016@gmail.com> 1733471371 +0700	commit: add backend in index and update table database
+ea0c7ff724abd8c364b28a710acad096f8981723 a05ef9cc66bec6cb93ad8ff39657bc22cc8c3a6a abizar0016 <muhammadabizar0016@gmail.com> 1733471493 +0700	commit (merge): add backend in index and update table database
+a05ef9cc66bec6cb93ad8ff39657bc22cc8c3a6a 8ae38c52a0a523ca299832d188e75c0afe9d7533 abizar0016 <muhammadabizar0016@gmail.com> 1733666194 +0700	commit: backend students
+8ae38c52a0a523ca299832d188e75c0afe9d7533 0e42ba90fd357eefab785199e15bc6bb9ac0878e abizar0016 <muhammadabizar0016@gmail.com> 1733727931 +0700	commit: backend index
+0e42ba90fd357eefab785199e15bc6bb9ac0878e 11294c20462c42f0f768e441fa25d13bededae6a abizar0016 <muhammadabizar0016@gmail.com> 1733728732 +0700	commit: pull develop
+11294c20462c42f0f768e441fa25d13bededae6a 11294c20462c42f0f768e441fa25d13bededae6a abizar0016 <muhammadabizar0016@gmail.com> 1733728786 +0700	reset: moving to HEAD
+11294c20462c42f0f768e441fa25d13bededae6a cc50f1098d8d6339077f9a2687ddcb492c1fb3ab abizar0016 <muhammadabizar0016@gmail.com> 1733728966 +0700	pull origin develop: Merge made by the 'ort' strategy.
+cc50f1098d8d6339077f9a2687ddcb492c1fb3ab a20d36ef3a1872dd1cc544b2958c6e7f1011fe25 abizar0016 <muhammadabizar0016@gmail.com> 1733730172 +0700	commit: fixing
+a20d36ef3a1872dd1cc544b2958c6e7f1011fe25 38648ad6c7ba889d5cd79b4dbfac15581533555c abizar0016 <muhammadabizar0016@gmail.com> 1733815276 +0700	commit: fixing front end index
+38648ad6c7ba889d5cd79b4dbfac15581533555c 47a8e5fd8a5492d2605ef03365d7530a0ffede20 abizar0016 <muhammadabizar0016@gmail.com> 1733817086 +0700	pull origin develop: Fast-forward
+47a8e5fd8a5492d2605ef03365d7530a0ffede20 cd147fbdf6f6ca5685fad5a3c6f4df46b5b07723 abizar0016 <muhammadabizar0016@gmail.com> 1733985659 +0700	pull origin develop: Fast-forward
+                                                                                                                                                                              

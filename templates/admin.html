@@ -144,11 +144,12 @@
             <h4 class="title" style="color: #5562B3; flex-grow: 1; margin: 0;">
                 <strong>HALAMAN ADMIN</strong>
             </h4>
-            <button
+            <a href="{{ url_for('logout') }}"><button
                 style="border: none; background: transparent; cursor: pointer; padding: 0; color: #5562B3; font-size: 1.5rem;"
                 title="Sign Out">
                 <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
             </button>
+            </a>
         </div>
 
 
@@ -255,23 +256,23 @@
                 <div class="col" style="max-width: 255px;">
                     <div class="card mb-3" style="height: 160px; position: relative; width: 230px; overflow: hidden;">
                         <div class="card-body" style="position: relative; padding: 10px; overflow: hidden;">
-                            <h5 class="card-title" style="color: #5562B3; font-size: 18px; margin-bottom: 10px;">Logo
-                                Text</h5>
+                            <h5 class="card-title" style="color: #5562B3; font-size: 18px; margin-bottom: 10px;">Logo Text</h5>
                             <form action="/admin/major" method="POST" style="width: 100%; height: 100%;">
-                                <textarea placeholder="Tambah Nama Logo" name="name" style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%); 
-                                    text-align: center; width: 80%; height: 50px; border: none; outline: none; 
-                                    font-size: 18px; resize: none; overflow: hidden;">
+                                <textarea placeholder="Tambah Nama Logo" name="name"
+                                    style="position: absolute; top: 55%; left: 50%; transform: translate(-50%, -50%);
+                                        text-align: center; width: 80%; height: 50px; border: none; outline: none;
+                                        font-size: 18px; resize: none; overflow: hidden;">
                                     {{ major.name if major else '' }}
                                 </textarea>
-                                <button style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%); 
-                                    font-size: 13px; padding: 5px 10px; border: none; color: #ffffff; 
-                                    background-color: #5562B3; border-radius: 7px;">
+                                <button style="position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
+                                        font-size: 13px; padding: 5px 10px; border: none; color: #ffffff;
+                                        background-color: #5562B3; border-radius: 7px;">
                                     Simpan
                                 </button>
                             </form>
                         </div>
                     </div>
-
+        
                     <!-- Guru Pembimbing -->
                     <div class="card mb-3" style="height: 55px;">
                         <button class="card-title btn text-center mt-2"
@@ -280,7 +281,7 @@
                             Guru Pembimbing +
                         </button>
                     </div>
-
+        
                     <!-- Kontainer untuk Card Upload Guru -->
                     <form action="/admin/teachers" method="POST" enctype="multipart/form-data">
                         <div id="guru-container">
@@ -290,7 +291,7 @@
                             style="margin-top: 20px; padding: 10px 20px; border: none; border-radius: 50px; background-color: #717fe0; color: #fff; font-size: 16px; cursor: pointer;">Kirim
                             Semua</button>
                     </form>
-
+        
                 </div>
             </div>
 
@@ -418,129 +419,80 @@
     </script>
 
     <script>
-        let goodsCount = 0;  // Counter untuk batch
+       let goodsCount = 0; // Counter untuk labs
+    let batchCount = 0; // Counter untuk batch/kelas
 
-        function addCardLab() {
-            goodsCount++;  // Increment untuk setiap batch baru
-
-            const newCard = `
-        <div class="col-sm-3 mt-3" id="lab-${goodsCount}">
-            <div class="card" style="height: 160px;">
-                <div class="card-body">
-                    <!-- Nama LAB-->
-                    <div class="d-flex justify-content-between align-items-center mb-1">
-                        <span style="font-size: 18px;">Nama LAB:</span>
-                        <input type="text" name="lab_name[]" placeholder="..."
-                            style="font-size: 18px; width: 40%; border: none; outline: none; padding: 2px; margin-right: 26px;">
-                    </div>
-
-                    <!-- Nama Objek dan Jumlah -->
-                    <div class="d-flex flex-column" id="goods-${goodsCount}">
-                        <!-- Input barang dinamis akan dimasukkan di sini -->
-                    </div>
-                    <button type="button" class="btn btn-secondary mt-2" onclick="addGoodsInput(${goodsCount})">Tambah Barang</button>
-                </div>
-            </div>
-        </div>
-    `;
-
-            document.getElementById("card-lab").insertAdjacentHTML("beforeend", newCard);
-        }
-
-        function addGoodsInput(goodsCount) {
-            // Tambahkan input barang dan jumlah untuk lab tertentu
-            const goodsDiv = `
-        <div class="d-flex flex-column align-items-start mb-1 me-5">
-            <span class="dot me-2"></span>
-            <div class="mt-2">
-                <input type="text" name="object_name_${goodsCount}[]" placeholder="Nama Objek"
-                    style="font-size: 12px; width: 100%; border: none; outline: none; background: transparent;">
-                <input type="number" name="object_amount_${goodsCount}[]" placeholder="Jumlah"
-                    style="font-size: 12px; width: 100%; border: none; outline: none; background: transparent;">
-            </div>
-        </div>
-    `;
-
-            document.getElementById(`goods-${goodsCount}`).insertAdjacentHTML("beforeend", goodsDiv);
-        }
-
-
-        // Function to add a new card below when the plus button is clicked
-        let batchCount = 0;  // Counter untuk batch
-
-        function addCardKelas() {
-            batchCount++;  // Increment untuk setiap batch baru
-
-            const newCardHTML = `
-                <div class="col-sm-4 mt-3" id = "batch-${batchCount}">
-                    <div class="card" style="height: 190px;">
-                        <div class="card-body">
-                            <div class="d-flex justify-content-between align-items-center">
-                                <div>
-                                    <div class="d-flex align-items-center">
-                                        <span style="font-size: 16px;">Angkatan</span>
-                                        <input type="text" name="batch_year[]" placeholder="Tahun Angkatan"
-                                            style="font-size: 16px; border: none; outline: none; margin-left: 2px; width: 50%; background: transparent;">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="d-flex flex-column" id="kelas-${batchCount}">
-                                <!-- Input kelas dinamis akan dimasukkan di sini -->
-                            </div>
-                            <button type="button" class="btn btn-secondary mt-2" onclick="addClassInput(${batchCount})">Tambah Kelas</button>
-                        </div>
-                    </div>
-                `;
-
-            document.getElementById('card-kelas').insertAdjacentHTML('beforeend', newCardHTML);
-        }
-
-        function addClassInput(batchCount) {
-            // Tambahkan input kelas dan total siswa untuk batch tertentu
-            const classDiv = `
-                <div class="d-flex flex-column align-items-start mb-1 me-5">
-        <span class="dot me-2"></span>
-        <div class="mt-2">
-            <input type="text" name="class_name_${batchCount}[]" placeholder="Kelas"
-                   style="font-size: 12px; width: 100%; border: none; outline: none; background: transparent;">
-            <input type="number" name="total_student_${batchCount}[]" placeholder="Jumlah Siswa"
-                   style="font-size: 12px; width: 100%; border: none; outline: none; background: transparent;">
-        </div>       
-        </div>     `;
-
-            document.getElementById(`kelas-${batchCount}`).insertAdjacentHTML('beforeend', classDiv);
-        }
-
-
-        function addGuruPembimbing() {
-            const uniqueId = `imageUpload${Date.now()} `;
-            const imageId = `guruImage${Date.now()} `;
-
-            const newCard = `
-                <div class="card mb-3" style = "height: 260px;">
+    // Fungsi menambah card untuk "Lab"
+    function addCardLab() {
+        goodsCount++;
+        const labCard = `
+            <div class="col-sm-3 mt-3" id="lab-${goodsCount}">
+                <div class="card" style="height: 160px;">
                     <div class="card-body">
-                        <!-- Gambar Guru -->
-                        <img src="{{ url_for('static', filename='assets/img/bulat.png') }}" alt="Gambar Guru"
-                            class="guruImage"
-                            id="${imageId}"
-                            style="display: block; margin: 0 auto; width: 120px; height: 120px; border-radius: 50%; object-fit: cover; cursor: pointer;"
-                            onclick="document.getElementById('${uniqueId}').click();">
+                        <h5 class="card-title">Lab ${goodsCount}</h5>
+                        <div id="goods-${goodsCount}">
+                            <!-- Dynamic inputs for lab objects -->
+                        </div>
+                        <button class="btn btn-secondary mt-2" onclick="addGoodsInput(${goodsCount})">Tambah Barang</button>
+                    </div>
+                </div>
+            </div>`;
+        document.getElementById('card-lab').insertAdjacentHTML('beforeend', labCard);
+    }
 
-                            <input type="file" id="${uniqueId}" name="profile[]" style="display: none;" accept="image/*" onchange="previewImage(event, '${imageId}')">
+    // Fungsi menambah input untuk "Barang" di dalam Lab
+    function addGoodsInput(labId) {
+        const goodsInput = `
+            <div class="d-flex align-items-start mt-2">
+                <input type="text" name="object_name_${labId}[]" placeholder="Nama Barang" class="form-control me-2">
+                <input type="number" name="object_amount_${labId}[]" placeholder="Jumlah" class="form-control">
+            </div>`;
+        document.getElementById(`goods-${labId}`).insertAdjacentHTML('beforeend', goodsInput);
+    }
 
-                                <input type="text" placeholder="Nama Guru" name="name[]"
-                                    style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 50px; font-size: 16px; outline: none; border: none; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; text-align: center;">
+    // Fungsi menambah card untuk "Kelas"
+    function addCardKelas() {
+        batchCount++;
+        const classCard = `
+            <div class="col-sm-4 mt-3" id="batch-${batchCount}">
+                <div class="card" style="height: 190px;">
+                    <div class="card-body">
+                        <h5 class="card-title">Kelas ${batchCount}</h5>
+                        <input type="text" name="batch_year[]" placeholder="Tahun Angkatan" class="form-control mb-2">
+                        <div id="kelas-${batchCount}">
+                            <!-- Dynamic inputs for classes -->
+                        </div>
+                        <button class="btn btn-secondary mt-2" onclick="addClassInput(${batchCount})">Tambah Kelas</button>
+                    </div>
+                </div>
+            </div>`;
+        document.getElementById('card-kelas').insertAdjacentHTML('beforeend', classCard);
+    }
 
-                                    <input type="text" placeholder="Keterangan" name="title[]"
-                                        style="width: 100%; margin-top: 10px; padding: 8px; border: 1px solid #ddd; border-radius: 50px; font-size: 16px; outline: none; border: none; box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px; text-align: center;">
-                                    </div>
-                                </>
-    `;
+    // Fungsi menambah input untuk "Siswa" di dalam Kelas
+    function addClassInput(batchId) {
+        const classInput = `
+            <div class="d-flex align-items-start mt-2">
+                <input type="text" name="class_name_${batchId}[]" placeholder="Nama Kelas" class="form-control me-2">
+                <input type="number" name="total_student_${batchId}[]" placeholder="Jumlah Siswa" class="form-control">
+            </div>`;
+        document.getElementById(`kelas-${batchId}`).insertAdjacentHTML('beforeend', classInput);
+    }
 
-            const container = document.getElementById('guru-container');
-            container.insertAdjacentHTML('beforeend', newCard);
-        }
-
+    // Fungsi menambah "Guru Pembimbing"
+    function addGuruPembimbing() {
+        const uniqueId = `guru-${Date.now()}`;
+        const guruCard = `
+            <div class="card mb-3" id="${uniqueId}" style="height: 260px;">
+                <div class="card-body">
+                    <img src="#" alt="Gambar Guru" style="width: 120px; height: 120px; object-fit: cover; border-radius: 50%;" class="mb-2">
+                    <input type="file" name="profile[]" accept="image/*" class="form-control mb-2">
+                    <input type="text" name="name[]" placeholder="Nama Guru" class="form-control mb-2">
+                    <input type="text" name="title[]" placeholder="Keterangan" class="form-control">
+                </div>
+            </div>`;
+        document.getElementById('guru-container').insertAdjacentHTML('beforeend', guruCard);
+    }
     </script>
 
 </body>
